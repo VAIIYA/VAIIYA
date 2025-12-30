@@ -11,6 +11,8 @@ interface EnvConfig {
 
     // Database
     mongoDbUri: string;
+    mongoDbUriLuckyHaus?: string;
+    mongoDbUriMemeHaus?: string;
 
     // LuckyHaus Specific
     heliusApiKey?: string;
@@ -42,7 +44,9 @@ const OPTIONAL_ENV_VARS = {
     NODE_ENV: 'development',
     MEMEHAUS_VAULT_SEED: 'memehaus-liquidity-community-vault-seed-2025', // Fallback for development
     HELIUS_API_KEY: undefined,
-    LOTTERY_HOUSE_WALLET: undefined
+    LOTTERY_HOUSE_WALLET: undefined,
+    MONGODB_URI_LUCKYHAUS: undefined,
+    MONGODB_URI_MEMEHAUS: undefined
 } as const;
 
 /**
@@ -94,6 +98,8 @@ export function getEnvConfig(): EnvConfig {
 
         // Database
         mongoDbUri: process.env.MONGODB_URI!,
+        mongoDbUriLuckyHaus: process.env.MONGODB_URI_LUCKYHAUS || OPTIONAL_ENV_VARS.MONGODB_URI_LUCKYHAUS,
+        mongoDbUriMemeHaus: process.env.MONGODB_URI_MEMEHAUS || OPTIONAL_ENV_VARS.MONGODB_URI_MEMEHAUS,
 
         // LuckyHaus
         heliusApiKey: process.env.HELIUS_API_KEY || OPTIONAL_ENV_VARS.HELIUS_API_KEY,

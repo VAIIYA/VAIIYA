@@ -14,6 +14,10 @@ function getMongoConfig() {
 let mongoClient: MongoClient | null = null;
 let mongoDb: Db | null = null;
 
+// Secondary clients for dual-write (standalone apps)
+let luckyHausClient: MongoClient | null = null;
+let memeHausClient: MongoClient | null = null;
+
 /**
  * Get the Singleton MongoDB Client
  */
@@ -99,6 +103,46 @@ export async function getCollection<T extends Document>(collectionName: string, 
     const db = await getMongoDatabase(dbName);
     if (!db) return null;
     return db.collection<T>(collectionName);
+}
+
+/**
+ * Get the Legacy LuckyHaus Database instance (Standalone App)
+ */
+export async function getLegacyLuckyHausDatabase(): Promise<Db | null> {
+    const env = getEnvConfig();
+    if (!env.mongoDbUriLuckyHaus) return null;
+
+    if (!luckyHausClient) {
+        try {
+            luckyHausClient = new MongoClient(env.mongoDbUriLuckyHaus);
+            await luckyHausClient.connect();
+            console.log('✅ Connected to Legacy LuckyHaus MongoDB');
+        } catch (error) {
+            console.error('❌ Failed to connect to Legacy LuckyHaus MongoDB:', error);
+            return null;
+        }
+    }
+    return luckyHausClient.db('luckyhaus');
+}
+
+/**
+ * Get the Legacy MemeHaus Database instance (Standalone App)
+ */
+export async function getLegacyMemeHausDatabase(): Promise<Db | null> {
+    const env = getEnvConfig();
+    if (!env.mongoDbUriMemeHaus) return null;
+
+    if (!memeHausClient) {
+        try {
+            memeHausClient = new MongoClient(env.mongoDbUriMemeHaus);
+            await memeHausClient.connect();
+            console.log('✅ Connected to Legacy MemeHaus MongoDB');
+        } catch (error) {
+            console.error('❌ Failed to connect to Legacy MemeHaus MongoDB:', error);
+            return null;
+        }
+    }
+    return memeHausClient.db('memehaus');
 }
 
 /**

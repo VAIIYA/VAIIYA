@@ -2,7 +2,7 @@ import { MongoClient, MongoClientOptions, Db, Collection } from 'mongodb';
 import { attachDatabasePool } from '@vercel/functions';
 import { TokenData } from './githubOnlyStorage';
 import { getEnvConfig } from './env';
-import { getMongoClient as getCoreMongoClient } from '@/app/lib/core-db';
+import { getMongoClient as getCoreMongoClient, getLegacyMemeHausDatabase } from '@/app/lib/core-db';
 
 // MongoDB configuration - read at runtime
 function getMongoConfig() {
@@ -96,7 +96,44 @@ export async function storeTokenDataInMongoDB(
       { upsert: true }
     );
 
-    console.log(`✅ Token data stored in MongoDB: ${tokenData.mintAddress}, imageUrl: ${tokenData.imageUrl || 'NOT SET'}`);
+    console.log(`✅ Token data stored in Main MongoDB: ${tokenData.mintAddress}`);
+
+    // 🔄 DUAL WRITE: Update Legacy Database
+    try {
+      const legacyDb = await getLegacyMemeHausDatabase();
+      if (legacyDb) {
+        const legacyColl = legacyDb.collection('tokens');
+        await legacyColl.updateOne(
+          { mint_address: tokenData.mintAddress },
+          {
+            $set: {
+              id: tokenData.id,
+              name: tokenData.name,
+              symbol: tokenData.symbol,
+              description: tokenData.description,
+              total_supply: tokenData.totalSupply,
+              creator_wallet: tokenData.creatorWallet,
+              mint_address: tokenData.mintAddress,
+              token_account: tokenData.tokenAccount,
+              initial_price: tokenData.initialPrice,
+              vesting_period: tokenData.vestingPeriod,
+              community_fee: tokenData.communityFee,
+              decimals: tokenData.decimals,
+              image_url: tokenData.imageUrl || null,
+              metadata_uri: tokenData.metadataUri,
+              token_creation_signature: tokenData.tokenCreationSignature,
+              fee_transaction_signature: tokenData.feeTransactionSignature,
+              created_at: new Date(tokenData.createdAt),
+              updated_at: new Date(),
+            },
+          },
+          { upsert: true }
+        );
+        console.log('🔄 DUAL WRITE ✅: Updated legacy MemeHaus MongoDB (tokens)');
+      }
+    } catch (legacyError) {
+      console.error('🔄 DUAL WRITE ❌: Failed to update legacy MemeHaus MongoDB (tokens):', legacyError);
+    }
 
     return {
       success: true,
@@ -163,7 +200,42 @@ export async function storeCreatorWalletInMongoDB(
       );
     }
 
-    console.log(`✅ Creator wallet stored in MongoDB: ${walletAddress}`);
+    console.log(`✅ Creator wallet stored in Main MongoDB: ${walletAddress}`);
+
+    // 🔄 DUAL WRITE: Update Legacy Database
+    try {
+      const legacyDb = await getLegacyMemeHausDatabase();
+      if (legacyDb) {
+        const legacyColl = legacyDb.collection('creators');
+        const legacyResult = await legacyColl.updateOne(
+          { wallet_address: walletAddress },
+          {
+            $set: {
+              wallet_address: walletAddress,
+              updated_at: new Date(),
+            },
+            $addToSet: {
+              created_tokens: tokenMint,
+            },
+            $setOnInsert: {
+              first_token_created_at: new Date(),
+              total_tokens_created: 1,
+            },
+          },
+          { upsert: true }
+        );
+
+        if (legacyResult.upsertedCount === 0) {
+          await legacyColl.updateOne(
+            { wallet_address: walletAddress },
+            { $inc: { total_tokens_created: 1 } }
+          );
+        }
+        console.log('🔄 DUAL WRITE ✅: Updated legacy MemeHaus MongoDB (creators)');
+      }
+    } catch (legacyError) {
+      console.error('🔄 DUAL WRITE ❌: Failed to update legacy MemeHaus MongoDB (creators):', legacyError);
+    }
 
     return {
       success: true,

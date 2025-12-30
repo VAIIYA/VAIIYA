@@ -1,7 +1,7 @@
 // MongoDB Storage Service - Persistent storage for lottery data
 // Uses MongoDB to store lottery data with proper connection pooling for Vercel
 
-import { getMongoClient, getMongoDatabase } from '@/app/lib/core-db';
+import { getMongoClient, getMongoDatabase, getLegacyLuckyHausDatabase } from '@/app/lib/core-db';
 
 export interface LotteryData {
   currentRound: {
@@ -63,7 +63,25 @@ export class MongoDBStorage {
         { $set: data },
         { upsert: true }
       );
-      console.log('✅ Updated lottery data in MongoDB');
+      console.log('✅ Updated lottery data in Main MongoDB');
+
+      // 🔄 DUAL WRITE: Update Legacy Database
+      try {
+        const legacyDb = await getLegacyLuckyHausDatabase();
+        if (legacyDb) {
+          const legacyColl = legacyDb.collection(COLLECTION_NAME);
+          await legacyColl.updateOne(
+            {},
+            { $set: data },
+            { upsert: true }
+          );
+          console.log('🔄 DUAL WRITE ✅: Updated legacy LuckyHaus MongoDB');
+        }
+      } catch (legacyError) {
+        console.error('🔄 DUAL WRITE ❌: Failed to update legacy LuckyHaus MongoDB:', legacyError);
+        // We don't fail the main operation if legacy write fails
+      }
+
       return true;
     } catch (error) {
       console.error('Error updating MongoDB:', error);

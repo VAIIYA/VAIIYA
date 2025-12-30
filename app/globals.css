@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-orbitron: 'Orbitron', monospace;
+  }
+  
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+    @apply bg-gray-900 text-white;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+  
+  .font-orbitron {
+    font-family: var(--font-orbitron);
+  }
+}
+
+/* --- SUPER APP COMPONENTS --- */
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-gray-900/50 border border-gray-800 rounded-xl p-6 backdrop-blur-md;
+  }
+  .card-hover {
+    @apply hover:border-gray-700 hover:bg-gray-900/70 transition-all duration-300;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  /* Text Gradients */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
+  }
+  
+  /* Neon Accents */
+  .text-neon-pink { @apply text-pink-400; }
+  .text-neon-cyan { @apply text-cyan-400; }
+  .text-neon-purple { @apply text-purple-400; }
+  .text-electric-blue { @apply text-blue-400; }
+}
+
+/* --- WALLET ADAPTER OVERRIDES (Guac.gg Style) --- */
+.wallet-adapter-button {
+  background: linear-gradient(to right, #FF1B8D, #8B5CF6) !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  padding: 0.5rem 1.5rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 20px rgba(255, 27, 141, 0.3) !important;
+}
+
+.wallet-adapter-button:hover {
+  box-shadow: 0 0 30px rgba(255, 27, 141, 0.5) !important;
+  transform: scale(1.05) !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.wallet-adapter-modal {
+  background: linear-gradient(135deg, #1a1a1a, #2d1b69) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  border-radius: 16px !important;
+}
+
+/* --- RESPONSIVE HELPERS --- */
+@layer utilities {
+  .mobile-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+}

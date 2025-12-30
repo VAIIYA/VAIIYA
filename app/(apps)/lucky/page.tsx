@@ -240,7 +240,6 @@ export default function SimpleLottery() {
             setTimeLeft('DRAW COMPLETE');
           }
         }
-
       }
     } catch (error) {
       console.error('Error ending round:', error);

@@ -130,7 +130,6 @@ export async function storeTokenDataInMongoDB(
       success: true,
       id: tokenData.id,
     };
-
   } catch (error) {
     console.error('❌ Error storing token data in MongoDB:', error);
     return {
@@ -198,7 +197,6 @@ export async function storeCreatorWalletInMongoDB(
       success: true,
       id: walletAddress,
     };
-
   } catch (error) {
     console.error('❌ Error storing creator wallet in MongoDB:', error);
     return {

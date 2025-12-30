@@ -108,10 +108,15 @@ export class PriceService {
     inputMint: string,
     outputMint: string,
     inputAmount: string,
-    slippageBps: number = 50
+    slippageBps: number = 50,
+    feeBps?: number
   ): Promise<SwapQuote | null> {
     try {
-      const url = `${this.quoteBaseUrl}/quote?inputMint=${inputMint}&outputMint=${outputMint}&inputAmount=${inputAmount}&slippageBps=${slippageBps}&onlyDirectRoutes=false&asLegacyTransaction=false`;
+      let url = `${this.quoteBaseUrl}/quote?inputMint=${inputMint}&outputMint=${outputMint}&inputAmount=${inputAmount}&slippageBps=${slippageBps}&onlyDirectRoutes=false&asLegacyTransaction=false`;
+
+      if (feeBps) {
+        url += `&feeBps=${feeBps}`;
+      }
 
       const response = await fetch(url, {
         // Add timeout to prevent hanging
@@ -163,7 +168,8 @@ export class PriceService {
           userPublicKey,
           wrapAndUnwrapSol: true,
           dynamicComputeUnitLimit: true,
-          prioritizationFeeLamports: 'auto'
+          prioritizationFeeLamports: 'auto',
+          feeAccount: quoteResponse.feeAccount || undefined
         }),
       });
 

@@ -6,7 +6,7 @@ import { TokenBalanceService, TokenAccount } from '../services/tokenBalanceServi
 import { PriceService, SwapQuote } from '../services/priceService';
 import { SwapService, SwapParams, SwapResult } from '../services/swapService';
 import { TokenFromAPI, TokenResponse } from '../types/token';
-// MemeHaus token service removed - using GitHub storage directly
+import { getEnvConfig } from '@/app/lib/core-env';
 
 export interface SwapToken {
   mint: string;
@@ -35,7 +35,7 @@ export interface SwapState {
 export const useSwap = () => {
   const { connected, publicKey, signTransaction } = useWallet();
   const { connection } = useConnection();
-  
+
   const [swapState, setSwapState] = useState<SwapState>({
     fromToken: null,
     toToken: null,
@@ -77,7 +77,7 @@ export const useSwap = () => {
     // Get prices for all tokens
     const mintAddresses = tokens.map(t => t.mint);
     const prices = await priceService.getMultipleTokenPrices(mintAddresses);
-    
+
     // Log if price fetching failed
     if (prices.size === 0 && mintAddresses.length > 0) {
       console.warn('Price service returned no prices. This may be due to Jupiter API being unavailable.');
@@ -107,19 +107,19 @@ export const useSwap = () => {
         // Add timeout
         signal: AbortSignal.timeout(10000) // 10 second timeout
       });
-      
+
       if (!response.ok) {
         throw new Error(`API returned ${response.status}: ${response.statusText}`);
       }
-      
+
       const data: TokenResponse = await response.json();
-      
+
       if (!data.success || !data.tokens || data.tokens.length === 0) {
         console.log('No MemeHaus tokens found in API. This is normal if no tokens have been created yet.');
         setMemeHausTokens([]);
         return;
       }
-      
+
       // Convert to base token format (without prices)
       const baseTokens = data.tokens.map((token: TokenFromAPI) => ({
         mint: token.mint_address || token.mintAddress,
@@ -129,16 +129,16 @@ export const useSwap = () => {
         decimals: token.decimals || 9,
         logoURI: token.image_url || token.imageUrl,
       }));
-      
+
       // Fetch prices and format tokens using shared helper
       const tokensWithPrices = await formatTokensWithPrices(baseTokens);
-      
+
       console.log('MemeHaus tokens loaded:', tokensWithPrices.length);
       setMemeHausTokens(tokensWithPrices);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       console.error('Error loading MemeHaus tokens:', errorMessage);
-      
+
       // Don't show error to user - just log it and continue with empty list
       // This allows the swap interface to still work for swapping other tokens
       setMemeHausTokens([]);
@@ -156,11 +156,11 @@ export const useSwap = () => {
       setSwapState(prev => ({ ...prev, loading: true, error: null }));
 
       console.log('Loading tokens for wallet:', publicKey.toString());
-      
+
       // Get SOL balance
       const solBalance = await tokenBalanceService.getSOLBalance(publicKey.toString());
       console.log('SOL balance fetched:', solBalance);
-      
+
       // Get token accounts
       const tokenAccounts = await tokenBalanceService.getTokenAccounts(publicKey.toString());
       console.log('Token accounts fetched:', tokenAccounts);
@@ -185,7 +185,7 @@ export const useSwap = () => {
 
       // Fetch prices and format tokens using shared helper
       const tokens = await formatTokensWithPrices(baseTokens);
-      
+
       // Filter out tokens with no price (optional - keep all tokens for now)
       // const tokensWithPrices = tokens.filter(t => t.price > 0 || t.mint === 'So11111111111111111111111111111111111111112');
 
@@ -195,8 +195,8 @@ export const useSwap = () => {
       // Set default tokens if none selected
       setSwapState(prev => {
         if (!prev.fromToken && tokens.length > 0) {
-          const newState = { 
-            ...prev, 
+          const newState = {
+            ...prev,
             fromToken: tokens[0],
             toToken: tokens.length > 1 ? tokens[1] : null
           };
@@ -239,12 +239,12 @@ export const useSwap = () => {
   // Update quote when input changes
   const updateQuote = useCallback(async () => {
     if (!swapState.fromToken || !swapState.toToken || !swapState.fromAmount || parseFloat(swapState.fromAmount) <= 0) {
-      setSwapState(prev => ({ 
-        ...prev, 
-        quote: null, 
-        toAmount: '', 
-        priceImpact: 0, 
-        exchangeRate: 0 
+      setSwapState(prev => ({
+        ...prev,
+        quote: null,
+        toAmount: '',
+        priceImpact: 0,
+        exchangeRate: 0
       }));
       return;
     }
@@ -255,12 +255,30 @@ export const useSwap = () => {
       // Convert amount to proper decimals
       const inputAmount = (parseFloat(swapState.fromAmount) * Math.pow(10, swapState.fromToken.decimals)).toString();
 
+      const config = getEnvConfig();
+      const serverWallet = config.serverWallet;
+      const devWallets = [config.devWalletSn, config.devWalletMg].filter(Boolean);
+
+      // Calculate referral based on weighted distribution
+      // 50% Server Wallet, 25% Dev SN, 25% Dev MG
+      const rand = Math.random();
+      let referral: string | undefined;
+
+      if (rand < 0.5) {
+        referral = serverWallet;
+      } else {
+        const devIdx = Math.floor((rand - 0.5) * 4); // Maps [0.5, 1.0) to [0, 2)
+        referral = devWallets[devIdx] || serverWallet; // Fallback to server if dev wallets are missing
+      }
+
       const quote = await swapService.getSwapPreview({
         inputMint: swapState.fromToken.mint,
         outputMint: swapState.toToken.mint,
         inputAmount,
         slippageBps: swapState.slippageBps,
-        userPublicKey: publicKey?.toString() || ''
+        userPublicKey: publicKey?.toString() || '',
+        referral,
+        feeBps: 20 // 0.2% integrator fee (0.1% treasury + 0.1% devs)
       });
 
       if (quote) {
@@ -287,7 +305,7 @@ export const useSwap = () => {
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       console.error('Error updating quote:', errorMessage);
-      
+
       // Provide more specific error messages
       let userFriendlyError = 'Failed to get swap quote';
       if (errorMessage.includes('ERR_NAME_NOT_RESOLVED') || errorMessage.includes('Failed to fetch')) {
@@ -295,9 +313,9 @@ export const useSwap = () => {
       } else if (errorMessage.includes('timeout')) {
         userFriendlyError = 'Swap quote request timed out. Please try again.';
       }
-      
-      setSwapState(prev => ({ 
-        ...prev, 
+
+      setSwapState(prev => ({
+        ...prev,
         error: userFriendlyError,
         quote: null,
         toAmount: '',
@@ -323,18 +341,34 @@ export const useSwap = () => {
     try {
       const inputAmount = (parseFloat(swapState.fromAmount) * Math.pow(10, swapState.fromToken!.decimals)).toString();
 
+      const config = getEnvConfig();
+      const serverWallet = config.serverWallet;
+      const devWallets = [config.devWalletSn, config.devWalletMg].filter(Boolean);
+
+      const rand = Math.random();
+      let referral: string | undefined;
+
+      if (rand < 0.5) {
+        referral = serverWallet;
+      } else {
+        const devIdx = Math.floor((rand - 0.5) * 4);
+        referral = devWallets[devIdx] || serverWallet;
+      }
+
       const result = await swapService.executeSwap({
         inputMint: swapState.fromToken!.mint,
         outputMint: swapState.toToken!.mint,
         inputAmount,
         slippageBps: swapState.slippageBps,
-        userPublicKey: publicKey.toString()
+        userPublicKey: publicKey.toString(),
+        referral,
+        feeBps: 20 // 0.2% integrator fee
       }, signTransaction);
 
       if (result.success) {
         // Reload tokens after successful swap
         await loadUserTokens();
-        
+
         // Reset amounts
         setSwapState(prev => ({
           ...prev,
@@ -360,8 +394,8 @@ export const useSwap = () => {
 
   // Set from token
   const setFromToken = useCallback((token: SwapToken) => {
-    setSwapState(prev => ({ 
-      ...prev, 
+    setSwapState(prev => ({
+      ...prev,
       fromToken: token,
       fromAmount: '',
       toAmount: '',
@@ -373,8 +407,8 @@ export const useSwap = () => {
 
   // Set to token
   const setToToken = useCallback((token: SwapToken) => {
-    setSwapState(prev => ({ 
-      ...prev, 
+    setSwapState(prev => ({
+      ...prev,
       toToken: token,
       toAmount: '',
       quote: null,
@@ -423,7 +457,7 @@ export const useSwap = () => {
     userTokens,
     memeHausTokens,
     isExecuting,
-    
+
     // Actions
     setFromToken,
     setToToken,
@@ -433,15 +467,15 @@ export const useSwap = () => {
     executeSwap,
     loadUserTokens,
     loadMemeHausTokens,
-    
+
     // Computed values
-    canSwap: connected && 
-             !!swapState.fromToken && 
-             !!swapState.toToken && 
-             !!swapState.fromAmount && 
-             parseFloat(swapState.fromAmount) > 0 &&
-             !!swapState.quote,
-    
+    canSwap: connected &&
+      !!swapState.fromToken &&
+      !!swapState.toToken &&
+      !!swapState.fromAmount &&
+      parseFloat(swapState.fromAmount) > 0 &&
+      !!swapState.quote,
+
     // Utilities
     formatPrice: priceService.formatPrice,
     formatBalance: priceService.formatBalance,

@@ -8,6 +8,8 @@ export interface SwapParams {
   inputAmount: string;
   slippageBps: number;
   userPublicKey: string;
+  referral?: string;
+  feeBps?: number;
 }
 
 export interface SwapResult {
@@ -38,7 +40,8 @@ export class SwapService {
         params.inputMint,
         params.outputMint,
         params.inputAmount,
-        params.slippageBps
+        params.slippageBps,
+        params.feeBps
       );
 
       if (!quote) {
@@ -115,7 +118,8 @@ export class SwapService {
         params.inputMint,
         params.outputMint,
         params.inputAmount,
-        params.slippageBps
+        params.slippageBps,
+        params.feeBps
       );
     } catch (error) {
       console.error('Error getting swap preview:', error);

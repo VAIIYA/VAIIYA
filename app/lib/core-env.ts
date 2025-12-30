@@ -25,6 +25,11 @@ interface EnvConfig {
     githubOwner: string;
     githubRepo: string;
     githubBranch: string;
+
+    // Platform Fees
+    devWalletSn: string;
+    devWalletMg: string;
+    serverWallet: string;
 }
 
 // Required environment variables
@@ -46,7 +51,10 @@ const OPTIONAL_ENV_VARS = {
     HELIUS_API_KEY: undefined,
     LOTTERY_HOUSE_WALLET: undefined,
     MONGODB_URI_LUCKYHAUS: undefined,
-    MONGODB_URI_MEMEHAUS: undefined
+    MONGODB_URI_MEMEHAUS: undefined,
+    DEV_WALLET_SN: 'EpfmoiBoNFEofbACjZo1vpyqXUy5Fq9ZtPrGVwok5fb3',
+    DEV_WALLET_MG: '2DmYGqwgbm2Axygs6jHj63kxYT24eE72XoqLaJe4mS9e',
+    SERVER_WALLET: '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e'
 } as const;
 
 /**
@@ -112,6 +120,11 @@ export function getEnvConfig(): EnvConfig {
         githubOwner: process.env.GITHUB_OWNER || OPTIONAL_ENV_VARS.GITHUB_OWNER,
         githubRepo: process.env.GITHUB_REPO || OPTIONAL_ENV_VARS.GITHUB_REPO,
         githubBranch: process.env.GITHUB_BRANCH || OPTIONAL_ENV_VARS.GITHUB_BRANCH,
+
+        // Platform Fees
+        devWalletSn: process.env.DEV_WALLET_SN || OPTIONAL_ENV_VARS.DEV_WALLET_SN,
+        devWalletMg: process.env.DEV_WALLET_MG || OPTIONAL_ENV_VARS.DEV_WALLET_MG,
+        serverWallet: process.env.SERVER_WALLET || OPTIONAL_ENV_VARS.SERVER_WALLET,
     };
 }
 

@@ -278,7 +278,7 @@ export default function Home() {
               Profile
             </Link>
             <Link
-              href="/lucky"
+              href="/luckyhaus"
               className="text-gray-300 hover:text-white transition-colors font-inter font-medium"
             >
               LuckyHaus
@@ -322,7 +322,7 @@ export default function Home() {
                 Profile
               </Link>
               <a
-                href="https://luckyhaus.vercel.app/"
+                href="/luckyhaus"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2"

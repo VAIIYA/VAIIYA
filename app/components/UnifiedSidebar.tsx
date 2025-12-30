@@ -9,9 +9,9 @@ export function UnifiedSidebar() {
 
     const navItems = [
         { name: 'Home', icon: Home, href: '/' },
-        { name: 'LuckyHaus', icon: Gamepad2, href: '/lucky' },
-        { name: 'MemeHaus', icon: Rocket, href: '/meme' },
-        { name: 'Swap', icon: Repeat, href: '/meme/swap' }, // Using MemeHaus swap for now
+        { name: 'LuckyHaus', icon: Gamepad2, href: '/luckyhaus' },
+        { name: 'MemeHaus', icon: Rocket, href: '/memehaus' },
+        { name: 'Swap', icon: Repeat, href: '/memehaus/swap' }, // Using MemeHaus swap for now
     ];
 
     return (

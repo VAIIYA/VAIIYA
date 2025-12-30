@@ -4,9 +4,9 @@ import React, { useState, useMemo, useCallback } from 'react';
 
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  ArrowUpDown, 
+import {
+  ArrowLeft,
+  ArrowUpDown,
   Settings,
   Info,
   TrendingUp,
@@ -54,10 +54,10 @@ export default function SwapPage() {
     formatPrice,
     formatBalance
   } = useSwap();
-  
+
   // Extract slippage from swapState for easier access
   const slippage = swapState.slippageBps / 100; // Convert from basis points to percentage
-  
+
   const [showSettings, setShowSettings] = useState(false);
   const [swapResult, setSwapResult] = useState<{ success: boolean; signature?: string; error?: string } | null>(null);
 
@@ -71,7 +71,7 @@ export default function SwapPage() {
 
   const handleSwap = async () => {
     if (!canSwap) return;
-    
+
     const result = await executeSwap();
     setSwapResult({
       success: result.success,
@@ -104,32 +104,32 @@ export default function SwapPage() {
     if (tokenModalType === 'from') {
       // For "from" token, show user's tokens (SOL + tokens they own)
       let tokens = [...userTokens];
-      
+
       // Filter by search query
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase();
-        tokens = tokens.filter(token => 
+        tokens = tokens.filter(token =>
           token.symbol.toLowerCase().includes(query) ||
           token.name.toLowerCase().includes(query) ||
           token.mint.toLowerCase().includes(query)
         );
       }
-      
+
       return tokens;
     } else {
       // For "to" token, ONLY show MemeHaus tokens
       let tokens = [...memeHausTokens];
-      
+
       // Filter by search query
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase();
-        tokens = tokens.filter(token => 
+        tokens = tokens.filter(token =>
           token.symbol.toLowerCase().includes(query) ||
           token.name.toLowerCase().includes(query) ||
           token.mint.toLowerCase().includes(query)
         );
       }
-      
+
       return tokens;
     }
   }, [tokenModalType, searchQuery, userTokens, memeHausTokens]);
@@ -179,7 +179,7 @@ export default function SwapPage() {
                 <NetworkIndicator />
               </div>
             </div>
-            
+
             <div className="hidden md:flex items-center space-x-6">
               <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Home
@@ -199,17 +199,17 @@ export default function SwapPage() {
               <Link href="/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Profile
               </Link>
-              <a 
-                href="https://luckyhaus.vercel.app/" 
-                target="_blank" 
+              <a
+                href="/luckyhaus"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors font-inter font-medium"
               >
                 LuckyHaus
               </a>
-              <a 
-                href="https://x.com/i/communities/1955936302764855712" 
-                target="_blank" 
+              <a
+                href="https://x.com/i/communities/1955936302764855712"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors font-inter font-medium flex items-center space-x-1"
               >
@@ -219,7 +219,7 @@ export default function SwapPage() {
                 </svg>
               </a>
             </div>
-            
+
             <WalletConnectButton />
           </nav>
         </div>
@@ -235,7 +235,7 @@ export default function SwapPage() {
               <span>Back to Home</span>
             </Link>
           </div>
-          
+
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold mb-2">Swap</h1>
             <p className="text-gray-400">Trade tokens instantly with the best rates</p>
@@ -276,11 +276,10 @@ export default function SwapPage() {
                         <button
                           key={value}
                           onClick={() => setSlippage(value * 100)} // Convert percentage to basis points
-                          className={`px-3 py-1 rounded-lg text-sm font-semibold transition-all duration-300 ${
-                            slippage === value
+                          className={`px-3 py-1 rounded-lg text-sm font-semibold transition-all duration-300 ${slippage === value
                               ? 'bg-blue-500 text-white'
                               : 'bg-gray-800 border border-gray-700 text-gray-300 hover:border-blue-500'
-                          }`}
+                            }`}
                         >
                           {value}%
                         </button>
@@ -327,7 +326,7 @@ export default function SwapPage() {
                     ${swapState.fromToken ? formatPrice(swapState.fromToken.price, swapState.fromToken.decimals) : '0.00'}
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => openTokenModal('from')}
                   className="px-3 py-1 bg-card border border-border-color hover:border-electric-blue rounded-lg text-sm font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={swapState.loading || userTokens.length === 0}
@@ -382,7 +381,7 @@ export default function SwapPage() {
                     ${swapState.toToken ? formatPrice(swapState.toToken.price, swapState.toToken.decimals) : '0.00'}
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => openTokenModal('to')}
                   className="px-3 py-1 bg-card border border-border-color hover:border-electric-blue rounded-lg text-sm font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={memeHausTokens.length === 0}
@@ -440,10 +439,10 @@ export default function SwapPage() {
               disabled={!canSwap || isExecuting || swapState.loading}
               className="w-full btn-primary disabled:bg-card disabled:border disabled:border-border-color disabled:text-gray-400 disabled:cursor-not-allowed"
             >
-              {isExecuting ? 'Swapping...' : 
-               swapState.loading ? 'Loading quote...' :
-               !canSwap ? 'Enter an amount' : 
-               `Swap ${swapState.fromToken?.symbol || ''} for ${swapState.toToken?.symbol || ''}`}
+              {isExecuting ? 'Swapping...' :
+                swapState.loading ? 'Loading quote...' :
+                  !canSwap ? 'Enter an amount' :
+                    `Swap ${swapState.fromToken?.symbol || ''} for ${swapState.toToken?.symbol || ''}`}
             </button>
           </div>
 
@@ -551,8 +550,8 @@ export default function SwapPage() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
-                placeholder={tokenModalType === 'to' 
-                  ? "Search MemeHaus tokens (e.g., MEMEDOGE, MemeHaus)..." 
+                placeholder={tokenModalType === 'to'
+                  ? "Search MemeHaus tokens (e.g., MEMEDOGE, MemeHaus)..."
                   : "Search your tokens..."}
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
@@ -575,11 +574,11 @@ export default function SwapPage() {
                 <div className="text-center py-8 text-gray-400">
                   <Search className="w-8 h-8 mx-auto mb-2 opacity-50" />
                   <p>
-                    {tokenModalType === 'to' 
-                      ? 'No MemeHaus tokens found. Be the first to create one!' 
+                    {tokenModalType === 'to'
+                      ? 'No MemeHaus tokens found. Be the first to create one!'
                       : tokenModalType === 'from' && userTokens.length === 0
-                      ? 'Loading your tokens...'
-                      : 'No tokens found'}
+                        ? 'Loading your tokens...'
+                        : 'No tokens found'}
                   </p>
                   {tokenModalType === 'from' && userTokens.length === 0 && (
                     <button
@@ -591,24 +590,22 @@ export default function SwapPage() {
                   )}
                 </div>
               )}
-              
+
               {filteredTokens.map((token) => (
                 <button
                   key={token.mint}
                   onClick={() => selectToken(token)}
-                  className={`w-full p-4 border rounded-xl hover:border-blue-500 hover:bg-gray-800/50 transition-all duration-300 text-left group ${
-                    (token as any).isMemeHausToken 
-                      ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/50' 
+                  className={`w-full p-4 border rounded-xl hover:border-blue-500 hover:bg-gray-800/50 transition-all duration-300 text-left group ${(token as any).isMemeHausToken
+                      ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/50'
                       : 'bg-gray-800/30 border-gray-700'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${
-                        (token as any).isMemeHausToken 
-                          ? 'bg-gradient-to-br from-neon-pink to-neon-purple' 
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${(token as any).isMemeHausToken
+                          ? 'bg-gradient-to-br from-neon-pink to-neon-purple'
                           : 'bg-gradient-to-br from-blue-500 to-purple-600'
-                      }`}>
+                        }`}>
                         {token.symbol[0]}
                       </div>
                       <div className="text-left">
@@ -668,7 +665,7 @@ export default function SwapPage() {
                 {swapResult.success ? 'Swap Successful!' : 'Swap Failed'}
               </h3>
             </div>
-            
+
             {swapResult.success ? (
               <div className="space-y-4">
                 <p className="text-gray-300">

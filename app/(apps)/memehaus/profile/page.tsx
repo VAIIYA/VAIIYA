@@ -4,12 +4,12 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey } from '@solana/web3.js';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  Edit, 
-  ExternalLink, 
-  Coins, 
-  TrendingUp, 
+import {
+  ArrowLeft,
+  Edit,
+  ExternalLink,
+  Coins,
+  TrendingUp,
   Clock,
   User,
   Wallet,
@@ -153,7 +153,7 @@ export default function ProfilePage() {
 
     try {
       const walletAddress = publicKey.toString();
-      
+
       // Fetch tokens created by this wallet
       const response = await fetch(`/api/tokens?page=0&limit=100`);
       const data = await response.json();
@@ -167,7 +167,7 @@ export default function ProfilePage() {
         // Transform to CreatedToken format
         const tokens: CreatedToken[] = userTokens.map((token: any) => {
           const mintAddress = token.mint_address || token.mintAddress;
-          
+
           // Calculate value (simplified - could fetch actual market cap)
           let value = 0;
           if (token.total_supply && token.price) {
@@ -274,7 +274,7 @@ export default function ProfilePage() {
     } else {
       date = new Date(dateString);
     }
-    
+
     // Validate date
     if (isNaN(date.getTime())) {
       console.warn('Invalid date string:', dateString);
@@ -292,7 +292,7 @@ export default function ProfilePage() {
     }
 
     const diffMs = now.getTime() - date.getTime();
-    
+
     if (diffMs <= 0) {
       return 'Just now';
     }
@@ -366,7 +366,7 @@ export default function ProfilePage() {
                 <NetworkIndicator />
               </div>
             </div>
-            
+
             <div className="hidden md:flex items-center space-x-6">
               <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Home
@@ -386,17 +386,17 @@ export default function ProfilePage() {
               <Link href="/profile" className="text-white font-inter font-medium">
                 Profile
               </Link>
-              <a 
-                href="https://luckyhaus.vercel.app/" 
-                target="_blank" 
+              <a
+                href="/luckyhaus"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors font-inter font-medium"
               >
                 LuckyHaus
               </a>
-              <a 
-                href="https://x.com/i/communities/1955936302764855712" 
-                target="_blank" 
+              <a
+                href="https://x.com/i/communities/1955936302764855712"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors font-inter font-medium flex items-center space-x-1"
               >
@@ -406,7 +406,7 @@ export default function ProfilePage() {
                 </svg>
               </a>
             </div>
-            
+
             <WalletConnectButton />
           </nav>
         </div>
@@ -430,7 +430,7 @@ export default function ProfilePage() {
               <div className="w-20 h-20 bg-gradient-to-br from-neon-pink via-neon-purple to-neon-blue rounded-full flex items-center justify-center text-2xl font-bold">
                 {walletAddress?.[0]?.toUpperCase() || '?'}
               </div>
-              
+
               <div>
                 <h2 className="text-2xl font-bold font-inter mb-1">
                   {formatAddress(walletAddress)}
@@ -483,11 +483,10 @@ export default function ProfilePage() {
         <div className="flex space-x-1 mb-6 border-b border-gray-700/50">
           <button
             onClick={() => setActiveTab('balances')}
-            className={`px-6 py-3 font-semibold transition-colors relative ${
-              activeTab === 'balances'
+            className={`px-6 py-3 font-semibold transition-colors relative ${activeTab === 'balances'
                 ? 'text-neon-cyan'
                 : 'text-gray-400 hover:text-white'
-            }`}
+              }`}
           >
             Balances
             {activeTab === 'balances' && (
@@ -496,11 +495,10 @@ export default function ProfilePage() {
           </button>
           <button
             onClick={() => setActiveTab('created')}
-            className={`px-6 py-3 font-semibold transition-colors relative ${
-              activeTab === 'created'
+            className={`px-6 py-3 font-semibold transition-colors relative ${activeTab === 'created'
                 ? 'text-neon-cyan'
                 : 'text-gray-400 hover:text-white'
-            }`}
+              }`}
           >
             Created Coins ({createdTokens.length})
             {activeTab === 'created' && (
@@ -526,9 +524,8 @@ export default function ProfilePage() {
                     <Link
                       key={token.mint}
                       href={token.mint === 'So11111111111111111111111111111111112' ? '#' : `/token/${token.mint}`}
-                      className={`bg-black/30 backdrop-blur-sm rounded-xl border border-gray-700/50 p-4 hover:border-neon-blue/50 transition-all duration-300 block ${
-                        token.mint === 'So11111111111111111111111111111111112' ? 'cursor-default' : 'cursor-pointer'
-                      }`}
+                      className={`bg-black/30 backdrop-blur-sm rounded-xl border border-gray-700/50 p-4 hover:border-neon-blue/50 transition-all duration-300 block ${token.mint === 'So11111111111111111111111111111111112' ? 'cursor-default' : 'cursor-pointer'
+                        }`}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">

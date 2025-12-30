@@ -10,8 +10,8 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { name: 'All Winners', href: '/lucky/winners', icon: Trophy },
-    { name: 'MemeHaus', href: 'https://memehaus.vercel.app/', icon: Zap, external: true },
+    { name: 'All Winners', href: '/luckyhaus/winners', icon: Trophy },
+    { name: 'MemeHaus', href: '/memehaus', icon: Zap, external: false },
   ];
 
   const isActive = (path: string) => pathname === path;
@@ -46,8 +46,8 @@ export function Navigation() {
               key={item.name}
               href={item.href}
               className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive(item.href)
-                  ? 'text-white bg-gray-800'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                ? 'text-white bg-gray-800'
+                : 'text-gray-400 hover:text-white hover:bg-gray-800'
                 }`}
             >
               <item.icon className="w-4 h-4" />
@@ -79,8 +79,8 @@ export function Navigation() {
                 key={item.name}
                 href={item.href}
                 className={`flex items-center space-x-2 px-4 py-2 text-sm ${isActive(item.href)
-                    ? 'text-white bg-gray-800'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  ? 'text-white bg-gray-800'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
                   }`}
                 onClick={() => setIsOpen(false)}
               >

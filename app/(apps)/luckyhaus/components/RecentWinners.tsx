@@ -19,7 +19,7 @@ export function RecentWinners() {
   useEffect(() => {
     const fetchWinners = async () => {
       try {
-        const response = await fetch('/lucky/api/lottery?action=recent-winners&limit=7');
+        const response = await fetch('/luckyhaus/api/lottery?action=recent-winners&limit=7');
         const data = await response.json();
 
         if (data.success && data.winners) {
@@ -98,7 +98,7 @@ export function RecentWinners() {
           <h2 className="text-2xl font-bold text-white">Recent Winners</h2>
         </div>
         <a
-          href="/lucky/winners"
+          href="/luckyhaus/winners"
           className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors flex items-center space-x-1"
         >
           <span>View All Winners</span>

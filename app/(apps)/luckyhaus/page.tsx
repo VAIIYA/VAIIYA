@@ -39,7 +39,7 @@ export default function SimpleLottery() {
         setLoading(true);
 
         // Get current round
-        const roundResponse = await fetch('/lucky/api/lottery?action=current-round');
+        const roundResponse = await fetch('/luckyhaus/api/lottery?action=current-round');
         const roundData = await roundResponse.json();
 
         if (roundData.success && roundData.round) {
@@ -102,7 +102,7 @@ export default function SimpleLottery() {
     const fetchUserTickets = async () => {
       if (walletAddress && currentRoundId) {
         try {
-          const ticketsResponse = await fetch(`/lucky/api/lottery?action=user-tickets&wallet=${walletAddress}&roundId=${currentRoundId}`);
+          const ticketsResponse = await fetch(`/luckyhaus/api/lottery?action=user-tickets&wallet=${walletAddress}&roundId=${currentRoundId}`);
           const ticketsData = await ticketsResponse.json();
 
           if (ticketsData.success) {
@@ -133,7 +133,7 @@ export default function SimpleLottery() {
     // Get the initial end time once
     const getInitialEndTime = async () => {
       try {
-        const roundResponse = await fetch('/lucky/api/lottery?action=current-round');
+        const roundResponse = await fetch('/luckyhaus/api/lottery?action=current-round');
         const roundData = await roundResponse.json();
         if (roundData.success && roundData.round) {
           endTime = roundData.round.endTime;
@@ -193,7 +193,7 @@ export default function SimpleLottery() {
     console.log('🎯 Ending round:', currentRoundId, 'Pot:', pot);
 
     try {
-      const response = await fetch('/lucky/api/lottery', {
+      const response = await fetch('/luckyhaus/api/lottery', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -324,7 +324,7 @@ export default function SimpleLottery() {
       }
 
       // Now record the ticket in GitHub Gist storage via API
-      const response = await fetch('/lucky/api/lottery', {
+      const response = await fetch('/luckyhaus/api/lottery', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -349,7 +349,7 @@ export default function SimpleLottery() {
 
         // Refresh current round data to get accurate ticket count
         try {
-          const roundResponse = await fetch('/lucky/api/lottery?action=current-round');
+          const roundResponse = await fetch('/luckyhaus/api/lottery?action=current-round');
           const roundData = await roundResponse.json();
           if (roundData.success && roundData.round) {
             setTickets(Array(roundData.round.totalTickets).fill('ticket'));
@@ -363,7 +363,7 @@ export default function SimpleLottery() {
         // Refresh user tickets count from server to get accurate count
         if (walletAddress && currentRoundId) {
           try {
-            const ticketsResponse = await fetch(`/lucky/api/lottery?action=user-tickets&wallet=${walletAddress}&roundId=${currentRoundId}`);
+            const ticketsResponse = await fetch(`/luckyhaus/api/lottery?action=user-tickets&wallet=${walletAddress}&roundId=${currentRoundId}`);
             const ticketsData = await ticketsResponse.json();
 
             if (ticketsData.success) {
@@ -396,7 +396,7 @@ export default function SimpleLottery() {
         let finalUserTicketCount = userTickets + ticketQuantity;
         if (walletAddress && currentRoundId) {
           try {
-            const finalTicketsResponse = await fetch(`/lucky/api/lottery?action=user-tickets&wallet=${walletAddress}&roundId=${currentRoundId}`);
+            const finalTicketsResponse = await fetch(`/luckyhaus/api/lottery?action=user-tickets&wallet=${walletAddress}&roundId=${currentRoundId}`);
             const finalTicketsData = await finalTicketsResponse.json();
             if (finalTicketsData.success) {
               finalUserTicketCount = finalTicketsData.tickets.length;

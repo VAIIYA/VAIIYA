@@ -22,7 +22,7 @@ export default function PortalPage() {
                 {/* App Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
                     {/* LuckyHaus Card */}
-                    <Link href="/lucky" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-neon-pink/50 transition-all duration-500 hover:shadow-2xl hover:shadow-neon-pink/20 p-8 text-left">
+                    <Link href="/luckyhaus" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-neon-pink/50 transition-all duration-500 hover:shadow-2xl hover:shadow-neon-pink/20 p-8 text-left">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col h-full justify-between space-y-8">
@@ -44,7 +44,7 @@ export default function PortalPage() {
                     </Link>
 
                     {/* MemeHaus Card */}
-                    <Link href="/meme" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-2xl hover:shadow-neon-cyan/20 p-8 text-left">
+                    <Link href="/memehaus" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-2xl hover:shadow-neon-cyan/20 p-8 text-left">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col h-full justify-between space-y-8">

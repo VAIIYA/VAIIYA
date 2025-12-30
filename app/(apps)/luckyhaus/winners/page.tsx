@@ -27,7 +27,7 @@ export default function AllWinnersPage() {
         setLoading(true);
         setError(null);
         // Fetch all winners (use a high limit or fetch all)
-        const response = await fetch('/lucky/api/lottery?action=recent-winners&limit=1000');
+        const response = await fetch('/luckyhaus/api/lottery?action=recent-winners&limit=1000');
         const data = await response.json();
 
         if (data.success && data.winners) {
@@ -119,7 +119,7 @@ export default function AllWinnersPage() {
         <nav className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-shrink">
             <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400 flex-shrink-0" />
-            <Link href="/lucky" className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity truncate">
+            <Link href="/luckyhaus" className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity truncate">
               LuckyHaus v3.1.1
             </Link>
           </div>

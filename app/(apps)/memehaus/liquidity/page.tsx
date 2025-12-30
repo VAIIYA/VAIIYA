@@ -84,18 +84,18 @@ const popularPools: Pool[] = [
 export default function LiquidityPage() {
   const { connected, publicKey } = useWallet();
   const { connection } = useConnection();
-  
+
   // Initialize services
   const tokenBalanceService = new TokenBalanceService(connection.rpcEndpoint);
   const priceService = new PriceService();
-  
+
   const [activeTab, setActiveTab] = useState<'pools' | 'create'>('pools');
   const [userTokens, setUserTokens] = useState<Token[]>([]);
   const [tokenPrices, setTokenPrices] = useState<Map<string, number>>(new Map());
   const [loading, setLoading] = useState(false);
   const [showTokenModal, setShowTokenModal] = useState(false);
   const [tokenModalType, setTokenModalType] = useState<'tokenA' | 'tokenB'>('tokenA');
-  
+
   const [formData, setFormData] = useState<LiquidityFormData>({
     tokenA: popularPools[0].tokenA,
     tokenB: popularPools[0].tokenB,
@@ -123,7 +123,7 @@ export default function LiquidityPage() {
 
       // Get SOL balance
       const solBalance = await tokenBalanceService.getSOLBalance(publicKey.toString());
-      
+
       // Get token accounts
       const tokenAccounts = await tokenBalanceService.getTokenAccounts(publicKey.toString());
 
@@ -171,7 +171,7 @@ export default function LiquidityPage() {
       if (tokens.length > 0) {
         const solToken = tokens.find(t => t.symbol === 'SOL');
         const usdcToken = tokens.find(t => t.symbol === 'USDC') || tokens[1];
-        
+
         if (solToken && usdcToken) {
           setFormData(prev => ({
             ...prev,
@@ -205,12 +205,12 @@ export default function LiquidityPage() {
         ];
 
         const prices = await priceService.getMultipleTokenPrices(poolAddresses);
-        
+
         // Update popular pools with real prices
         popularPools.forEach(pool => {
           const tokenAPrice = prices.get(pool.tokenA.address);
           const tokenBPrice = prices.get(pool.tokenB.address);
-          
+
           if (tokenAPrice) {
             pool.tokenA.price = tokenAPrice.price;
           }
@@ -228,7 +228,7 @@ export default function LiquidityPage() {
 
   const handleAmountChange = (field: 'amountA' | 'amountB', value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    
+
     // Auto-calculate the other amount based on real price ratio
     if (field === 'amountA' && value && formData.tokenA.price && formData.tokenB.price) {
       const amountA = parseFloat(value);
@@ -260,14 +260,14 @@ export default function LiquidityPage() {
   const getTokenBalance = (tokenAddress: string): string => {
     if (!connected) return 'Connect Wallet';
     if (loading) return 'Loading...';
-    
+
     const token = userTokens.find(t => t.address === tokenAddress);
     return token && token.balance ? priceService.formatBalance(parseFloat(token.balance)) : '0.00';
   };
 
   const handleCreatePool = async () => {
     if (!connected) return;
-    
+
     // Simulate pool creation
     alert('Pool creation initiated! This would integrate with Meteora or similar DEX.');
   };
@@ -335,17 +335,17 @@ export default function LiquidityPage() {
             <Link href="/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Profile
             </Link>
-            <a 
-              href="https://luckyhaus.vercel.app/" 
-              target="_blank" 
+            <a
+              href="/luckyhaus"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-white transition-colors font-inter font-medium"
             >
               LuckyHaus
             </a>
-            <a 
-              href="https://x.com/i/communities/1955936302764855712" 
-              target="_blank" 
+            <a
+              href="https://x.com/i/communities/1955936302764855712"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-white transition-colors font-inter font-medium flex items-center space-x-1"
             >
@@ -355,7 +355,7 @@ export default function LiquidityPage() {
               </svg>
             </a>
           </div>
-          
+
           <WalletConnectButton />
         </nav>
       </header>
@@ -379,22 +379,20 @@ export default function LiquidityPage() {
             <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-gray-700/50 p-1">
               <button
                 onClick={() => setActiveTab('pools')}
-                className={`px-6 py-3 rounded-lg font-inter font-semibold transition-all ${
-                  activeTab === 'pools'
+                className={`px-6 py-3 rounded-lg font-inter font-semibold transition-all ${activeTab === 'pools'
                     ? 'bg-neon-blue text-white shadow-glow-blue'
                     : 'text-gray-400 hover:text-white'
-                }`}
+                  }`}
               >
                 <TrendingUp className="w-4 h-4 inline mr-2" />
                 Popular Pools
               </button>
               <button
                 onClick={() => setActiveTab('create')}
-                className={`px-6 py-3 rounded-lg font-inter font-semibold transition-all ${
-                  activeTab === 'create'
+                className={`px-6 py-3 rounded-lg font-inter font-semibold transition-all ${activeTab === 'create'
                     ? 'bg-neon-blue text-white shadow-glow-blue'
                     : 'text-gray-400 hover:text-white'
-                }`}
+                  }`}
               >
                 <Plus className="w-4 h-4 inline mr-2" />
                 Create Pool
@@ -445,11 +443,10 @@ export default function LiquidityPage() {
                             {pool.tokenA.symbol}/{pool.tokenB.symbol}
                           </h4>
                           <div className="flex items-center space-x-2 text-sm text-gray-400">
-                            <span className={`px-2 py-1 rounded-full text-xs ${
-                              pool.type === 'DLMM' ? 'bg-blue-500/20 text-blue-400' :
-                              pool.type === 'CLMM' ? 'bg-green-500/20 text-green-400' :
-                              'bg-purple-500/20 text-purple-400'
-                            }`}>
+                            <span className={`px-2 py-1 rounded-full text-xs ${pool.type === 'DLMM' ? 'bg-blue-500/20 text-blue-400' :
+                                pool.type === 'CLMM' ? 'bg-green-500/20 text-green-400' :
+                                  'bg-purple-500/20 text-purple-400'
+                              }`}>
                               {pool.type}
                             </span>
                             <span>{pool.fee}% fee</span>
@@ -457,7 +454,7 @@ export default function LiquidityPage() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="text-right space-y-2">
                         <div className="text-2xl font-orbitron font-bold text-neon-cyan">
                           ${(pool.liquidity / 1000000).toFixed(1)}M
@@ -466,7 +463,7 @@ export default function LiquidityPage() {
                           Liquidity
                         </div>
                       </div>
-                      
+
                       <div className="text-right space-y-2">
                         <div className="text-lg font-semibold text-green-400">
                           {pool.apr}% APR
@@ -475,7 +472,7 @@ export default function LiquidityPage() {
                           Estimated
                         </div>
                       </div>
-                      
+
                       <div className="flex space-x-2">
                         <button className="px-4 py-2 bg-neon-blue/20 border border-neon-blue/30 rounded-lg text-neon-blue hover:bg-neon-blue/30 transition-colors">
                           Add
@@ -489,12 +486,12 @@ export default function LiquidityPage() {
                 ))}
               </div>
             </div>
-                      ) : (
-              <div className="max-w-2xl mx-auto opacity-50">
-                {/* Create Pool Form */}
-                <div className="bg-black/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6">
-                  <h3 className="text-xl font-orbitron font-bold mb-6 text-gray-500">Create New Pool</h3>
-                
+          ) : (
+            <div className="max-w-2xl mx-auto opacity-50">
+              {/* Create Pool Form */}
+              <div className="bg-black/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6">
+                <h3 className="text-xl font-orbitron font-bold mb-6 text-gray-500">Create New Pool</h3>
+
                 {/* Token Selection */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -515,7 +512,7 @@ export default function LiquidityPage() {
                           Balance: {getTokenBalance(formData.tokenA.address)}
                         </div>
                       </div>
-                      <button 
+                      <button
                         onClick={() => openTokenModal('tokenA')}
                         className="px-3 py-1 bg-black/30 rounded-lg text-sm font-semibold hover:bg-black/50 transition-colors"
                       >
@@ -523,7 +520,7 @@ export default function LiquidityPage() {
                       </button>
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-inter font-semibold mb-2 text-gray-400">Token B</label>
                     <div className="flex items-center space-x-3 p-3 bg-black/20 rounded-lg border border-gray-700/50">
@@ -542,7 +539,7 @@ export default function LiquidityPage() {
                           Balance: {getTokenBalance(formData.tokenB.address)}
                         </div>
                       </div>
-                      <button 
+                      <button
                         onClick={() => openTokenModal('tokenB')}
                         className="px-3 py-1 bg-black/30 rounded-lg text-sm font-semibold hover:bg-black/50 transition-colors"
                       >
@@ -563,7 +560,7 @@ export default function LiquidityPage() {
                       <Settings className="w-4 h-4" />
                     </button>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                       <label className="block text-sm font-inter font-semibold mb-2 text-gray-400">Pool Type</label>
@@ -577,7 +574,7 @@ export default function LiquidityPage() {
                         <option value="AMM">AMM (Raydium)</option>
                       </select>
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-inter font-semibold mb-2 text-gray-400">Fee (%)</label>
                       <input
@@ -588,7 +585,7 @@ export default function LiquidityPage() {
                         className="w-full px-3 py-2 bg-black/30 border border-gray-700 rounded-lg text-white focus:border-neon-blue focus:outline-none"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-inter font-semibold mb-2 text-gray-400">Bin Step</label>
                       <input
@@ -611,8 +608,8 @@ export default function LiquidityPage() {
                             type="number"
                             step="0.01"
                             value={formData.priceRange.min}
-                            onChange={(e) => setFormData(prev => ({ 
-                              ...prev, 
+                            onChange={(e) => setFormData(prev => ({
+                              ...prev,
                               priceRange: { ...prev.priceRange, min: e.target.value }
                             }))}
                             className="w-full px-3 py-2 bg-black/30 border border-gray-700 rounded-lg text-white text-sm focus:border-neon-blue focus:outline-none"
@@ -624,8 +621,8 @@ export default function LiquidityPage() {
                             type="number"
                             step="0.01"
                             value={formData.priceRange.max}
-                            onChange={(e) => setFormData(prev => ({ 
-                              ...prev, 
+                            onChange={(e) => setFormData(prev => ({
+                              ...prev,
                               priceRange: { ...prev.priceRange, max: e.target.value }
                             }))}
                             className="w-full px-3 py-2 bg-black/30 border border-gray-700 rounded-lg text-white text-sm focus:border-neon-blue focus:outline-none"
@@ -655,9 +652,9 @@ export default function LiquidityPage() {
                     <div>
                       <span className="text-gray-400">Initial Liquidity:</span>
                       <span className="ml-2 font-semibold text-neon-cyan">
-                        ${formData.amountA && formData.amountB ? 
-                          ((parseFloat(formData.amountA) * (formData.tokenA.price || 0)) + 
-                           (parseFloat(formData.amountB) * (formData.tokenB.price || 0))).toFixed(2) : '0.00'}
+                        ${formData.amountA && formData.amountB ?
+                          ((parseFloat(formData.amountA) * (formData.tokenA.price || 0)) +
+                            (parseFloat(formData.amountB) * (formData.tokenB.price || 0))).toFixed(2) : '0.00'}
                       </span>
                     </div>
                   </div>
@@ -707,7 +704,7 @@ export default function LiquidityPage() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             <div className="space-y-2">
               {userTokens.map((token) => (
                 <button

@@ -4,7 +4,7 @@ import React from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { Wallet } from 'lucide-react';
-import { useWalletConnection } from '../hooks/useWalletConnection';
+import { useWalletConnection } from '../../hooks/useWalletConnection';
 
 export const WalletConnectButton: React.FC = () => {
   const { connected, publicKey } = useWallet();

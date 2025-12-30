@@ -5,8 +5,8 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 export const dynamic = 'force-dynamic';
 import { ArrowLeft, Zap } from 'lucide-react';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { WalletConnectButton } from '../components/WalletConnectButton';
-import { NetworkIndicator } from '../components/NetworkIndicator';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
+import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
 import { TokenCreationModal } from '../components/TokenCreationModal';
 import { CreateTokenForm } from '../components/token-creation/CreateTokenForm';
 import { sanitizeTokenFormData, TokenFormData } from '../lib/sanitize';
@@ -17,12 +17,12 @@ export default function CreateToken() {
   const [mounted, setMounted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [showTokenModal, setShowTokenModal] = useState(false);
-  
+
   // Track if component is mounted to prevent hydration mismatches
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   // Memoized initial form data
   const initialFormData = useMemo(() => {
     if (mounted && typeof window !== 'undefined') {
@@ -40,7 +40,7 @@ export default function CreateToken() {
         }
       }
     }
-    
+
     return sanitizeTokenFormData({}, undefined, { preserveBinaryFields: true });
   }, [mounted]);
 
@@ -50,7 +50,7 @@ export default function CreateToken() {
   const handleFormUpdate = useCallback((data: Partial<TokenFormData>) => {
     setFormData(prev => {
       const sanitizedData = sanitizeTokenFormData({ ...prev, ...data }, prev);
-      
+
       if (typeof window !== 'undefined') {
         const { image: _image, ...storageSafeData } = sanitizedData;
         localStorage.setItem('memehaus_token_form', JSON.stringify(storageSafeData));
@@ -78,7 +78,7 @@ export default function CreateToken() {
   // Memoized step titles
   const stepTitles = useMemo(() => [
     'Basic Information',
-    'Social Links', 
+    'Social Links',
     'Tokenomics'
   ], []);
 
@@ -99,7 +99,7 @@ export default function CreateToken() {
               <NetworkIndicator />
             </div>
           </div>
-          
+
           <WalletConnectButton />
         </nav>
       </header>
@@ -115,7 +115,7 @@ export default function CreateToken() {
               </span>
             </h1>
             <p className="text-xl text-gray-300 font-inter max-w-2xl mx-auto">
-              Launch your memecoin on Solana in just 3 simple steps. 
+              Launch your memecoin on Solana in just 3 simple steps.
               {!connected && (
                 <span className="block mt-2 text-neon-yellow">
                   Connect your wallet to get started

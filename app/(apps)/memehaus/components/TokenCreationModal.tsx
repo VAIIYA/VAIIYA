@@ -5,7 +5,7 @@ import { X, CheckCircle, AlertCircle, Zap, ExternalLink } from 'lucide-react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useTokenCreation } from '../hooks/useTokenCreation';
 import { TokenCreationParams } from '../services/tokenService';
-import { useToastHelpers } from './ToastProvider';
+import { useToastHelpers } from '@/app/components/shared/ToastProvider';
 
 interface TokenCreationModalProps {
   isOpen: boolean;
@@ -91,7 +91,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
       setCurrentStep(0);
       setStepStatus('pending');
     }
-    
+
     // Cleanup function to prevent memory leaks
     return () => {
       if (!isOpen) {
@@ -156,12 +156,12 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
       if (creationResult.success) {
         setStepStatus('completed');
         setCurrentStep(steps.length - 1); // Move to final step
-        
+
         // Success toast removed - user already has comprehensive overview in page center
         // No need for redundant pop-ups on the right
       } else {
         setStepStatus('error');
-        
+
         // Show error toast (errors are still useful to display)
         transactionFailed(creationResult.error || 'Unknown error occurred during token creation');
       }
@@ -173,7 +173,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
       setStepStatus('processing');
       setCurrentStep(0); // Reset to first step
       const result = await createToken(convertedParams);
-      
+
       if (result.success) {
         setStepStatus('completed');
         setCurrentStep(steps.length - 1); // Move to final step
@@ -282,7 +282,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
           </div>
           <div className="mt-3 p-2 bg-blue-500/20 border border-blue-500/30 rounded-lg">
             <p className="text-xs text-blue-400">
-              <strong>⚠️ Mainnet Warning:</strong> This will create a real token on Solana mainnet. 
+              <strong>⚠️ Mainnet Warning:</strong> This will create a real token on Solana mainnet.
               Make sure you have sufficient SOL balance and double-check all parameters.
             </p>
           </div>
@@ -292,15 +292,15 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
         {!creationResult && (
           <div className="space-y-4 mb-6">
             <h3 className="text-lg font-orbitron font-bold">Creation Process</h3>
-            
+
             {/* Progress Bar */}
             <div className="w-full bg-gray-700 rounded-full h-2 mb-4">
-              <div 
+              <div
                 className="bg-gradient-to-r from-neon-cyan to-neon-blue h-2 rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${((currentStep + (stepStatus === 'processing' ? 0.5 : 0)) / steps.length) * 100}%` }}
               />
             </div>
-            
+
             {steps.map((step, index) => (
               <div key={index} className="flex items-center space-x-3">
                 {getStepIcon(index)}
@@ -421,7 +421,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                       <p className="text-sm text-gray-400">Your token is created! Now add liquidity for trading</p>
                     </div>
                   </div>
-                  
+
                   {/* Meteora Focus */}
                   <div className="bg-black/30 rounded-lg p-6 border border-blue-500/30 mb-4">
                     <div className="flex items-center space-x-3 mb-4">
@@ -433,7 +433,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                         <p className="text-sm text-gray-400">Dynamic Liquidity Market Maker with optimal settings</p>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-4 mb-4">
                       <div className="space-y-3">
                         <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/20">
@@ -443,7 +443,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                           </div>
                           <p className="text-xs text-gray-500 mt-1">Optimal for new tokens</p>
                         </div>
-                        
+
                         <div className="bg-cyan-500/10 rounded-lg p-3 border border-cyan-500/20">
                           <div className="flex items-center justify-between">
                             <span className="text-sm text-gray-400">Bin Step</span>
@@ -452,7 +452,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                           <p className="text-xs text-gray-500 mt-1">Balanced price granularity</p>
                         </div>
                       </div>
-                      
+
                       <div className="space-y-3">
                         <div className="bg-green-500/10 rounded-lg p-3 border border-green-500/20">
                           <div className="flex items-center justify-between">
@@ -461,7 +461,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                           </div>
                           <p className="text-xs text-gray-500 mt-1">Dynamic Liquidity Market Maker</p>
                         </div>
-                        
+
                         <div className="bg-purple-500/10 rounded-lg p-3 border border-purple-500/20">
                           <div className="flex items-center justify-between">
                             <span className="text-sm text-gray-400">Quote Token</span>
@@ -471,13 +471,13 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                         </div>
                       </div>
                     </div>
-                    
+
                     <p className="text-sm text-gray-300 mb-4">
-                      These settings provide optimal liquidity distribution and fee generation for new tokens. 
-                      The 0.20% base fee balances user attraction with LP profitability, while bin step 20 
+                      These settings provide optimal liquidity distribution and fee generation for new tokens.
+                      The 0.20% base fee balances user attraction with LP profitability, while bin step 20
                       offers good price granularity without excessive fragmentation.
                     </p>
-                    
+
                     <a
                       href={`https://app.meteora.ag/pool/create?tokenA=${creationResult.mintAddress}&tokenB=So11111111111111111111111111111111112&baseFee=0.002&binStep=20`}
                       target="_blank"
@@ -512,7 +512,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                   <h3 className="text-lg font-orbitron font-bold text-red-400">Token Creation Failed</h3>
                 </div>
                 <p className="text-red-400 mb-3">{creationResult.error}</p>
-                
+
                 {/* RPC Error Guidance */}
                 {creationResult.error?.includes('403') || creationResult.error?.includes('Access forbidden') ? (
                   <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mb-3">
@@ -525,7 +525,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
                     </div>
                   </div>
                 ) : null}
-                
+
                 <div className="flex space-x-3">
                   <button
                     onClick={resetCreation}
@@ -553,7 +553,7 @@ export const TokenCreationModal: React.FC<TokenCreationModalProps> = ({
           >
             {creationResult ? 'Close' : 'Cancel'}
           </button>
-          
+
           {!creationResult && (
             <button
               onClick={handleCreateToken}

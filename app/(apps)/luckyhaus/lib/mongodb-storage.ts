@@ -1,7 +1,7 @@
 // MongoDB Storage Service - Persistent storage for lottery data
 // Uses MongoDB to store lottery data with proper connection pooling for Vercel
 
-import client from './mongodb';
+import { getMongoClient, getMongoDatabase } from '@/app/lib/core-db';
 
 export interface LotteryData {
   currentRound: {
@@ -34,10 +34,8 @@ const COLLECTION_NAME = 'lottery';
 export class MongoDBStorage {
   private async getCollection() {
     try {
-      // MongoDB driver handles connection pooling automatically
-      // connect() is safe to call multiple times - it reuses existing connections
-      await client.connect();
-      const db = client.db(DB_NAME);
+      const db = await getMongoDatabase(DB_NAME);
+      if (!db) throw new Error('Could not connect to database');
       return db.collection<LotteryData>(COLLECTION_NAME);
     } catch (error) {
       console.error('Error connecting to MongoDB:', error);
@@ -83,7 +81,7 @@ export class MongoDBStorage {
     try {
       console.log('📊 Getting current data from MongoDB...');
       const currentData = await this.getData();
-      
+
       if (!currentData) {
         console.log('📝 No existing data found, creating initial lottery data...');
         // Create initial data if it doesn't exist

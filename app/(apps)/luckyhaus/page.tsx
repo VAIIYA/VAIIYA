@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Zap, Ticket, Clock } from 'lucide-react';
-import { WalletConnectButton } from './components/WalletConnectButton';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey } from '@solana/web3.js';
 import { SolanaTransactionService } from './lib/solana-transactions';

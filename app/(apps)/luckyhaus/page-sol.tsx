@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Zap, Ticket, Trophy, Clock } from 'lucide-react';
-import { WalletConnectButton } from './components/WalletConnectButton';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { SolanaTransactionService, LOTTERY_HOUSE_WALLET } from './lib/solana-transactions';
 import confetti from 'canvas-confetti';
@@ -16,7 +16,7 @@ export default function SimpleLotterySol() {
   const [userTickets, setUserTickets] = useState(0);
   const [pot, setPot] = useState(0);
   const [round, setRound] = useState(1);
-  const [winners, setWinners] = useState<Array<{address: string, amount: number, round: number}>>([]);
+  const [winners, setWinners] = useState<Array<{ address: string, amount: number, round: number }>>([]);
   const [buying, setBuying] = useState(false);
 
   const walletAddress = publicKey?.toString();
@@ -27,17 +27,17 @@ export default function SimpleLotterySol() {
     const savedTickets = localStorage.getItem('lottery_tickets');
     const savedWinners = localStorage.getItem('lottery_winners');
     const savedRound = localStorage.getItem('lottery_round');
-    
+
     if (savedTickets) {
       const ticketList = JSON.parse(savedTickets);
       setTickets(ticketList);
       setPot(ticketList.length);
     }
-    
+
     if (savedWinners) {
       setWinners(JSON.parse(savedWinners));
     }
-    
+
     if (savedRound) {
       setRound(parseInt(savedRound));
     }
@@ -97,7 +97,7 @@ export default function SimpleLotterySol() {
       amount: prizeAmount,
       round: round
     };
-    
+
     const updatedWinners = [newWinner, ...winners.slice(0, 4)]; // Keep last 5 winners
     setWinners(updatedWinners);
     localStorage.setItem('lottery_winners', JSON.stringify(updatedWinners));
@@ -114,7 +114,7 @@ export default function SimpleLotterySol() {
     setPot(0);
     setRound(prev => prev + 1);
     setTimeLeft('24:00:00');
-    
+
     // Reset timer
     const now = Date.now();
     localStorage.setItem('lottery_start_time', now.toString());
@@ -163,7 +163,7 @@ export default function SimpleLotterySol() {
       const newTickets = [...tickets, publicKey.toString()];
       setTickets(newTickets);
       setPot(prev => prev + ticketPriceSol);
-      
+
       // Save to localStorage
       localStorage.setItem('lottery_tickets', JSON.stringify(newTickets));
 
@@ -231,7 +231,7 @@ export default function SimpleLotterySol() {
 
           {/* Buy Ticket Button */}
           <div className="mb-12">
-            <button 
+            <button
               onClick={buyTicket}
               disabled={buying || !connected}
               className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 px-8 rounded-xl flex items-center space-x-3 mx-auto transition-all duration-200 transform hover:scale-105"
@@ -239,7 +239,7 @@ export default function SimpleLotterySol() {
               <Ticket className="w-6 h-6" />
               <span>{buying ? 'Signing Transaction...' : 'Buy Ticket (0.01 SOL)'}</span>
             </button>
-            
+
             {!connected && (
               <p className="text-yellow-400 text-sm mt-4">
                 🔗 Please connect your wallet to buy tickets
@@ -255,14 +255,14 @@ export default function SimpleLotterySol() {
               </div>
               <div className="text-gray-400">Current Pot</div>
             </div>
-            
+
             <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
               <div className="text-3xl font-bold text-purple-400 mb-2">
                 {tickets.length}
               </div>
               <div className="text-gray-400">Tickets Sold</div>
             </div>
-            
+
             <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6">
               <div className="text-3xl font-bold text-pink-400 mb-2">
                 {userTickets}
@@ -274,7 +274,7 @@ export default function SimpleLotterySol() {
           {/* Recent Winners */}
           <div className="text-left">
             <h3 className="text-2xl font-bold mb-6 text-center">Recent Winners</h3>
-            
+
             {winners.length > 0 ? (
               <div className="space-y-4">
                 {winners.map((winner, index) => (

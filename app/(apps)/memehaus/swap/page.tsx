@@ -25,8 +25,8 @@ import {
   Star,
   Filter
 } from 'lucide-react';
-import { NetworkIndicator } from '../components/NetworkIndicator';
-import { WalletConnectButton } from '../components/WalletConnectButton';
+import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
 import { useSwap, SwapToken } from '../hooks/useSwap';
 import { useWallet } from '@solana/wallet-adapter-react';
 
@@ -277,8 +277,8 @@ export default function SwapPage() {
                           key={value}
                           onClick={() => setSlippage(value * 100)} // Convert percentage to basis points
                           className={`px-3 py-1 rounded-lg text-sm font-semibold transition-all duration-300 ${slippage === value
-                              ? 'bg-blue-500 text-white'
-                              : 'bg-gray-800 border border-gray-700 text-gray-300 hover:border-blue-500'
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-800 border border-gray-700 text-gray-300 hover:border-blue-500'
                             }`}
                         >
                           {value}%
@@ -596,15 +596,15 @@ export default function SwapPage() {
                   key={token.mint}
                   onClick={() => selectToken(token)}
                   className={`w-full p-4 border rounded-xl hover:border-blue-500 hover:bg-gray-800/50 transition-all duration-300 text-left group ${(token as any).isMemeHausToken
-                      ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/50'
-                      : 'bg-gray-800/30 border-gray-700'
+                    ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/50'
+                    : 'bg-gray-800/30 border-gray-700'
                     }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${(token as any).isMemeHausToken
-                          ? 'bg-gradient-to-br from-neon-pink to-neon-purple'
-                          : 'bg-gradient-to-br from-blue-500 to-purple-600'
+                        ? 'bg-gradient-to-br from-neon-pink to-neon-purple'
+                        : 'bg-gradient-to-br from-blue-500 to-purple-600'
                         }`}>
                         {token.symbol[0]}
                       </div>

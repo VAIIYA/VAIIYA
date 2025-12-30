@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, Zap, TrendingUp, Plus, Minus, Settings, Info, ExternalLink, BarChart3, RefreshCw, X } from 'lucide-react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
-import { WalletConnectButton } from '../components/WalletConnectButton';
-import { NetworkIndicator } from '../components/NetworkIndicator';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
+import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
 import { TokenBalanceService } from '../services/tokenBalanceService';
 import { PriceService } from '../services/priceService';
 import Link from 'next/link';
@@ -380,8 +380,8 @@ export default function LiquidityPage() {
               <button
                 onClick={() => setActiveTab('pools')}
                 className={`px-6 py-3 rounded-lg font-inter font-semibold transition-all ${activeTab === 'pools'
-                    ? 'bg-neon-blue text-white shadow-glow-blue'
-                    : 'text-gray-400 hover:text-white'
+                  ? 'bg-neon-blue text-white shadow-glow-blue'
+                  : 'text-gray-400 hover:text-white'
                   }`}
               >
                 <TrendingUp className="w-4 h-4 inline mr-2" />
@@ -390,8 +390,8 @@ export default function LiquidityPage() {
               <button
                 onClick={() => setActiveTab('create')}
                 className={`px-6 py-3 rounded-lg font-inter font-semibold transition-all ${activeTab === 'create'
-                    ? 'bg-neon-blue text-white shadow-glow-blue'
-                    : 'text-gray-400 hover:text-white'
+                  ? 'bg-neon-blue text-white shadow-glow-blue'
+                  : 'text-gray-400 hover:text-white'
                   }`}
               >
                 <Plus className="w-4 h-4 inline mr-2" />
@@ -444,8 +444,8 @@ export default function LiquidityPage() {
                           </h4>
                           <div className="flex items-center space-x-2 text-sm text-gray-400">
                             <span className={`px-2 py-1 rounded-full text-xs ${pool.type === 'DLMM' ? 'bg-blue-500/20 text-blue-400' :
-                                pool.type === 'CLMM' ? 'bg-green-500/20 text-green-400' :
-                                  'bg-purple-500/20 text-purple-400'
+                              pool.type === 'CLMM' ? 'bg-green-500/20 text-green-400' :
+                                'bg-purple-500/20 text-purple-400'
                               }`}>
                               {pool.type}
                             </span>

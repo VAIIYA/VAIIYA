@@ -17,8 +17,8 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
-import { WalletConnectButton } from '../components/WalletConnectButton';
-import { NetworkIndicator } from '../components/NetworkIndicator';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
+import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
 import { StakingService, StakingPool, PoolInfo, UserStakeData, StakeResult, WithdrawResult } from '../lib/staking';
 
 const availableTokens = [

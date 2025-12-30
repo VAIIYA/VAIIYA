@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Orbitron } from 'next/font/google'
 // globals.css removed - using root layout
-import { WalletContextProvider } from './providers/WalletProvider'
-import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,9 +30,5 @@ export default function LuckyLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <WalletContextProvider>
-      {children}
-    </WalletContextProvider>
-  )
+  return <>{children}</>;
 } 

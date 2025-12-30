@@ -2,6 +2,7 @@ import { MongoClient, MongoClientOptions, Db, Collection } from 'mongodb';
 import { attachDatabasePool } from '@vercel/functions';
 import { TokenData } from './githubOnlyStorage';
 import { getEnvConfig } from './env';
+import { getMongoClient as getCoreMongoClient } from '@/app/lib/core-db';
 
 // MongoDB configuration - read at runtime
 function getMongoConfig() {
@@ -16,36 +17,7 @@ let mongoClient: MongoClient | null = null;
 let mongoDb: Db | null = null;
 
 async function getMongoClient(): Promise<MongoClient | null> {
-  const config = getMongoConfig();
-
-  if (!config.uri) {
-    return null;
-  }
-
-  // Reuse existing client if available
-  if (mongoClient) {
-    return mongoClient;
-  }
-
-  try {
-    const options: MongoClientOptions = {
-      appName: "memehaus-token-storage",
-      maxIdleTimeMS: 5000,
-    };
-
-    mongoClient = new MongoClient(config.uri, options);
-
-    // Attach the client to ensure proper cleanup on function suspension (Vercel pattern)
-    attachDatabasePool(mongoClient);
-
-    await mongoClient.connect();
-
-    console.log('✅ MongoDB client connected');
-    return mongoClient;
-  } catch (error) {
-    console.error('❌ Failed to connect to MongoDB:', error);
-    return null;
-  }
+  return getCoreMongoClient();
 }
 
 async function getMongoDatabase(): Promise<Db | null> {

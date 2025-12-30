@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { Zap, TrendingUp, Clock, Users, DollarSign, Gift, Coins, Menu, X } from 'lucide-react';
-import { WalletConnectButton } from './components/WalletConnectButton';
-import { NetworkIndicator } from './components/NetworkIndicator';
-import { WalletNotification } from './components/WalletNotification';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
+import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
+import { WalletNotification } from '@/app/components/shared/WalletNotification';
 import { StatsCard } from './components/home/StatsCard';
 import { LoadingSkeleton } from './components/home/LoadingSkeleton';
 // Database imports removed - using GitHub storage

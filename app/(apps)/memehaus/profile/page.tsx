@@ -16,8 +16,8 @@ import {
   Copy,
   CheckCircle
 } from 'lucide-react';
-import { WalletConnectButton } from '../components/WalletConnectButton';
-import { NetworkIndicator } from '../components/NetworkIndicator';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
+import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
 import { TokenBalanceService, TokenAccount } from '../services/tokenBalanceService';
 import { PriceService } from '../services/priceService';
 import { Zap } from 'lucide-react';
@@ -484,8 +484,8 @@ export default function ProfilePage() {
           <button
             onClick={() => setActiveTab('balances')}
             className={`px-6 py-3 font-semibold transition-colors relative ${activeTab === 'balances'
-                ? 'text-neon-cyan'
-                : 'text-gray-400 hover:text-white'
+              ? 'text-neon-cyan'
+              : 'text-gray-400 hover:text-white'
               }`}
           >
             Balances
@@ -496,8 +496,8 @@ export default function ProfilePage() {
           <button
             onClick={() => setActiveTab('created')}
             className={`px-6 py-3 font-semibold transition-colors relative ${activeTab === 'created'
-                ? 'text-neon-cyan'
-                : 'text-gray-400 hover:text-white'
+              ? 'text-neon-cyan'
+              : 'text-gray-400 hover:text-white'
               }`}
           >
             Created Coins ({createdTokens.length})

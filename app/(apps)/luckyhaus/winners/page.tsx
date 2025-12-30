@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Trophy, Wallet, Coins, Clock, ArrowLeft, ExternalLink, Zap } from 'lucide-react';
 import { getCurrencySymbol } from '../lib/lottery-config';
 import { Navigation } from '../components/Navigation';
-import { WalletConnectButton } from '../components/WalletConnectButton';
+import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
 import Link from 'next/link';
 
 interface Winner {

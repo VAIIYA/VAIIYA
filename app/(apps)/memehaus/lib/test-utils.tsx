@@ -5,7 +5,7 @@
 import React, { ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { AppProvider } from '../contexts/AppContext';
-import { WalletContextProvider } from '../providers/WalletProvider';
+import { WalletContextProvider } from '@/app/providers/WalletProvider';
 
 type JestShim = {
   fn: (...args: any[]) => any;
@@ -148,7 +148,7 @@ export const createMockFile = (name: string, type: string, size: number = 1024):
 
 export const mockLocalStorage = () => {
   const store: { [key: string]: string } = {};
-  
+
   return {
     getItem: jestShim.fn((key: string) => store[key] || null),
     setItem: jestShim.fn((key: string, value: string) => {

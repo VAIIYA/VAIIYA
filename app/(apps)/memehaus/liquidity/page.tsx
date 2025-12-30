@@ -320,19 +320,19 @@ export default function LiquidityPage() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Home
             </Link>
-            <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Swap
             </Link>
-            <Link href="/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Create
             </Link>
-            <Link href="/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Liquidity
             </Link>
-            <Link href="/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Auto-Stake
             </Link>
-            <Link href="/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Profile
             </Link>
             <a

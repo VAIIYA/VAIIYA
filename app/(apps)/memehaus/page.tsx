@@ -262,19 +262,19 @@ export default function Home() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Home
             </Link>
-            <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Swap
             </Link>
-            <Link href="/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Create
             </Link>
-            <Link href="/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Liquidity
             </Link>
-            <Link href="/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Auto-Stake
             </Link>
-            <Link href="/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/memehaus/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Profile
             </Link>
             <Link
@@ -306,19 +306,19 @@ export default function Home() {
               <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Swap
               </Link>
-              <Link href="/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Create
               </Link>
-              <Link href="/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/memehaus/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Liquidity
               </Link>
-              <Link href="/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/memehaus/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Auto-Stake
               </Link>
-              <Link href="/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/memehaus/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Profile
               </Link>
               <a
@@ -363,7 +363,7 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center items-center mb-16">
-            <Link href="/create" className="w-full sm:w-96 px-12 py-4 bg-gradient-to-r from-purple-500 via-purple-600 to-violet-600 rounded-full font-inter font-bold text-lg sm:text-xl hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105 inline-block text-center">
+            <Link href="/memehaus/create" className="w-full sm:w-96 px-12 py-4 bg-gradient-to-r from-purple-500 via-purple-600 to-violet-600 rounded-full font-inter font-bold text-lg sm:text-xl hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105 inline-block text-center">
               Create Token
             </Link>
           </div>
@@ -442,7 +442,7 @@ export default function Home() {
                 return (
                   <Link
                     key={index}
-                    href={launch.mintAddress ? `/token/${launch.mintAddress}` : '#'}
+                    href={launch.mintAddress ? `/memehaus/token/${launch.mintAddress}` : '#'}
                     className="group bg-black/40 backdrop-blur-sm rounded-2xl border border-gray-700/50 hover:border-neon-blue/50 transition-all duration-300 hover:shadow-2xl hover:shadow-neon-blue/20 cursor-pointer block overflow-hidden"
                   >
                     {/* Token Image */}
@@ -545,7 +545,7 @@ export default function Home() {
                 <div className="text-gray-400 font-inter mb-4">
                   No tokens have been created yet. Be the first to launch a memecoin! 🚀
                 </div>
-                <Link href="/create" className="inline-block px-6 py-3 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg font-inter font-semibold hover:shadow-glow-pink transition-all duration-300">
+                <Link href="/memehaus/create" className="inline-block px-6 py-3 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg font-inter font-semibold hover:shadow-glow-pink transition-all duration-300">
                   Create Your First Token
                 </Link>
               </div>
@@ -563,7 +563,7 @@ export default function Home() {
           <p className="text-xl text-gray-300 mb-8 font-inter">
             Where jokes print money and every shitpost has liquidity.
           </p>
-          <Link href="/create" className="px-12 py-4 bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue rounded-full font-inter font-bold text-xl hover:shadow-glow-purple transition-all duration-300 transform hover:scale-105 inline-block">
+          <Link href="/memehaus/create" className="px-12 py-4 bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue rounded-full font-inter font-bold text-xl hover:shadow-glow-purple transition-all duration-300 transform hover:scale-105 inline-block">
             Start Your Journey
           </Link>
         </div>

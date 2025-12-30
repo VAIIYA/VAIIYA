@@ -371,19 +371,19 @@ export default function ProfilePage() {
               <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Home
               </Link>
-              <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+              <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Swap
               </Link>
-              <Link href="/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+              <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Create
               </Link>
-              <Link href="/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+              <Link href="/memehaus/liquidity" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Liquidity
               </Link>
-              <Link href="/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+              <Link href="/memehaus/autostake" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
                 Auto-Stake
               </Link>
-              <Link href="/profile" className="text-white font-inter font-medium">
+              <Link href="/memehaus/profile" className="text-white font-inter font-medium">
                 Profile
               </Link>
               <a
@@ -634,7 +634,7 @@ export default function ProfilePage() {
                     <TrendingUp className="w-12 h-12 mx-auto mb-4 opacity-50" />
                     <p>No tokens created yet</p>
                     <Link
-                      href="/create"
+                      href="/memehaus/create"
                       className="inline-block mt-4 px-4 py-2 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg text-sm font-semibold hover:shadow-glow-pink transition-all duration-300"
                     >
                       Create Your First Token
@@ -701,7 +701,7 @@ export default function ProfilePage() {
                   <TrendingUp className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p className="text-gray-400 mb-4">No tokens created yet</p>
                   <Link
-                    href="/create"
+                    href="/memehaus/create"
                     className="inline-block px-6 py-3 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg font-semibold hover:shadow-glow-pink transition-all duration-300"
                   >
                     Create Your First Token

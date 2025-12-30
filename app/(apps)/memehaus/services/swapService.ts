@@ -51,8 +51,8 @@ export class SwapService {
       console.log('Swap quote received:', quote);
 
       // Step 2: Get swap transaction
-      const swapTransaction = await this.priceService.getSwapTransaction(quote);
-      
+      const swapTransaction = await this.priceService.getSwapTransaction(quote, params.userPublicKey);
+
       if (!swapTransaction) {
         return {
           success: false,
@@ -83,7 +83,7 @@ export class SwapService {
 
       // Step 6: Wait for confirmation using robust polling
       const confirmed = await TokenService.confirmTransactionRobust(this.connection, signature, 30);
-      
+
       if (!confirmed) {
         return {
           success: false,

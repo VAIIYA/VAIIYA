@@ -37,8 +37,8 @@ export class TokenBalanceService {
 
   private async initializeTokenList() {
     try {
-      // Fetch popular Solana tokens from Jupiter token list
-      const response = await fetch('https://token.jup.ag/all', {
+      // Fetch verified Solana tokens from Jupiter token list
+      const response = await fetch('https://tokens.jup.ag/tokens?tags=verified', {
         next: { revalidate: 3600 } // Add Next.js cache config
       });
 

@@ -172,7 +172,7 @@ export default function SwapPage() {
               <Link href="/" className="flex items-center space-x-2 md:space-x-3">
                 <Zap className="w-6 h-6 md:w-8 md:h-8 text-neon-cyan" />
                 <h1 className="text-lg md:text-2xl font-orbitron font-bold bg-gradient-to-r from-neon-pink to-neon-blue bg-clip-text text-transparent">
-                  MemeHaus
+                  VAIIYA
                 </h1>
               </Link>
               <div className="hidden sm:block">
@@ -243,21 +243,32 @@ export default function SwapPage() {
         </div>
 
         {/* Swap Card */}
-        <div className="max-w-md mx-auto px-4 sm:px-0">
-          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-4 sm:p-6">
+        <div className="max-w-md mx-auto px-4 sm:px-0 relative">
+          {/* Background Decorative element */}
+          <div className="absolute -top-12 -left-12 w-48 h-48 bg-neon-blue/20 blur-[80px] rounded-full -z-10 animate-pulse-slow"></div>
+          <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-neon-pink/20 blur-[80px] rounded-full -z-10 animate-pulse-slow"></div>
+
+          <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-6 shadow-2xl overflow-hidden relative group transition-all duration-300 hover:border-white/20">
+            {/* Top glass reflection */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold">Swap</h2>
+              <div className="flex items-center space-x-2">
+                <h2 className="text-xl font-orbitron font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  Swap
+                </h2>
+              </div>
               <div className="flex items-center space-x-2">
                 {swapState.loading && (
-                  <div className="flex items-center space-x-2 text-sm text-neon-cyan">
-                    <RefreshCw className="w-4 h-4 animate-spin" />
-                    <span>Loading...</span>
+                  <div className="flex items-center space-x-2 text-xs text-neon-cyan/80 font-mono tracking-wider bg-neon-cyan/10 px-2 py-1 rounded-full border border-neon-cyan/20">
+                    <RefreshCw className="w-3 h-3 animate-spin" />
+                    <span>FETCHING QUOTE</span>
                   </div>
                 )}
                 <button
                   onClick={() => setShowSettings(!showSettings)}
-                  className="p-2 text-gray-400 hover:text-white transition-colors"
+                  className="p-2 text-gray-400 hover:text-white transition-all duration-300 hover:rotate-90"
                 >
                   <Settings className="w-5 h-5" />
                 </button>
@@ -291,17 +302,17 @@ export default function SwapPage() {
             )}
 
             {/* From Token */}
-            <div className="bg-card/50 border border-border-color rounded-xl p-4 mb-4">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-2 transition-all duration-300 focus-within:border-neon-cyan/50 focus-within:bg-white/10">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-400">From</span>
+                <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Pay</span>
                 <div className="flex items-center space-x-2">
-                  <span className={`text-sm ${swapState.loading ? 'text-neon-cyan' : 'text-gray-400'}`}>
+                  <span className={`text-xs font-mono ${swapState.loading ? 'text-neon-cyan animate-pulse' : 'text-gray-400'}`}>
                     Balance: {swapState.fromToken ? formatBalance(parseFloat(swapState.fromToken.balance), swapState.fromToken.decimals) : '0.00'}
                   </span>
                   {connected && (
                     <button
                       onClick={loadUserTokens}
-                      className="p-1 text-gray-400 hover:text-white transition-colors"
+                      className="p-1 text-gray-500 hover:text-white transition-all duration-300"
                       title="Refresh balance"
                       disabled={swapState.loading}
                     >
@@ -311,82 +322,84 @@ export default function SwapPage() {
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-card border border-border-color rounded-full flex items-center justify-center text-lg">
-                  {swapState.fromToken?.symbol?.[0] || '?'}
-                </div>
                 <div className="flex-1">
                   <input
                     type="number"
                     placeholder="0.0"
                     value={swapState.fromAmount}
                     onChange={(e) => handleFromAmountChange(e.target.value)}
-                    className="w-full bg-transparent text-2xl font-bold outline-none"
+                    className="w-full bg-transparent text-3xl font-orbitron font-bold outline-none placeholder:text-white/10"
                   />
-                  <div className="text-sm text-gray-400">
-                    ${swapState.fromToken ? formatPrice(swapState.fromToken.price, swapState.fromToken.decimals) : '0.00'}
+                  <div className="text-sm text-gray-500 font-mono mt-1">
+                    ≈ ${swapState.fromToken && swapState.fromAmount ? (parseFloat(swapState.fromAmount) * swapState.fromToken.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}
                   </div>
                 </div>
                 <button
                   onClick={() => openTokenModal('from')}
-                  className="px-3 py-1 bg-card border border-border-color hover:border-electric-blue rounded-lg text-sm font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={swapState.loading || userTokens.length === 0}
+                  className="flex items-center space-x-2 px-3 py-2 bg-white/10 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/20 rounded-xl transition-all duration-300 group/btn"
                 >
-                  {swapState.loading && userTokens.length === 0 ? 'Loading...' : swapState.fromToken?.symbol || 'Select'}
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center text-[10px] font-bold overflow-hidden shadow-inner">
+                    {swapState.fromToken?.logoURI ? (
+                      <img src={swapState.fromToken.logoURI} alt={swapState.fromToken.symbol} className="w-full h-full object-cover" />
+                    ) : (
+                      swapState.fromToken?.symbol?.[0] || '?'
+                    )}
+                  </div>
+                  <span className="font-bold tracking-tight">{swapState.fromToken?.symbol || 'Select'}</span>
+                  <ArrowUpDown className="w-3 h-3 text-gray-500 group-hover/btn:text-white transition-colors" />
                 </button>
               </div>
             </div>
 
             {/* Swap Button */}
-            <div className="flex justify-center mb-4">
-              <button
-                onClick={handleSwapTokens}
-                className="p-2 bg-card border border-border-color hover:border-electric-blue rounded-xl transition-all duration-300"
-              >
-                <ArrowUpDown className="w-5 h-5" />
-              </button>
+            <div className="relative h-2">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                <button
+                  onClick={handleSwapTokens}
+                  className="p-2.5 bg-gray-900 border border-white/20 hover:border-neon-cyan rounded-xl transition-all duration-500 hover:rotate-180 hover:scale-110 shadow-xl group"
+                >
+                  <ArrowUpDown className="w-4 h-4 text-neon-cyan group-hover:text-white transition-colors" />
+                </button>
+              </div>
             </div>
 
             {/* To Token */}
-            <div className="bg-card/50 border border-border-color rounded-xl p-4 mb-6">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-4 transition-all duration-300 focus-within:border-neon-pink/50 focus-within:bg-white/10">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-400">To</span>
+                <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Receive</span>
                 <div className="flex items-center space-x-2">
-                  <span className={`text-sm ${swapState.loading ? 'text-neon-cyan' : 'text-gray-400'}`}>
+                  <span className={`text-xs font-mono ${swapState.loading ? 'text-neon-pink animate-pulse' : 'text-gray-400'}`}>
                     Balance: {swapState.toToken ? formatBalance(parseFloat(swapState.toToken.balance), swapState.toToken.decimals) : '0.00'}
                   </span>
-                  {connected && (
-                    <button
-                      onClick={loadUserTokens}
-                      className="p-1 text-gray-400 hover:text-white transition-colors"
-                      title="Refresh balance"
-                    >
-                      <RefreshCw className={`w-3 h-3 ${swapState.loading ? 'animate-spin' : ''}`} />
-                    </button>
-                  )}
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-card border border-border-color rounded-full flex items-center justify-center text-lg">
-                  {swapState.toToken?.symbol?.[0] || '?'}
-                </div>
                 <div className="flex-1">
                   <input
                     type="number"
                     placeholder="0.0"
                     value={swapState.toAmount}
                     readOnly
-                    className="w-full bg-transparent text-2xl font-bold outline-none"
+                    className="w-full bg-transparent text-3xl font-orbitron font-bold outline-none placeholder:text-white/10 text-neon-pink"
                   />
-                  <div className="text-sm text-gray-400">
-                    ${swapState.toToken ? formatPrice(swapState.toToken.price, swapState.toToken.decimals) : '0.00'}
+                  <div className="text-sm text-gray-500 font-mono mt-1">
+                    ≈ ${swapState.toToken && swapState.toAmount ? (parseFloat(swapState.toAmount) * swapState.toToken.price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}
                   </div>
                 </div>
                 <button
                   onClick={() => openTokenModal('to')}
-                  className="px-3 py-1 bg-card border border-border-color hover:border-electric-blue rounded-lg text-sm font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center space-x-2 px-3 py-2 bg-white/10 border border-white/10 hover:border-neon-pink/50 hover:bg-white/20 rounded-xl transition-all duration-300 group/btn"
                   disabled={memeHausTokens.length === 0}
                 >
-                  {swapState.toToken?.symbol || (memeHausTokens.length === 0 ? 'No tokens' : 'Select')}
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-[10px] font-bold overflow-hidden shadow-inner">
+                    {swapState.toToken?.logoURI ? (
+                      <img src={swapState.toToken.logoURI} alt={swapState.toToken.symbol} className="w-full h-full object-cover" />
+                    ) : (
+                      swapState.toToken?.symbol?.[0] || '?'
+                    )}
+                  </div>
+                  <span className="font-bold tracking-tight">{swapState.toToken?.symbol || (memeHausTokens.length === 0 ? 'No tokens' : 'Select')}</span>
+                  <ArrowUpDown className="w-3 h-3 text-gray-500 group-hover/btn:text-white transition-colors" />
                 </button>
               </div>
             </div>
@@ -437,12 +450,35 @@ export default function SwapPage() {
             <button
               onClick={handleSwap}
               disabled={!canSwap || isExecuting || swapState.loading}
-              className="w-full btn-primary disabled:bg-card disabled:border disabled:border-border-color disabled:text-gray-400 disabled:cursor-not-allowed"
+              className={`w-full py-4 rounded-xl font-orbitron font-bold transition-all duration-500 relative overflow-hidden group ${!canSwap || isExecuting || swapState.loading
+                ? 'bg-white/5 text-gray-500 border border-white/5 cursor-not-allowed'
+                : 'bg-gradient-to-r from-neon-blue via-neon-cyan to-neon-blue bg-[length:200%_100%] hover:bg-right text-white shadow-glow-blue animate-pulse-slow'
+                }`}
             >
-              {isExecuting ? 'Swapping...' :
-                swapState.loading ? 'Loading quote...' :
-                  !canSwap ? 'Enter an amount' :
-                    `Swap ${swapState.fromToken?.symbol || ''} for ${swapState.toToken?.symbol || ''}`}
+              <div className="relative z-10 flex items-center justify-center space-x-2">
+                {isExecuting ? (
+                  <>
+                    <RefreshCw className="w-5 h-5 animate-spin" />
+                    <span>EXECUTING SWAP</span>
+                  </>
+                ) : swapState.loading ? (
+                  <>
+                    <RefreshCw className="w-5 h-5 animate-spin" />
+                    <span>LOADING QUOTE</span>
+                  </>
+                ) : !canSwap ? (
+                  <span>ENTER AN AMOUNT</span>
+                ) : (
+                  <>
+                    <Zap className="w-5 h-5 group-hover:scale-125 transition-transform" />
+                    <span>SWAP NOW</span>
+                  </>
+                )}
+              </div>
+              {/* Button shimmer effect */}
+              {canSwap && !isExecuting && !swapState.loading && (
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              )}
             </button>
           </div>
 
@@ -451,7 +487,7 @@ export default function SwapPage() {
             <div className="card">
               <div className="flex items-center space-x-2 mb-3">
                 <Info className="w-5 h-5 text-electric-blue" />
-                <h3 className="font-semibold">Why Swap on MemeHaus?</h3>
+                <h3 className="font-semibold">Why Swap on VAIIYA?</h3>
               </div>
               <div className="space-y-2 text-sm text-gray-400">
                 <div className="flex items-center space-x-2">
@@ -492,7 +528,7 @@ export default function SwapPage() {
         {/* MemeHaus Tokens Overview */}
         {memeHausTokens.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-2xl font-bold mb-6 text-center gradient-text">MemeHaus Tokens</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center gradient-text">VAIIYA Tokens</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {memeHausTokens.map((token, index) => (
                 <div key={index} className="card card-hover">
@@ -530,40 +566,44 @@ export default function SwapPage() {
 
       {/* Enhanced Token Selection Modal - Jupiter Style */}
       {showTokenModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
-          <div className="bg-gray-900 border border-gray-700 rounded-2xl p-4 sm:p-6 max-w-lg w-full max-h-[90vh] sm:max-h-[80vh] overflow-hidden">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300">
+          <div className="bg-gray-900/90 border border-white/10 rounded-3xl p-4 sm:p-6 max-w-lg w-full max-h-[90vh] sm:max-h-[85vh] overflow-hidden shadow-2xl relative">
+            {/* Top glass reflection */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
             {/* Header with Search */}
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold">
-                Select {tokenModalType === 'from' ? 'From' : 'To'} Token
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-orbitron font-bold bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+                Select Token
               </h3>
               <button
                 onClick={() => setShowTokenModal(false)}
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors text-gray-400 hover:text-white"
+                className="p-2 hover:bg-white/10 rounded-xl transition-all duration-300 text-gray-400 hover:text-white"
               >
-                <X className="w-5 h-5" />
+                <X className="w-6 h-6" />
               </button>
             </div>
 
             {/* Search Bar */}
-            <div className="relative mb-4">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <div className="relative mb-6">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
               <input
                 type="text"
                 placeholder={tokenModalType === 'to'
-                  ? "Search MemeHaus tokens (e.g., MEMEDOGE, MemeHaus)..."
+                  ? "Search by name or address..."
                   : "Search your tokens..."}
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-600 focus:outline-none focus:border-neon-cyan/50 focus:bg-white/10 transition-all duration-300 font-inter"
               />
             </div>
 
             {/* Info message for "to" token */}
             {tokenModalType === 'to' && (
-              <div className="mb-4 p-3 bg-purple-900/30 border border-purple-500/50 rounded-lg">
-                <p className="text-sm text-purple-300">
-                  🚀 Only MemeHaus tokens are available for purchase
+              <div className="mb-6 p-4 bg-neon-pink/10 border border-neon-pink/20 rounded-2xl flex items-start space-x-3">
+                <Info className="w-5 h-5 text-neon-pink mt-0.5" />
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  Only <span className="text-neon-pink font-bold">VAIIYA Verified</span> tokens are currently listed for buying. Swap any asset for the next big meme!
                 </p>
               </div>
             )}
@@ -595,55 +635,40 @@ export default function SwapPage() {
                 <button
                   key={token.mint}
                   onClick={() => selectToken(token)}
-                  className={`w-full p-4 border rounded-xl hover:border-blue-500 hover:bg-gray-800/50 transition-all duration-300 text-left group ${(token as any).isMemeHausToken
-                    ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/50'
-                    : 'bg-gray-800/30 border-gray-700'
+                  className={`w-full p-4 rounded-2xl border transition-all duration-300 text-left group relative overflow-hidden ${(token as any).isMemeHausToken
+                    ? 'bg-gradient-to-r from-neon-pink/5 to-neon-purple/5 border-neon-pink/20 hover:border-neon-pink/50'
+                    : 'bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/10'
                     }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${(token as any).isMemeHausToken
+                  <div className="flex items-center justify-between relative z-10">
+                    <div className="flex items-center space-x-4">
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shadow-lg overflow-hidden ${(token as any).isMemeHausToken
                         ? 'bg-gradient-to-br from-neon-pink to-neon-purple'
-                        : 'bg-gradient-to-br from-blue-500 to-purple-600'
+                        : 'bg-gradient-to-br from-blue-500/20 to-purple-600/20 border border-white/10'
                         }`}>
-                        {token.symbol[0]}
+                        {token.logoURI ? (
+                          <img src={token.logoURI} alt={token.symbol} className="w-full h-full object-cover" />
+                        ) : (
+                          <span className="text-white text-lg font-orbitron">{token.symbol[0]}</span>
+                        )}
                       </div>
                       <div className="text-left">
                         <div className="flex items-center space-x-2">
-                          <span className="font-semibold">{token.symbol}</span>
-                          {tokenModalType === 'to' || (token as any).isMemeHausToken ? (
-                            <span className="text-xs bg-neon-pink/20 text-neon-pink px-2 py-1 rounded-full">MemeHaus</span>
-                          ) : (
-                            <>
-                              <CheckCircle className="w-4 h-4 text-green-400" />
-                            </>
+                          <span className="font-bold text-white text-lg tracking-tight">{token.symbol}</span>
+                          {(token as any).isMemeHausToken && (
+                            <span className="text-[10px] bg-neon-pink/20 text-neon-pink px-2 py-0.5 rounded-full font-bold uppercase tracking-widest border border-neon-pink/30">VAIIYA</span>
                           )}
                         </div>
-                        <div className="text-sm text-gray-400">{token.name}</div>
-                        <div className="text-xs text-gray-500 font-mono">
-                          {token.mint.slice(0, 4)}...{token.mint.slice(-4)}
-                        </div>
-                        {tokenModalType === 'to' && (token as any).creatorWallet && (
-                          <div className="text-xs text-neon-cyan mt-1">
-                            Created by: {(token as any).creatorWallet?.slice(0, 4)}...{(token as any).creatorWallet?.slice(-4)}
-                          </div>
-                        )}
+                        <div className="text-xs text-gray-500 font-medium truncate max-w-[150px]">{token.name}</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-semibold">{formatBalance(parseFloat(token.balance), token.decimals)}</div>
-                      <div className="text-sm text-gray-400">${formatPrice(token.price, token.decimals)}</div>
-                      {tokenModalType === 'to' && (token as any).totalSupply ? (
-                        <div className="text-xs text-neon-purple">
-                          Supply: {formatBalance(parseFloat((token as any).totalSupply), token.decimals)}
-                        </div>
-                      ) : tokenModalType === 'from' && token.priceChange24h !== 0 ? (
-                        <div className={`text-xs ${token.priceChange24h >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {token.priceChange24h >= 0 ? '+' : ''}{token.priceChange24h.toFixed(2)}%
-                        </div>
-                      ) : null}
+                      <div className="font-mono font-bold text-white">{formatBalance(parseFloat(token.balance), token.decimals)}</div>
+                      <div className="text-xs text-gray-500 font-mono">${token.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 })}</div>
                     </div>
                   </div>
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </button>
               ))}
             </div>

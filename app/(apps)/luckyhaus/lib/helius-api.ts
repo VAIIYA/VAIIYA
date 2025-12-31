@@ -1,7 +1,8 @@
+import { getEnvConfig } from '@/app/lib/core-env';
+
 // Helius API Service for Transaction Parsing and History
 // Provides enhanced transaction information and user history
 
-const HELIUS_API_KEY = 'aa28c427-247b-4b24-a813-fffc8e07219c';
 const HELIUS_BASE_URL = 'https://api.helius.xyz/v0';
 
 export interface ParsedTransaction {
@@ -38,8 +39,9 @@ export interface TransactionHistory {
 export class HeliusApiService {
   private apiKey: string;
 
-  constructor(apiKey: string = HELIUS_API_KEY) {
-    this.apiKey = apiKey;
+  constructor(apiKey?: string) {
+    const config = getEnvConfig();
+    this.apiKey = apiKey || config.heliusApiKey || '';
   }
 
   /**
@@ -48,7 +50,7 @@ export class HeliusApiService {
   async parseTransaction(signature: string): Promise<ParsedTransaction | null> {
     try {
       console.log(`🔍 Parsing transaction: ${signature}`);
-      
+
       const response = await fetch(
         `${HELIUS_BASE_URL}/transactions/?api-key=${this.apiKey}`,
         {
@@ -67,12 +69,12 @@ export class HeliusApiService {
       }
 
       const data = await response.json();
-      
+
       if (data && data.length > 0) {
         console.log(`✅ Transaction parsed successfully:`, data[0]);
         return data[0];
       }
-      
+
       return null;
     } catch (error) {
       console.error('Error parsing transaction:', error);
@@ -84,13 +86,13 @@ export class HeliusApiService {
    * Get transaction history for a wallet address
    */
   async getTransactionHistory(
-    address: string, 
+    address: string,
     limit: number = 50,
     before?: string
   ): Promise<TransactionHistory | null> {
     try {
       console.log(`📜 Getting transaction history for: ${address}`);
-      
+
       let url = `${HELIUS_BASE_URL}/addresses/${address}/transactions/?api-key=${this.apiKey}&limit=${limit}`;
       if (before) {
         url += `&before=${before}`;
@@ -103,7 +105,7 @@ export class HeliusApiService {
       }
 
       const data = await response.json();
-      
+
       console.log(`✅ Transaction history retrieved: ${data.length} transactions`);
       return {
         transactions: data,
@@ -121,30 +123,33 @@ export class HeliusApiService {
   async getLotteryTransactions(address: string): Promise<ParsedTransaction[]> {
     try {
       console.log(`🎰 Getting lottery transactions for: ${address}`);
-      
+
       const history = await this.getTransactionHistory(address, 100);
       if (!history) return [];
 
-      // Filter for lottery-related transactions
+      // Check for lottery-related transactions
       const lotteryTransactions = history.transactions.filter(tx => {
+        const config = getEnvConfig();
+        const serverWallet = config.serverWallet;
+
         // Check if transaction involves USDC transfers TO lottery house (ticket purchases)
-        const hasIncomingUsdcTransfer = tx.tokenTransfers?.some(transfer => 
+        const hasIncomingUsdcTransfer = tx.tokenTransfers?.some(transfer =>
           transfer.mint === 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' && // USDC mint
-          transfer.toUserAccount === '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e' // Lottery house wallet
+          transfer.toUserAccount === serverWallet // Lottery house wallet
         );
 
         // Check if transaction involves USDC transfers FROM lottery house (payouts)
-        const hasOutgoingUsdcTransfer = tx.tokenTransfers?.some(transfer => 
+        const hasOutgoingUsdcTransfer = tx.tokenTransfers?.some(transfer =>
           transfer.mint === 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' && // USDC mint
-          transfer.fromUserAccount === '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e' // Lottery house wallet
+          transfer.fromUserAccount === serverWallet // Lottery house wallet
         );
 
         // Check if transaction description mentions lottery
         const isLotteryRelated = tx.description?.toLowerCase().includes('lottery') ||
-                                tx.description?.toLowerCase().includes('ticket') ||
-                                tx.description?.toLowerCase().includes('purchase') ||
-                                tx.description?.toLowerCase().includes('payout') ||
-                                tx.description?.toLowerCase().includes('winner');
+          tx.description?.toLowerCase().includes('ticket') ||
+          tx.description?.toLowerCase().includes('purchase') ||
+          tx.description?.toLowerCase().includes('payout') ||
+          tx.description?.toLowerCase().includes('winner');
 
         return hasIncomingUsdcTransfer || hasOutgoingUsdcTransfer || isLotteryRelated;
       });
@@ -167,7 +172,7 @@ export class HeliusApiService {
   }> {
     try {
       console.log(`🎫 Verifying ticket purchase: ${signature}`);
-      
+
       const transaction = await this.parseTransaction(signature);
       if (!transaction) {
         return { isValid: false, error: 'Transaction not found' };
@@ -186,16 +191,19 @@ export class HeliusApiService {
         // Don't immediately fail - check if we can find the transfer anyway
       }
 
+      const config = getEnvConfig();
+      const serverWallet = config.serverWallet;
+
       // Check for USDC transfer to lottery house
       const usdcTransfer = transaction.tokenTransfers?.find(transfer =>
         transfer.mint === 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' && // USDC mint
-        transfer.toUserAccount === '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e' && // Lottery house
+        transfer.toUserAccount === serverWallet && // Lottery house
         Math.abs(transfer.tokenAmount - expectedAmount * 1_000_000) < 1000 // Allow small rounding differences
       );
 
       // Also check for native transfers (SOL) as fallback
       const nativeTransfer = transaction.nativeTransfers?.find(transfer =>
-        transfer.toUserAccount === '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e' && // Lottery house
+        transfer.toUserAccount === serverWallet && // Lottery house
         Math.abs(transfer.amount - expectedAmount) < 0.001 // Allow small rounding differences
       );
 
@@ -204,16 +212,16 @@ export class HeliusApiService {
         console.log('Transaction tokenTransfers:', transaction.tokenTransfers);
         console.log('Transaction nativeTransfers:', transaction.nativeTransfers);
         console.log('🔍 Full transaction data:', JSON.stringify(transaction, null, 2));
-        
+
         // Check if this is a USDC transaction by looking at the description
-        const isUsdcTransaction = transaction.description?.toLowerCase().includes('usdc') || 
-                                  transaction.description?.toLowerCase().includes('transfer');
-        
+        const isUsdcTransaction = transaction.description?.toLowerCase().includes('usdc') ||
+          transaction.description?.toLowerCase().includes('transfer');
+
         if (isUsdcTransaction) {
           console.log('✅ Transaction appears to be a USDC transfer based on description');
           return { isValid: true, transaction, error: 'Transfer verification inconclusive but transaction confirmed' };
         }
-        
+
         // Don't fail verification - the transaction was successful on-chain
         return { isValid: true, transaction, error: 'Transfer verification inconclusive but transaction confirmed' };
       }
@@ -224,7 +232,7 @@ export class HeliusApiService {
       } else if (nativeTransfer) {
         console.log(`✅ Ticket purchase verified: ${nativeTransfer.amount} SOL`);
       }
-      
+
       return { isValid: true, transaction };
     } catch (error) {
       console.error('Error verifying ticket purchase:', error);
@@ -243,34 +251,37 @@ export class HeliusApiService {
     description: string;
     type: string;
   } {
+    const config = getEnvConfig();
+    const serverWallet = config.serverWallet;
+
     const date = new Date(transaction.timestamp * 1000);
     const usdcTransfer = transaction.tokenTransfers?.find(transfer =>
       transfer.mint === 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
     );
     const nativeTransfer = transaction.nativeTransfers?.find(transfer =>
-      transfer.toUserAccount === '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e'
+      transfer.toUserAccount === serverWallet
     );
 
     // Determine status based on actual transaction data, not Helius success flag
     let status = 'Success'; // Default to success since transaction was confirmed on-chain
-    
+
     // Check if this is a valid lottery transaction
     const isLotteryTransaction = transaction.description?.toLowerCase().includes('transfer') ||
-                                 transaction.type === 'TRANSFER' ||
-                                 usdcTransfer || nativeTransfer;
-    
+      transaction.type === 'TRANSFER' ||
+      usdcTransfer || nativeTransfer;
+
     // Only mark as failed if we have clear evidence of failure AND it's not a lottery transaction
     if (transaction.success === false && !isLotteryTransaction) {
       status = 'Failed';
     }
-    
+
     console.log(`🔍 Status determination: success=${transaction.success}, isLottery=${isLotteryTransaction}, finalStatus=${status}`);
 
     return {
       signature: transaction.signature,
       timestamp: date.toLocaleString(),
-      amount: usdcTransfer ? `${usdcTransfer.tokenAmount.toFixed(6)} USDC` : 
-              nativeTransfer ? `${nativeTransfer.amount} SOL` : 'N/A',
+      amount: usdcTransfer ? `${usdcTransfer.tokenAmount.toFixed(6)} USDC` :
+        nativeTransfer ? `${nativeTransfer.amount} SOL` : 'N/A',
       status: status,
       description: transaction.description || 'Lottery transaction',
       type: transaction.type || 'Transfer'

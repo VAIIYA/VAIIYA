@@ -25,6 +25,7 @@ import {
   toMetaplexFile,
 } from '@metaplex-foundation/js';
 import { CreateTokenService } from '../lib/createToken';
+import { logger } from '@/app/lib/logger';
 
 
 
@@ -65,7 +66,7 @@ export class TokenService {
         'Content-Type': 'application/json',
       },
     });
-    
+
     // Initialize Metaplex with mainnet configuration
     this.metaplex = new Metaplex(this.connection)
       .use(keypairIdentity(Keypair.generate())); // This will be overridden in createToken
@@ -73,99 +74,99 @@ export class TokenService {
 
   // Add a robust transaction confirmation method that uses polling instead of WebSocket
   private async confirmTransactionWithPolling(signature: string, maxAttempts: number = 30): Promise<boolean> {
-    console.log(`Starting polling confirmation for signature: ${signature}`);
-    
+    logger.info(`Starting polling confirmation for signature: ${signature}`);
+
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
-        console.log(`Polling attempt ${attempt}/${maxAttempts} for transaction confirmation...`);
-        
+        logger.debug(`Polling attempt ${attempt}/${maxAttempts} for transaction confirmation...`);
+
         const status = await this.connection.getSignatureStatus(signature, {
           searchTransactionHistory: true
         });
-        
+
         if (status.value) {
           if (status.value.err) {
-            console.error(`Transaction failed: ${status.value.err}`);
+            logger.error(`Transaction failed: ${status.value.err}`, new Error(JSON.stringify(status.value.err)));
             return false;
           }
-          
-          if (status.value.confirmationStatus === 'confirmed' || 
-              status.value.confirmationStatus === 'finalized') {
-            console.log(`Transaction confirmed successfully! Status: ${status.value.confirmationStatus}`);
+
+          if (status.value.confirmationStatus === 'confirmed' ||
+            status.value.confirmationStatus === 'finalized') {
+            logger.info(`Transaction confirmed successfully! Status: ${status.value.confirmationStatus}`);
             return true;
           }
-          
-          console.log(`Transaction status: ${status.value.confirmationStatus}, continuing to poll...`);
+
+          logger.debug(`Transaction status: ${status.value.confirmationStatus}, continuing to poll...`);
         } else {
-          console.log('Transaction status not found yet, continuing to poll...');
+          logger.debug('Transaction status not found yet, continuing to poll...');
         }
-        
+
         // Wait 2 seconds before next attempt
         await new Promise(resolve => setTimeout(resolve, 2000));
-        
+
       } catch (error) {
-        console.log(`Polling attempt ${attempt} failed: ${error}`);
-        
+        logger.warn(`Polling attempt ${attempt} failed: ${error}`);
+
         // If this is the last attempt, throw the error
         if (attempt === maxAttempts) {
           throw error;
         }
-        
+
         // Wait 2 seconds before retrying
         await new Promise(resolve => setTimeout(resolve, 2000));
       }
     }
-    
-    console.log(`Transaction not confirmed after ${maxAttempts} attempts`);
+
+    logger.error(`Transaction not confirmed after ${maxAttempts} attempts`, new Error('Confirmation timeout'));
     return false;
   }
 
   // Static utility method for robust transaction confirmation that can be used across the codebase
   static async confirmTransactionRobust(connection: Connection, signature: string, maxAttempts: number = 30): Promise<boolean> {
-    console.log(`Starting robust confirmation for signature: ${signature}`);
-    
+    logger.info(`Starting robust confirmation for signature: ${signature}`);
+
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
-        console.log(`Robust confirmation attempt ${attempt}/${maxAttempts}...`);
-        
+        logger.debug(`Robust confirmation attempt ${attempt}/${maxAttempts}...`);
+
         const status = await connection.getSignatureStatus(signature, {
           searchTransactionHistory: true
         });
-        
+
         if (status.value) {
           if (status.value.err) {
-            console.error(`Transaction failed: ${status.value.err}`);
+            logger.error(`Transaction failed: ${status.value.err}`, new Error(JSON.stringify(status.value.err)));
             return false;
           }
-          
-          if (status.value.confirmationStatus === 'confirmed' || 
-              status.value.confirmationStatus === 'finalized') {
-            console.log(`Transaction confirmed successfully! Status: ${status.value.confirmationStatus}`);
+
+          if (status.value.confirmationStatus === 'confirmed' ||
+            status.value.confirmationStatus === 'finalized') {
+            logger.info(`Transaction confirmed successfully! Status: ${status.value.confirmationStatus}`);
             return true;
           }
-          
-          console.log(`Transaction status: ${status.value.confirmationStatus}, continuing to poll...`);
+
+          logger.debug(`Transaction status: ${status.value.confirmationStatus}, continuing to poll...`);
         } else {
-          console.log('Transaction status not found yet, continuing to poll...');
+          logger.debug('Transaction status not found yet, continuing to poll...');
         }
-        
+
         // Wait 2 seconds before next attempt
         await new Promise(resolve => setTimeout(resolve, 2000));
-        
+
       } catch (error) {
-        console.log(`Robust confirmation attempt ${attempt} failed: ${error}`);
-        
+        logger.warn(`Robust confirmation attempt ${attempt} failed: ${error}`);
+
         // If this is the last attempt, throw the error
         if (attempt === maxAttempts) {
           throw error;
         }
-        
+
         // Wait 2 seconds before retrying
         await new Promise(resolve => setTimeout(resolve, 2000));
       }
     }
-    
-    console.log(`Transaction not confirmed after ${maxAttempts} attempts`);
+
+    logger.error(`Transaction not confirmed after ${maxAttempts} attempts`, new Error('Robust confirmation timeout'));
     return false;
   }
 
@@ -174,21 +175,21 @@ export class TokenService {
     wallet: { publicKey: PublicKey; signTransaction: (transaction: Transaction) => Promise<Transaction> },
   ): Promise<TokenCreationResult> {
     try {
-      console.log('Starting token creation process with new CreateTokenService...');
-      
+      logger.info('Starting token creation process', { name: params.name, symbol: params.symbol });
+
       // Use the new CreateTokenService for proper metadata creation
       const createTokenService = new CreateTokenService(this.connection.rpcEndpoint);
-      
+
       const result = await createTokenService.createToken(params, wallet);
-      
+
       return result;
 
     } catch (error) {
-      console.error('Error creating token with new service:', error);
-      
+      logger.error('Error creating token', error as Error);
+
       // Provide more specific error messages
       let errorMessage = 'Unknown error occurred';
-      
+
       if (error instanceof Error) {
         if (error.message.includes('403')) {
           errorMessage = 'RPC endpoint access denied. The Solana network may be experiencing high traffic. Please try again in a few minutes.';
@@ -207,7 +208,7 @@ export class TokenService {
           errorMessage = error.message;
         }
       }
-      
+
       return {
         success: false,
         error: errorMessage,
@@ -219,7 +220,7 @@ export class TokenService {
     try {
       const mint = new PublicKey(mintAddress);
       const wallet = new PublicKey(walletAddress);
-      
+
       const tokenAccount = await getAssociatedTokenAddress(
         mint,
         wallet,
@@ -229,7 +230,7 @@ export class TokenService {
 
       const accountInfo = await getAccount(this.connection, tokenAccount);
       const mintInfo = await getMint(this.connection, mint);
-      
+
       return Number(accountInfo.amount) / Math.pow(10, mintInfo.decimals);
     } catch (error) {
       console.error('Error getting token balance:', error);
@@ -243,7 +244,7 @@ export class TokenService {
       const createTokenService = new CreateTokenService(this.connection.rpcEndpoint);
       return await createTokenService.estimateCreationCost();
     } catch (error) {
-      console.error('Error estimating creation cost:', error);
+      logger.error('Error estimating creation cost', error as Error);
       return 0.015; // Conservative estimate for mainnet (0.01 + 0.005 for fees)
     }
   }
@@ -306,11 +307,11 @@ export class TokenService {
       // For now, we'll use a simple approach to make the metadata accessible
       // In production, you'd upload to Arweave, IPFS, or similar
       console.log('Metadata prepared:', metadata);
-      
+
       // Create a data URI for the metadata (temporary solution)
       const metadataJson = JSON.stringify(metadata, null, 2);
       const dataUri = `data:application/json;base64,${Buffer.from(metadataJson).toString('base64')}`;
-      
+
       console.log('Metadata URI created:', dataUri);
       return dataUri;
     } catch (error) {
@@ -329,7 +330,7 @@ export class TokenService {
     try {
       const mint = new PublicKey(mintAddress);
       const mintInfo = await getMint(this.connection, mint);
-      
+
       return {
         supply: mintInfo.supply.toString(),
         decimals: mintInfo.decimals,
@@ -355,26 +356,26 @@ export class TokenService {
       console.log('Creating metadata for token:', mint.toBase58());
       console.log('Token name:', params.name);
       console.log('Token symbol:', params.symbol);
-      
+
       // For now, we'll create a simple metadata transaction
       // This is a simplified approach - in production you'd use Metaplex SDK properly
       console.log('Creating metadata for token:', mint.toBase58());
       console.log('Token name:', params.name);
       console.log('Token symbol:', params.symbol);
       console.log('Metadata URI:', metadataUri);
-      
+
       // Note: This is a placeholder. In a full implementation, you would:
       // 1. Create a metadata account using the Token Metadata Program
       // 2. Set the metadata with proper name and symbol
       // 3. Verify the metadata on-chain
-      
+
       // For now, we'll just log that metadata should be created
       // The token will still work, but may show as "SPL Token" on some explorers
       console.log('Metadata creation placeholder - token created successfully');
-      
+
       // Create a simple transaction to demonstrate the process
       const metadataTransaction = new Transaction();
-      
+
       // Add a simple transfer instruction as placeholder
       metadataTransaction.add(
         SystemProgram.transfer({

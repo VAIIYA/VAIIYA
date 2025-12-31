@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Connection, Keypair, PublicKey, TransactionInstruction } from '@solana/web3.js';
-import { 
-  getAssociatedTokenAddress, 
-  createTransferInstruction, 
-  TOKEN_PROGRAM_ID, 
+import {
+  getAssociatedTokenAddress,
+  createTransferInstruction,
+  TOKEN_PROGRAM_ID,
   getMint,
   getAccount,
   createAssociatedTokenAccountInstruction,
@@ -12,6 +12,8 @@ import {
 import { Transaction } from '@solana/web3.js';
 import { LOTTERY_CONFIG } from '../../lib/lottery-config';
 import { heliusApi } from '../../lib/helius-api';
+import { getEnvConfig } from '@/app/lib/core-env';
+import { logger } from '@/app/lib/logger';
 
 // Memo program address on Solana
 const MEMO_PROGRAM_ID = new PublicKey('MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr');
@@ -27,6 +29,22 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { winnerAddress, amount } = body;
 
+    // 1. Authentication Check
+    const config = getEnvConfig();
+    const authHeader = request.headers.get('x-api-token');
+
+    if (!config.payoutApiToken || authHeader !== config.payoutApiToken) {
+      logger.security('Unauthorized payout attempt', {
+        winnerAddress,
+        amount,
+        ip: request.headers.get('x-forwarded-for')
+      });
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     if (!winnerAddress || !amount || amount <= 0) {
       return NextResponse.json(
         { success: false, error: 'Invalid winner address or amount' },
@@ -39,7 +57,7 @@ export async function POST(request: NextRequest) {
     // Get lottery house private key from environment variable
     // Check SERVER_WALLET_PRIVATE_KEY first (current setup), then fall back to LOTTERY_HOUSE_PRIVATE_KEY
     const lotteryHousePrivateKey = process.env.SERVER_WALLET_PRIVATE_KEY || process.env.LOTTERY_HOUSE_PRIVATE_KEY;
-    
+
     if (!lotteryHousePrivateKey) {
       console.error('❌ SERVER_WALLET_PRIVATE_KEY or LOTTERY_HOUSE_PRIVATE_KEY environment variable is not set');
       return NextResponse.json(
@@ -76,9 +94,9 @@ export async function POST(request: NextRequest) {
     } catch (error) {
       console.error('❌ Error parsing private key:', error);
       return NextResponse.json(
-        { 
-          success: false, 
-          error: `Invalid private key format: ${error instanceof Error ? error.message : 'Unknown error'}. Expected comma-separated numbers, JSON array, or base64 string.` 
+        {
+          success: false,
+          error: `Invalid private key format: ${error instanceof Error ? error.message : 'Unknown error'}. Expected comma-separated numbers, JSON array, or base64 string.`
         },
         { status: 500 }
       );
@@ -95,8 +113,9 @@ export async function POST(request: NextRequest) {
 
     // Create connection using Helius RPC
     // Use the same RPC endpoint as the rest of the app
-    const heliusApiKey = process.env.HELIUS_API_KEY || 'aa28c427-247b-4b24-a813-fffc8e07219c';
-    const rpcUrl = `https://mainnet.helius-rpc.com/?api-key=${heliusApiKey}`;
+    const rpcUrl = config.heliusRpcUrlApi ||
+      (config.heliusApiKey ? `https://mainnet.helius-rpc.com/?api-key=${config.heliusApiKey}` : config.solanaRpcUrl);
+
     const connection = new Connection(rpcUrl, 'confirmed');
 
     // Get USDC token accounts
@@ -171,7 +190,7 @@ export async function POST(request: NextRequest) {
     // Create transaction
     const transaction = new Transaction();
     transaction.add(usdcTransferInstruction);
-    
+
     // Add bonus token account creation instruction if needed
     if (!winnerBonusTokenAccountExists) {
       console.log('📝 Adding bonus token account creation instruction');
@@ -183,7 +202,7 @@ export async function POST(request: NextRequest) {
       );
       transaction.add(createAccountInstruction);
     }
-    
+
     transaction.add(bonusTokenTransferInstruction);
 
     // Add memo instruction to identify this as a LUCKYHAUS payout
@@ -234,7 +253,7 @@ export async function POST(request: NextRequest) {
       }
 
       console.log(`✅ Payout transaction confirmed: ${signature}`);
-      
+
       return NextResponse.json({
         success: true,
         signature: signature,
@@ -260,8 +279,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('❌ Error processing payout:', error);
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: error instanceof Error ? error.message : 'Unknown error processing payout'
       },
       { status: 500 }

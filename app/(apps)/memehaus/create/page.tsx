@@ -10,6 +10,7 @@ import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
 import { TokenCreationModal } from '../components/TokenCreationModal';
 import { CreateTokenForm } from '../components/token-creation/CreateTokenForm';
 import { sanitizeTokenFormData, TokenFormData } from '../lib/sanitize';
+import { logger } from '@/app/lib/logger';
 import Link from 'next/link';
 
 export default function CreateToken() {
@@ -36,7 +37,7 @@ export default function CreateToken() {
             { preserveBinaryFields: true }
           );
         } catch (e) {
-          console.log('Failed to parse saved form data');
+          logger.warn('Failed to parse saved form data from localStorage');
         }
       }
     }

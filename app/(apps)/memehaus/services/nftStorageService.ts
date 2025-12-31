@@ -1,5 +1,6 @@
 // NFT.Storage service for uploading token images to IPFS
-const NFT_STORAGE_API_KEY = '6ec350a8.ae8baa2978484fdd89cdacac21f1d2cb';
+import { getEnvConfig } from '@/app/lib/core-env';
+
 const NFT_STORAGE_API_URL = 'https://api.nft.storage';
 
 export interface UploadResult {
@@ -12,8 +13,9 @@ export interface UploadResult {
 export class NFTStorageService {
   private apiKey: string;
 
-  constructor(apiKey: string = NFT_STORAGE_API_KEY) {
-    this.apiKey = apiKey;
+  constructor() {
+    const config = getEnvConfig();
+    this.apiKey = config.nftStorageApiKey || '';
   }
 
   /**
@@ -88,7 +90,7 @@ export class NFTStorageService {
       const img = new Image();
       img.onload = () => {
         const { width, height } = img;
-        
+
         if (width < 512 || height < 512) {
           resolve({
             valid: false,
@@ -104,14 +106,14 @@ export class NFTStorageService {
           });
         }
       };
-      
+
       img.onerror = () => {
         resolve({
           valid: false,
           error: 'Could not load image for validation'
         });
       };
-      
+
       img.src = URL.createObjectURL(file);
     });
   }

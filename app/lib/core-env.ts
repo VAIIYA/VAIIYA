@@ -6,6 +6,7 @@
 interface EnvConfig {
     // Core
     solanaRpcUrl: string;
+    heliusRpcUrlApi?: string;
     network: string;
     nodeEnv: string;
 
@@ -21,15 +22,17 @@ interface EnvConfig {
     // MemeHaus Specific
     vaultSeed: string;
     lighthouseApiKey?: string;
+    nftStorageApiKey?: string;
     githubToken?: string;
     githubOwner: string;
     githubRepo: string;
     githubBranch: string;
 
-    // Platform Fees
+    // Platform Fees & Security
     devWalletSn: string;
     devWalletMg: string;
     serverWallet: string;
+    payoutApiToken?: string;
 }
 
 // Required environment variables
@@ -49,12 +52,15 @@ const OPTIONAL_ENV_VARS = {
     NODE_ENV: 'development',
     MEMEHAUS_VAULT_SEED: 'memehaus-liquidity-community-vault-seed-2025', // Fallback for development
     HELIUS_API_KEY: undefined,
+    HELIUS_RPC_URL_API: undefined,
+    NFT_STORAGE_API_KEY: undefined,
     LOTTERY_HOUSE_WALLET: undefined,
     MONGODB_URI_LUCKYHAUS: undefined,
     MONGODB_URI_MEMEHAUS: undefined,
     DEV_WALLET_SN: 'EpfmoiBoNFEofbACjZo1vpyqXUy5Fq9ZtPrGVwok5fb3',
     DEV_WALLET_MG: '2DmYGqwgbm2Axygs6jHj63kxYT24eE72XoqLaJe4mS9e',
-    SERVER_WALLET: '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e'
+    SERVER_WALLET: '7UhwWmw1r15fqLKcbYEDVFjqiz2G753MsyDksFAjfT3e',
+    PAYOUT_API_TOKEN: undefined
 } as const;
 
 /**
@@ -101,6 +107,7 @@ export function getEnvConfig(): EnvConfig {
 
     return {
         solanaRpcUrl: rpcUrl,
+        heliusRpcUrlApi: process.env.HELIUS_RPC_URL_API || process.env.NEXT_PUBLIC_HELIUS_RPC_URL_API,
         network,
         nodeEnv,
 
@@ -116,15 +123,17 @@ export function getEnvConfig(): EnvConfig {
         // MemeHaus
         vaultSeed,
         lighthouseApiKey: process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY,
+        nftStorageApiKey: process.env.NFT_STORAGE_API_KEY || OPTIONAL_ENV_VARS.NFT_STORAGE_API_KEY,
         githubToken: process.env.GITHUB_TOKEN,
         githubOwner: process.env.GITHUB_OWNER || OPTIONAL_ENV_VARS.GITHUB_OWNER,
         githubRepo: process.env.GITHUB_REPO || OPTIONAL_ENV_VARS.GITHUB_REPO,
         githubBranch: process.env.GITHUB_BRANCH || OPTIONAL_ENV_VARS.GITHUB_BRANCH,
 
-        // Platform Fees
+        // Platform Fees & Security
         devWalletSn: process.env.DEV_WALLET_SN || OPTIONAL_ENV_VARS.DEV_WALLET_SN,
         devWalletMg: process.env.DEV_WALLET_MG || OPTIONAL_ENV_VARS.DEV_WALLET_MG,
         serverWallet: process.env.SERVER_WALLET || OPTIONAL_ENV_VARS.SERVER_WALLET,
+        payoutApiToken: process.env.PAYOUT_API_TOKEN || OPTIONAL_ENV_VARS.PAYOUT_API_TOKEN,
     };
 }
 

@@ -10,6 +10,7 @@ import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
 import { WalletNotification } from '@/app/components/shared/WalletNotification';
 import { StatsCard } from './components/home/StatsCard';
 import { LoadingSkeleton } from './components/home/LoadingSkeleton';
+import { logger } from '@/app/lib/logger';
 // Database imports removed - using GitHub storage
 
 interface LaunchItem {
@@ -85,18 +86,18 @@ export default function Home() {
       try {
         setLoading(true);
 
-        console.log('Fetching recent tokens from API...');
+        logger.info('Fetching recent tokens from API...');
 
         // Fetch recent tokens from API - show more tokens like Pump.fun
         const response = await fetch('/api/tokens?page=0&limit=20');
         const data = await response.json();
 
-        console.log('API response:', data);
+        logger.debug('API response received', { success: data.success, count: data.tokens?.length });
 
         if (data.success && data.tokens && data.tokens.length > 0) {
           // Transform tokens to LaunchItem format
           const launchItems: LaunchItem[] = await Promise.all(data.tokens.map(async (token: any) => {
-            console.log('Processing token:', token);
+            logger.debug('Processing token', { symbol: token.symbol, mint: token.mint_address });
 
             const mintAddress = token.mint_address || token.mintAddress;
 
@@ -110,7 +111,7 @@ export default function Home() {
                   holders = holdersData.holders;
                 }
               } catch (error) {
-                console.error('Error fetching holders:', error);
+                logger.error('Error fetching holders', error as Error, { mintAddress });
               }
             }
 
@@ -130,7 +131,7 @@ export default function Home() {
             };
           }));
 
-          console.log('Transformed launch items:', launchItems);
+          logger.debug('Transformed launch items', { count: launchItems.length });
           setRecentTokens(launchItems);
 
           // Set platform stats from API
@@ -138,22 +139,22 @@ export default function Home() {
             setPlatformStats(data.stats);
           }
         } else {
-          console.log('API returned no tokens or failed, using localStorage fallback');
+          logger.warn('API returned no tokens or failed, using localStorage fallback');
           throw new Error('No tokens returned from API');
         }
 
       } catch (error) {
-        console.error('Error fetching data:', error);
+        logger.error('Error fetching data', error as Error);
 
         // Try to get tokens from localStorage as fallback
         try {
           if (typeof window !== 'undefined') {
             const storedTokensStr = localStorage.getItem('memehaus_created_tokens');
-            console.log('localStorage value:', storedTokensStr);
+            logger.debug('localStorage value retrieved');
 
             if (storedTokensStr) {
               const storedTokens = JSON.parse(storedTokensStr);
-              console.log('Parsed stored tokens:', storedTokens);
+              logger.debug('Parsed stored tokens', { count: storedTokens.length });
 
               if (Array.isArray(storedTokens) && storedTokens.length > 0) {
                 const fallbackTokens: LaunchItem[] = await Promise.all(storedTokens.slice(0, 20).map(async (token: any) => {
@@ -169,7 +170,7 @@ export default function Home() {
                         holders = holdersData.holders;
                       }
                     } catch (error) {
-                      console.error('Error fetching holders:', error);
+                      logger.error('Error fetching holders (fallback)', error as Error, { mintAddress });
                     }
                   }
 
@@ -189,7 +190,7 @@ export default function Home() {
                   };
                 }));
 
-                console.log('Using localStorage tokens:', fallbackTokens);
+                logger.info('Using localStorage tokens (fallback)', { count: fallbackTokens.length });
                 setRecentTokens(fallbackTokens);
                 setPlatformStats({
                   totalTokens: storedTokens.length,
@@ -197,7 +198,7 @@ export default function Home() {
                   totalUsers: new Set(storedTokens.map((t: any) => t.creatorWallet).filter(Boolean)).size || 1
                 });
               } else {
-                console.log('localStorage tokens array is empty or invalid');
+                logger.debug('localStorage tokens array is empty or invalid');
                 setRecentTokens([]);
                 setPlatformStats({
                   totalTokens: 0,
@@ -206,7 +207,7 @@ export default function Home() {
                 });
               }
             } else {
-              console.log('No tokens found in localStorage');
+              logger.debug('No tokens found in localStorage');
               setRecentTokens([]);
               setPlatformStats({
                 totalTokens: 0,

@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Zap } from 'lucide-react';
+import { ArrowLeft, Zap, MessageSquare, Edit3 } from 'lucide-react';
 import { WalletConnectButton } from '@/app/components/shared/WalletConnectButton';
 import { NetworkIndicator } from '@/app/components/shared/NetworkIndicator';
-import { TokenHeader } from '../../components/token/TokenHeader';
-import { TokenStats } from '../../components/token/TokenStats';
+import { TokenStudioBanner } from '../../components/token/TokenStudioBanner';
+import { CreatorManagement } from '../../components/token/CreatorManagement';
+import { LaunchConfiguration } from '../../components/token/LaunchConfiguration';
+import { CreatorNotes } from '../../components/token/CreatorNotes';
+import { TokenBondingCurve } from '../../components/token/TokenBondingCurve';
 import { BuySellPanel } from '../../components/token/BuySellPanel';
 
 interface TokenData {
@@ -24,6 +27,7 @@ interface TokenData {
   volume24h: number;
   holders: number;
   decimals: number;
+  graduated?: boolean;
 }
 
 export default function TokenPage() {
@@ -45,25 +49,18 @@ export default function TokenPage() {
         const data = await response.json();
 
         if (data.success && data.token) {
-          // Ensure we have at least basic token data
-          if (!data.token.name || !data.token.symbol || data.token.name === 'Unknown Token') {
-            console.warn('Token data missing name/symbol, attempting to fetch from on-chain...');
-            // The API should have already tried on-chain, but if it still failed, 
-            // we'll use fallback values
-            setTokenData({
-              ...data.token,
-              name: data.token.name || 'Unknown Token',
-              symbol: data.token.symbol || 'UNK',
-            });
-          } else {
-            setTokenData(data.token);
-          }
+          setTokenData({
+            ...data.token,
+            name: data.token.name || 'Unknown Token',
+            symbol: data.token.symbol || 'UNK',
+            graduated: data.token.graduated ?? true // Mocking true for demo purposes
+          });
         } else {
-          setError(data.error || 'Token not found. The token may not exist or may not have been created through MemeHaus.');
+          setError(data.error || 'Token not found.');
         }
       } catch (err) {
         console.error('Error fetching token data:', err);
-        setError('Failed to load token data. Please try again later.');
+        setError('Failed to load token data.');
       } finally {
         setLoading(false);
       }
@@ -74,12 +71,10 @@ export default function TokenPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-neon-cyan mb-4"></div>
-            <p className="text-gray-400">Loading token...</p>
-          </div>
+      <div className="min-h-screen bg-[#0b111a] text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-neon-cyan mb-4"></div>
+          <p className="text-gray-400">Entering the Studio...</p>
         </div>
       </div>
     );
@@ -87,140 +82,94 @@ export default function TokenPage() {
 
   if (error || !tokenData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Token Not Found</h1>
-            <p className="text-gray-400 mb-6">{error || 'The token you are looking for does not exist.'}</p>
-            <Link
-              href="/"
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg font-semibold hover:shadow-glow-pink transition-all duration-300"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
-            </Link>
-          </div>
+      <div className="min-h-screen bg-[#0b111a] text-white flex items-center justify-center">
+        <div className="text-center p-8 bg-gray-900/50 rounded-3xl border border-white/5">
+          <h1 className="text-2xl font-bold mb-4">Studio Entry Denied</h1>
+          <p className="text-gray-400 mb-6">{error || 'Token not found.'}</p>
+          <Link href="/" className="px-6 py-3 bg-neon-cyan/20 border border-neon-cyan/30 rounded-xl font-bold text-neon-cyan hover:bg-neon-cyan/30 transition-all">Back to Home</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
-      {/* Header */}
-      <header className="border-b border-gray-800/50 bg-black/20 backdrop-blur-sm sticky top-0 z-50">
-        <div className="px-4 py-6 md:px-8">
-          <nav className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-2 md:space-x-3">
-              <Link href="/" className="flex items-center space-x-2 md:space-x-3">
-                <Zap className="w-6 h-6 md:w-8 md:h-8 text-neon-cyan" />
-                <h1 className="text-lg md:text-2xl font-orbitron font-bold bg-gradient-to-r from-neon-pink to-neon-blue bg-clip-text text-transparent">
-                  MemeHaus
-                </h1>
-              </Link>
-              <div className="hidden sm:block">
-                <NetworkIndicator />
-              </div>
-            </div>
-
-            <div className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
-                Home
-              </Link>
-              <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
-                Swap
-              </Link>
-              <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
-                Create
-              </Link>
-              <Link href="/memehaus/profile" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
-                Profile
-              </Link>
-            </div>
-
+    <div className="min-h-screen bg-[#0b111a] text-white">
+      {/* Studio Navigation Wrapper */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+        <header className="py-6 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex items-center gap-2">
+              <Zap className="w-8 h-8 text-neon-cyan" />
+              <span className="font-orbitron font-black text-xl tracking-tighter">VAIIYA <span className="text-gray-500">Studio</span></span>
+            </Link>
+            <nav className="hidden lg:flex items-center gap-6">
+              <Link href="/" className="text-sm font-bold text-gray-400 hover:text-white transition-colors">Home</Link>
+              <Link href="/memehaus/create" className="text-sm font-bold text-gray-400 hover:text-white transition-colors">Launch</Link>
+              <Link href="#" className="text-sm font-bold text-gray-400 hover:text-white transition-colors">Verify</Link>
+              <Link href="#" className="text-sm font-bold text-gray-400 hover:text-white transition-colors">Lock</Link>
+            </nav>
+          </div>
+          <div className="flex items-center gap-4">
+            <NetworkIndicator />
             <WalletConnectButton />
-          </nav>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 py-8 md:px-8">
-        {/* Back Button */}
-        <div className="mb-6">
-          <Link
-            href="/"
-            className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
-          </Link>
-        </div>
-
-        {/* Token Header */}
-        <TokenHeader
-          name={tokenData.name}
-          symbol={tokenData.symbol}
-          imageUrl={tokenData.imageUrl}
-          creatorWallet={tokenData.creatorWallet}
-          createdAt={tokenData.createdAt}
-          mintAddress={tokenData.mintAddress}
-        />
-
-        {/* Token Stats */}
-        <TokenStats
-          price={tokenData.price}
-          priceChange24h={tokenData.priceChange24h}
-          marketCap={tokenData.marketCap}
-          volume24h={tokenData.volume24h}
-          holders={tokenData.holders}
-          totalSupply={tokenData.totalSupply}
-        />
-
-        {/* Chart Placeholder */}
-        <div className="bg-black/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6 mb-6">
-          <h2 className="text-xl font-bold mb-4">Price Chart</h2>
-          <div className="h-64 bg-gray-800/30 rounded-lg flex items-center justify-center">
-            <p className="text-gray-400">Chart coming soon...</p>
           </div>
-        </div>
+        </header>
 
-        {/* Buy/Sell Panel and Token Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Buy/Sell Panel */}
-          <div>
-            <BuySellPanel
-              tokenMint={tokenData.mintAddress}
-              tokenSymbol={tokenData.symbol}
-              tokenName={tokenData.name}
-              tokenDecimals={tokenData.decimals || 9}
-            />
-          </div>
+        <main className="pb-20">
+          <TokenStudioBanner
+            name={tokenData.name}
+            symbol={tokenData.symbol}
+            imageUrl={tokenData.imageUrl}
+            mintAddress={tokenData.mintAddress}
+            graduated={tokenData.graduated}
+          />
 
-          {/* Token Info */}
-          <div className="bg-black/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6">
-            <h2 className="text-xl font-bold mb-4">Token Information</h2>
-            <div className="space-y-4">
-              <div>
-                <div className="text-sm text-gray-400 mb-1">Total Supply</div>
-                <div className="font-semibold">{tokenData.totalSupply}</div>
+          {/* Three Column Studio Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            {/* Left/Main Column (8/12) */}
+            <div className="lg:col-span-8 flex flex-col gap-6">
+
+              <TokenBondingCurve progress={100} graduated={tokenData.graduated} />
+
+              {/* Description Panel */}
+              <div className="bg-[#131b26]/60 backdrop-blur-md rounded-2xl border border-white/5 p-6 relative">
+                <button className="absolute top-4 right-4 p-2 text-gray-600 hover:text-white"><Edit3 className="w-4 h-4" /></button>
+                <h2 className="text-xl font-inter font-bold text-white mb-4">Description</h2>
+                <p className="text-gray-300 leading-relaxed">
+                  The freshest memecoin on the Solana blockchain! Bringing the HAUS back to the community with a 10% early distribution and locked liquidity.
+                </p>
               </div>
-              <div>
-                <div className="text-sm text-gray-400 mb-1">Decimals</div>
-                <div className="font-semibold">{tokenData.decimals || 9}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-400 mb-1">Mint Address</div>
-                <div className="font-mono text-sm break-all">{tokenData.mintAddress}</div>
-              </div>
-              <div>
-                <div className="text-sm text-gray-400 mb-1">Creator</div>
-                <div className="font-mono text-sm">{tokenData.creatorWallet}</div>
-              </div>
+
+              {/* Creator Notes */}
+              <CreatorNotes />
+
             </div>
+
+            {/* Right Sidebar (4/12) */}
+            <div className="lg:col-span-4 flex flex-col gap-6">
+
+              <CreatorManagement />
+
+              <LaunchConfiguration />
+
+              {/* Holder Comments Placeholder */}
+              <div className="bg-[#131b26]/60 backdrop-blur-md rounded-2xl border border-white/5 p-6 flex-1 min-h-[300px] flex flex-col">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg font-inter font-bold text-white">Holder Comments</h2>
+                  <div className="text-[10px] text-gray-500 font-mono">Your Balance: 0.00 MEME ($0.00)</div>
+                </div>
+                <div className="flex-1 flex flex-col items-center justify-center text-center opacity-40">
+                  <MessageSquare className="w-12 h-12 mb-2 text-gray-600" />
+                  <p className="text-sm text-gray-500">No comments yet</p>
+                </div>
+              </div>
+
+            </div>
+
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
-

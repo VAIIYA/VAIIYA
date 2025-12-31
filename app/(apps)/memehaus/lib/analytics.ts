@@ -2,7 +2,7 @@
  * Analytics and monitoring utilities
  */
 
-import { logger, performanceMonitor } from './logger';
+import { logger, performanceMonitor } from '@/app/lib/logger';
 
 export interface AnalyticsEvent {
   name: string;

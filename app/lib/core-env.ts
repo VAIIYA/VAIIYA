@@ -67,6 +67,8 @@ const OPTIONAL_ENV_VARS = {
  * Validates and returns environment configuration
  */
 export function getEnvConfig(): EnvConfig {
+    const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || typeof window === 'undefined';
+
     // Check required environment variables
     const missingVars: string[] = [];
 
@@ -76,24 +78,32 @@ export function getEnvConfig(): EnvConfig {
         }
     }
 
-    if (missingVars.length > 0) {
+    if (missingVars.length > 0 && !isBuildTime) {
         throw new Error(
             `Missing required environment variables: ${missingVars.join(', ')}\n` +
             'Please check your .env.local file and ensure all required variables are set.'
         );
+    } else if (missingVars.length > 0) {
+        console.warn(`⚠️  Missing required environment variables during build: ${missingVars.join(', ')}`);
     }
 
     // Validate RPC URL format
-    const rpcUrl = process.env.NEXT_PUBLIC_SOLANA_RPC_URL!;
-    if (!rpcUrl.startsWith('http://') && !rpcUrl.startsWith('https://')) {
-        throw new Error('NEXT_PUBLIC_SOLANA_RPC_URL must be a valid HTTP/HTTPS URL');
+    const rpcUrl = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com';
+    if (rpcUrl && !rpcUrl.startsWith('http://') && !rpcUrl.startsWith('https://')) {
+        if (!isBuildTime) {
+            throw new Error('NEXT_PUBLIC_SOLANA_RPC_URL must be a valid HTTP/HTTPS URL');
+        }
+        console.warn('⚠️  Invalid NEXT_PUBLIC_SOLANA_RPC_URL during build');
     }
 
     // Validate network
-    const network = process.env.NEXT_PUBLIC_NETWORK!;
+    const network = process.env.NEXT_PUBLIC_NETWORK || 'mainnet-beta';
     const validNetworks = ['mainnet-beta', 'devnet', 'testnet'];
-    if (!validNetworks.includes(network)) {
-        throw new Error(`NEXT_PUBLIC_NETWORK must be one of: ${validNetworks.join(', ')}`);
+    if (network && !validNetworks.includes(network)) {
+        if (!isBuildTime) {
+            throw new Error(`NEXT_PUBLIC_NETWORK must be one of: ${validNetworks.join(', ')}`);
+        }
+        console.warn('⚠️  Invalid NEXT_PUBLIC_NETWORK during build');
     }
 
     // Get vault seed with warning in production
@@ -112,7 +122,7 @@ export function getEnvConfig(): EnvConfig {
         nodeEnv,
 
         // Database
-        mongoDbUri: process.env.MONGODB_URI!,
+        mongoDbUri: process.env.MONGODB_URI || '',
         mongoDbUriLuckyHaus: process.env.MONGODB_URI_LUCKYHAUS || OPTIONAL_ENV_VARS.MONGODB_URI_LUCKYHAUS,
         mongoDbUriMemeHaus: process.env.MONGODB_URI_MEMEHAUS || OPTIONAL_ENV_VARS.MONGODB_URI_MEMEHAUS,
 
@@ -134,6 +144,18 @@ export function getEnvConfig(): EnvConfig {
         devWalletMg: process.env.DEV_WALLET_MG || OPTIONAL_ENV_VARS.DEV_WALLET_MG,
         serverWallet: process.env.SERVER_WALLET || OPTIONAL_ENV_VARS.SERVER_WALLET,
         payoutApiToken: process.env.PAYOUT_API_TOKEN || OPTIONAL_ENV_VARS.PAYOUT_API_TOKEN,
+    };
+}
+
+/**
+ * Returns only public environment configuration safe for client-side
+ */
+export function getPublicEnvConfig() {
+    return {
+        solanaRpcUrl: process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com',
+        heliusRpcUrlApi: process.env.NEXT_PUBLIC_HELIUS_RPC_URL_API,
+        network: process.env.NEXT_PUBLIC_NETWORK || 'mainnet-beta',
+        lighthouseApiKey: process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY,
     };
 }
 

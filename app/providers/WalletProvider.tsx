@@ -6,7 +6,7 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { PhantomWalletAdapter, SolflareWalletAdapter, TorusWalletAdapter } from '@solana/wallet-adapter-wallets';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
-import { getEnvConfig } from '@/app/lib/core-env';
+import { getEnvConfig, getPublicEnvConfig } from '@/app/lib/core-env';
 
 // Import wallet adapter CSS
 require('@solana/wallet-adapter-react-ui/styles.css');
@@ -21,25 +21,14 @@ export const WalletContextProvider: FC<Props> = ({ children }) => {
 
   // Use a reliable RPC endpoint for mainnet operations
   const endpoint = useMemo(() => {
-    const config = getEnvConfig();
+    const config = getPublicEnvConfig();
     if (network === WalletAdapterNetwork.Mainnet) {
-      // 1. Priority: Full Helius URL with API key from environment
+      // Priority: Full Helius URL with API key from environment
       if (config.heliusRpcUrlApi) {
         return config.heliusRpcUrlApi;
       }
 
-      // 2. Secondary: If solanaRpcUrl already contains an api-key query param
-      if (config.solanaRpcUrl && config.solanaRpcUrl.includes('api-key=')) {
-        return config.solanaRpcUrl;
-      }
-
-      // 3. Tertiary: Construct URL using base and key
-      const heliusKey = config.heliusApiKey;
-      if (heliusKey) {
-        return `https://mainnet.helius-rpc.com/?api-key=${heliusKey}`;
-      }
-
-      // 4. Final: Basic RPC URL
+      // Final: Basic RPC URL
       return config.solanaRpcUrl;
     }
     return clusterApiUrl(network);

@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { Gamepad2, Rocket, ArrowRight } from 'lucide-react';
+import { Gamepad2, Rocket, ArrowUpDown, ArrowRight } from 'lucide-react';
 
 export default function PortalPage() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-6">
-            <div className="max-w-4xl w-full text-center space-y-12">
+            <div className="max-w-6xl w-full text-center space-y-12">
 
                 {/* Hero Section */}
                 <div className="space-y-6">
@@ -20,7 +20,7 @@ export default function PortalPage() {
                 </div>
 
                 {/* App Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
                     {/* LuckyHaus Card */}
                     <Link href="/luckyhaus" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-neon-pink/50 transition-all duration-500 hover:shadow-2xl hover:shadow-neon-pink/20 p-8 text-left">
                         <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -61,6 +61,28 @@ export default function PortalPage() {
 
                             <div className="flex items-center text-neon-cyan font-medium group-hover:translate-x-2 transition-transform">
                                 Launch App <ArrowRight className="ml-2 w-4 h-4" />
+                            </div>
+                        </div>
+                    </Link>
+
+                    {/* Swap Card */}
+                    <Link href="/memehaus/swap" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 p-8 text-left">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        <div className="relative z-10 flex flex-col h-full justify-between space-y-8">
+                            <div className="p-4 bg-gray-800/50 rounded-2xl w-fit group-hover:scale-110 transition-transform duration-500">
+                                <ArrowUpDown className="w-12 h-12 text-purple-500" />
+                            </div>
+
+                            <div className="space-y-2">
+                                <h2 className="text-3xl font-orbitron font-bold text-white group-hover:text-purple-400 transition-colors">Swap</h2>
+                                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                                    Instant token swaps with best rates. DCA orders supported.
+                                </p>
+                            </div>
+
+                            <div className="flex items-center text-purple-400 font-medium group-hover:translate-x-2 transition-transform">
+                                Swap Now <ArrowRight className="ml-2 w-4 h-4" />
                             </div>
                         </div>
                     </Link>

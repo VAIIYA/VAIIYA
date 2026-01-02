@@ -87,16 +87,27 @@ export class DcaService {
 
     async getOrders(user: string): Promise<DcaOrder[]> {
         try {
-            const response = await fetch(`${this.baseUrl}/getOrders?user=${user}`);
+            const response = await fetch(`${this.baseUrl}/getOrders?user=${user}`, {
+                signal: AbortSignal.timeout(5000)
+            });
 
             if (!response.ok) {
+                if (response.status === 401 || response.status === 403) {
+                    console.warn(`DCA API is unauthorized or restricted (Status ${response.status}). Recurring orders view may be limited.`);
+                    return [];
+                }
                 throw new Error(`DCA API error: ${response.status}`);
             }
 
             const data = await response.json();
             return data.orders || [];
         } catch (error) {
-            console.error('Error fetching DCA orders:', error);
+            // Only log as error if it's not a standard timeout or auth issue
+            if (error instanceof Error && (error.name === 'AbortError' || error.message.includes('401'))) {
+                console.warn('DCA orders fetch timed out or was unauthorized.');
+            } else {
+                console.error('Error fetching DCA orders:', error);
+            }
             return [];
         }
     }

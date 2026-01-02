@@ -4,7 +4,7 @@ import { DcaService, DcaOrder } from '../services/dcaService';
 import { PriceService } from '../services/priceService';
 import { VersionedTransaction } from '@solana/web3.js';
 import { SwapToken } from './useSwap';
-import { getEnvConfig } from '@/app/lib/core-env';
+import { getEnvConfig, getPublicEnvConfig } from '@/app/lib/core-env';
 
 export interface DcaState {
     fromToken: SwapToken | null;
@@ -66,7 +66,7 @@ export const useDca = () => {
 
             const inAmount = (totalAmountNum * Math.pow(10, dcaState.fromToken.decimals)).toString();
 
-            const config = getEnvConfig();
+            const config = getPublicEnvConfig();
             const serverWallet = config.serverWallet;
             const devWallets = [config.devWalletSn, config.devWalletMg].filter(Boolean);
 

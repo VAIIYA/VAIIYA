@@ -161,6 +161,7 @@ export function getPublicEnvConfig() {
         heliusRpcUrlApi: process.env.NEXT_PUBLIC_HELIUS_RPC_URL_API,
         network: process.env.NEXT_PUBLIC_NETWORK || 'mainnet-beta',
         lighthouseApiKey: process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY,
+        heliusApiKey: process.env.HELIUS_API_KEY || process.env.NEXT_PUBLIC_HELIUS_API_KEY,
         serverWallet: process.env.SERVER_WALLET || OPTIONAL_ENV_VARS.SERVER_WALLET,
         devWalletSn: process.env.DEV_WALLET_SN || OPTIONAL_ENV_VARS.DEV_WALLET_SN,
         devWalletMg: process.env.DEV_WALLET_MG || OPTIONAL_ENV_VARS.DEV_WALLET_MG,

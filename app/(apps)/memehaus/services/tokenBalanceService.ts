@@ -152,6 +152,7 @@ export class TokenBalanceService {
 
   async getSOLBalance(walletAddress: string): Promise<string> {
     const rpcEndpoints = [
+      this.connection.rpcEndpoint,
       'https://api.mainnet-beta.solana.com',
       'https://solana-api.projectserum.com',
       'https://rpc.ankr.com/solana'
@@ -159,15 +160,29 @@ export class TokenBalanceService {
 
     for (const endpoint of rpcEndpoints) {
       try {
+        // Skip endpoints that are known to be Helius but missing API keys
+        if (endpoint.includes('helius-rpc.com') && !endpoint.includes('api-key=')) {
+          console.warn('Skipping Helius endpoint without API key to avoid 401');
+          continue;
+        }
+
         console.log('Fetching SOL balance for:', walletAddress, 'using endpoint:', endpoint);
         const connection = new Connection(endpoint, 'confirmed');
         const wallet = new PublicKey(walletAddress);
         const balance = await connection.getBalance(wallet);
-        const solBalance = (balance / 1e9).toString();
-        console.log('Raw balance (lamports):', balance, 'SOL balance:', solBalance);
-        return solBalance;
+
+        return (balance / 1e9).toString();
       } catch (error) {
-        console.error('Error fetching SOL balance with endpoint', endpoint, ':', error);
+        console.error(`Error fetching SOL balance with endpoint ${endpoint}:`, error);
+
+        // Handle specific unauthorized/forbidden errors
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        if (errorMsg.includes('401') || errorMsg.includes('403') || errorMsg.includes('Access forbidden') || errorMsg.includes('missing api key')) {
+          console.warn(`Endpoint ${endpoint} is unauthorized. Moving to next fallback.`);
+          continue;
+        }
+
+        // For other errors, we also want to continue to next fallback
         continue;
       }
     }

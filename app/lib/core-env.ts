@@ -67,24 +67,29 @@ const OPTIONAL_ENV_VARS = {
  * Validates and returns environment configuration
  */
 export function getEnvConfig(): EnvConfig {
-    const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || typeof window === 'undefined';
+    const isClient = typeof window !== 'undefined';
+    const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build';
 
     // Check required environment variables
     const missingVars: string[] = [];
 
     for (const envVar of REQUIRED_ENV_VARS) {
+        // MONGODB_URI is only required on the server
+        if (envVar === 'MONGODB_URI' && isClient) continue;
+
         if (!process.env[envVar]) {
             missingVars.push(envVar);
         }
     }
 
-    if (missingVars.length > 0 && !isBuildTime) {
+    if (missingVars.length > 0 && !isBuildTime && !isClient) {
         throw new Error(
             `Missing required environment variables: ${missingVars.join(', ')}\n` +
             'Please check your .env.local file and ensure all required variables are set.'
         );
     } else if (missingVars.length > 0) {
-        console.warn(`⚠️  Missing required environment variables during build: ${missingVars.join(', ')}`);
+        // Only warn during build or if it's a client missing server-only vars
+        console.warn(`⚠️ Missing required environment variables: ${missingVars.join(', ')}`);
     }
 
     // Validate RPC URL format
@@ -156,6 +161,9 @@ export function getPublicEnvConfig() {
         heliusRpcUrlApi: process.env.NEXT_PUBLIC_HELIUS_RPC_URL_API,
         network: process.env.NEXT_PUBLIC_NETWORK || 'mainnet-beta',
         lighthouseApiKey: process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY,
+        serverWallet: process.env.SERVER_WALLET || OPTIONAL_ENV_VARS.SERVER_WALLET,
+        devWalletSn: process.env.DEV_WALLET_SN || OPTIONAL_ENV_VARS.DEV_WALLET_SN,
+        devWalletMg: process.env.DEV_WALLET_MG || OPTIONAL_ENV_VARS.DEV_WALLET_MG,
     };
 }
 

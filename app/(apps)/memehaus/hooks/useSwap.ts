@@ -6,7 +6,7 @@ import { TokenBalanceService, TokenAccount } from '../services/tokenBalanceServi
 import { PriceService, SwapQuote } from '../services/priceService';
 import { SwapService, SwapParams, SwapResult } from '../services/swapService';
 import { TokenFromAPI, TokenResponse } from '../types/token';
-import { getEnvConfig } from '@/app/lib/core-env';
+import { getEnvConfig, getPublicEnvConfig } from '@/app/lib/core-env';
 
 export interface SwapToken {
   mint: string;
@@ -103,7 +103,7 @@ export const useSwap = () => {
   const loadMemeHausTokens = useCallback(async () => {
     try {
       console.log('Loading MemeHaus tokens from API...');
-      const response = await fetch('/api/tokens?page=0&limit=100', {
+      const response = await fetch('/memehaus/api/tokens?page=0&limit=100', {
         // Add timeout
         signal: AbortSignal.timeout(10000) // 10 second timeout
       });
@@ -255,7 +255,7 @@ export const useSwap = () => {
       // Convert amount to proper decimals
       const inputAmount = (parseFloat(swapState.fromAmount) * Math.pow(10, swapState.fromToken.decimals)).toString();
 
-      const config = getEnvConfig();
+      const config = getPublicEnvConfig();
       const serverWallet = config.serverWallet;
       const devWallets = [config.devWalletSn, config.devWalletMg].filter(Boolean);
 
@@ -341,7 +341,7 @@ export const useSwap = () => {
     try {
       const inputAmount = (parseFloat(swapState.fromAmount) * Math.pow(10, swapState.fromToken!.decimals)).toString();
 
-      const config = getEnvConfig();
+      const config = getPublicEnvConfig();
       const serverWallet = config.serverWallet;
       const devWallets = [config.devWalletSn, config.devWalletMg].filter(Boolean);
 

@@ -152,9 +152,8 @@ export class TokenBalanceService {
 
   async getSOLBalance(walletAddress: string): Promise<string> {
     const rpcEndpoints = [
-      this.connection.rpcEndpoint,
-      'https://solana-api.projectserum.com',
       'https://api.mainnet-beta.solana.com',
+      'https://solana-api.projectserum.com',
       'https://rpc.ankr.com/solana'
     ];
 

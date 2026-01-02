@@ -38,6 +38,12 @@ export default function SwapPage() {
   const [showTokenModal, setShowTokenModal] = useState(false);
   const [tokenModalType, setTokenModalType] = useState<'from' | 'to'>('from');
   const [searchQuery, setSearchQuery] = useState('');
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { connected, publicKey } = useWallet();
   const {
     swapState,
@@ -175,6 +181,10 @@ export default function SwapPage() {
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   // Check if user is not connected and show connect wallet screen
   if (!connected) {

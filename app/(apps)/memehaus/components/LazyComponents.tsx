@@ -3,7 +3,7 @@
 import { lazy } from 'react';
 
 // Lazy load heavy components
-export const LazySwapPage = lazy(() => import('../swap/page'));
+export const LazySwapPage = lazy(() => import('../../swap/page'));
 export const LazyLiquidityPage = lazy(() => import('../liquidity/page'));
 export const LazyAutoStakePage = lazy(() => import('../autostake/page'));
 export const LazyCreateTokenPage = lazy(() => import('../create/page'));

@@ -66,7 +66,7 @@ export default function PortalPage() {
                     </Link>
 
                     {/* Swap Card */}
-                    <Link href="/memehaus/swap" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 p-8 text-left">
+                    <Link href="/swap" className="group relative overflow-hidden rounded-3xl bg-gray-900/40 border border-gray-800 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 p-8 text-left">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col h-full justify-between space-y-8">

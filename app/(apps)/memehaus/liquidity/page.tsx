@@ -320,7 +320,7 @@ export default function LiquidityPage() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Home
             </Link>
-            <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Swap
             </Link>
             <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">

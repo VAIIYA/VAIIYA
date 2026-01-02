@@ -263,7 +263,7 @@ export default function Home() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Home
             </Link>
-            <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
+            <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
               Swap
             </Link>
             <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium">
@@ -307,7 +307,7 @@ export default function Home() {
               <Link href="/" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/memehaus/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/swap" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
                 Swap
               </Link>
               <Link href="/memehaus/create" className="text-gray-300 hover:text-white transition-colors font-inter font-medium py-2" onClick={() => setMobileMenuOpen(false)}>
@@ -473,115 +473,114 @@ export default function Home() {
 
                     {/* Token Info */}
                     <div className="p-5">
-                      <div className="mb-3">
-                        <h4 className="font-inter font-bold text-lg text-white mb-1 group-hover:text-neon-cyan transition-colors">
-                          {safeName}
-                        </h4>
-                        <p className="text-gray-400 font-mono text-sm">${safeSymbol}</p>
+                      <Link href="/swap" className="card card-hover text-center p-8 group">
+                        <Repeat className="w-12 h-12 text-electric-blue mx-auto mb-4 group-hover:rotate-180 transition-transform duration-500" />
+                        <h3 className="text-xl font-bold mb-2">Swap</h3>
+                        <p className="text-gray-400">Trade tokens instantly at the best rates.</p>
+                      </Link>          </div>
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div className="bg-gray-800/50 rounded-lg p-2">
+                        <div className="flex items-center space-x-1 mb-1">
+                          <Coins className="w-3 h-3 text-neon-cyan" />
+                          <span className="text-xs text-gray-400">Supply</span>
+                        </div>
+                        <p className="text-sm font-semibold text-white">{launch.totalSupply}</p>
                       </div>
-
-                      {/* Stats Grid */}
-                      <div className="grid grid-cols-2 gap-3 mb-4">
-                        <div className="bg-gray-800/50 rounded-lg p-2">
-                          <div className="flex items-center space-x-1 mb-1">
-                            <Coins className="w-3 h-3 text-neon-cyan" />
-                            <span className="text-xs text-gray-400">Supply</span>
-                          </div>
-                          <p className="text-sm font-semibold text-white">{launch.totalSupply}</p>
+                      <div className="bg-gray-800/50 rounded-lg p-2">
+                        <div className="flex items-center space-x-1 mb-1">
+                          <Users className="w-3 h-3 text-neon-pink" />
+                          <span className="text-xs text-gray-400">Holders</span>
                         </div>
-                        <div className="bg-gray-800/50 rounded-lg p-2">
-                          <div className="flex items-center space-x-1 mb-1">
-                            <Users className="w-3 h-3 text-neon-pink" />
-                            <span className="text-xs text-gray-400">Holders</span>
-                          </div>
-                          <p className="text-sm font-semibold text-white">{launch.holders !== undefined ? launch.holders : launch.distributionRecipients}</p>
-                        </div>
+                        <p className="text-sm font-semibold text-white">{launch.holders !== undefined ? launch.holders : launch.distributionRecipients}</p>
                       </div>
-
-                      {/* Price/Volume if available */}
-                      {(price !== undefined || volume24h !== undefined) && (
-                        <div className="border-t border-gray-700/50 pt-3 space-y-2">
-                          {price !== undefined && price > 0 ? (
-                            <div className="flex justify-between items-center">
-                              <span className="text-xs text-gray-400">Price</span>
-                              <span className="text-sm font-semibold text-neon-cyan">
-                                ${price.toFixed(6)}
-                              </span>
-                            </div>
-                          ) : null}
-                          {volume24h !== undefined && volume24h > 0 ? (
-                            <div className="flex justify-between items-center">
-                              <span className="text-xs text-gray-400">24h Volume</span>
-                              <span className="text-sm font-semibold text-neon-purple">
-                                ${formatLargeNumber(volume24h.toString())}
-                              </span>
-                            </div>
-                          ) : null}
-                        </div>
-                      )}
-
-                      {/* View on Solscan */}
-                      {launch.mintAddress && (
-                        <div className="mt-4 pt-3 border-t border-gray-700/50">
-                          <a
-                            href={solscanUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="flex items-center justify-center space-x-2 text-xs text-gray-400 hover:text-neon-blue transition-colors"
-                          >
-                            <span>View on Solscan</span>
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                          </a>
-                        </div>
-                      )}
                     </div>
+
+                    {/* Price/Volume if available */}
+                    {(price !== undefined || volume24h !== undefined) && (
+                      <div className="border-t border-gray-700/50 pt-3 space-y-2">
+                        {price !== undefined && price > 0 ? (
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs text-gray-400">Price</span>
+                            <span className="text-sm font-semibold text-neon-cyan">
+                              ${price.toFixed(6)}
+                            </span>
+                          </div>
+                        ) : null}
+                        {volume24h !== undefined && volume24h > 0 ? (
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs text-gray-400">24h Volume</span>
+                            <span className="text-sm font-semibold text-neon-purple">
+                              ${formatLargeNumber(volume24h.toString())}
+                            </span>
+                          </div>
+                        ) : null}
+                      </div>
+                    )}
+
+                    {/* View on Solscan */}
+                    {launch.mintAddress && (
+                      <div className="mt-4 pt-3 border-t border-gray-700/50">
+                        <a
+                          href={solscanUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center justify-center space-x-2 text-xs text-gray-400 hover:text-neon-blue transition-colors"
+                        >
+                          <span>View on Solscan</span>
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      </div>
+                    )}
+                  </div>
                   </Link>
-                );
+          );
               })
-            ) : (
-              <div className="col-span-full text-center py-12">
-                <div className="text-gray-400 font-inter mb-4">
-                  No tokens have been created yet. Be the first to launch a memecoin! 🚀
-                </div>
-                <Link href="/memehaus/create" className="inline-block px-6 py-3 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg font-inter font-semibold hover:shadow-glow-pink transition-all duration-300">
-                  Create Your First Token
-                </Link>
-              </div>
+          ) : (
+          <div className="col-span-full text-center py-12">
+            <div className="text-gray-400 font-inter mb-4">
+              No tokens have been created yet. Be the first to launch a memecoin! 🚀
+            </div>
+            <Link href="/memehaus/create" className="inline-block px-6 py-3 bg-gradient-to-r from-neon-pink to-neon-purple rounded-lg font-inter font-semibold hover:shadow-glow-pink transition-all duration-300">
+              Create Your First Token
+            </Link>
+          </div>
             )}
-          </div>
         </div>
-      </section>
-
-      {/* CTA Section - Updated for MemeHaus */}
-      <section className="px-4 py-16 md:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl md:text-4xl font-orbitron font-bold mb-6">
-            Welcome to MemeHaus.
-          </h3>
-          <p className="text-xl text-gray-300 mb-8 font-inter">
-            Where jokes print money and every shitpost has liquidity.
-          </p>
-          <Link href="/memehaus/create" className="px-12 py-4 bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue rounded-full font-inter font-bold text-xl hover:shadow-glow-purple transition-all duration-300 transform hover:scale-105 inline-block">
-            Start Your Journey
-          </Link>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-4 py-8 md:px-8 border-t border-gray-700/50">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center space-x-3 mb-4 md:mb-0">
-            <Zap className="w-6 h-6 text-neon-cyan" />
-            <span className="font-orbitron font-bold text-lg">MemeHaus</span>
-          </div>
-          <div className="text-gray-400 font-inter text-sm text-center md:text-left">
-            © 2025 MemeHaus. It's All a Meme. v2.0
-          </div>
-        </div>
-      </footer>
     </div>
+      </section >
+
+    {/* CTA Section - Updated for MemeHaus */ }
+    < section className = "px-4 py-16 md:px-8" >
+      <div className="max-w-4xl mx-auto text-center">
+        <h3 className="text-3xl md:text-4xl font-orbitron font-bold mb-6">
+          Welcome to MemeHaus.
+        </h3>
+        <p className="text-xl text-gray-300 mb-8 font-inter">
+          Where jokes print money and every shitpost has liquidity.
+        </p>
+        <Link href="/memehaus/create" className="px-12 py-4 bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue rounded-full font-inter font-bold text-xl hover:shadow-glow-purple transition-all duration-300 transform hover:scale-105 inline-block">
+          Start Your Journey
+        </Link>
+      </div>
+      </section >
+
+    {/* Footer */ }
+    < footer className = "px-4 py-8 md:px-8 border-t border-gray-700/50" >
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div className="flex items-center space-x-3 mb-4 md:mb-0">
+          <Zap className="w-6 h-6 text-neon-cyan" />
+          <span className="font-orbitron font-bold text-lg">MemeHaus</span>
+        </div>
+        <div className="text-gray-400 font-inter text-sm text-center md:text-left">
+          © 2025 MemeHaus. It's All a Meme. v2.0
+        </div>
+      </div>
+      </footer >
+    </div >
   );
 } 

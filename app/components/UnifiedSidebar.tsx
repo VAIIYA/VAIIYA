@@ -11,7 +11,7 @@ export function UnifiedSidebar() {
         { name: 'Home', icon: Home, href: '/' },
         { name: 'LuckyHaus', icon: Gamepad2, href: '/luckyhaus' },
         { name: 'MemeHaus', icon: Rocket, href: '/memehaus' },
-        { name: 'Swap', icon: Repeat, href: '/memehaus/swap' }, // Using MemeHaus swap for now
+        { name: 'Swap', icon: Repeat, href: '/swap' }, // Using MemeHaus swap for now
     ];
 
     return (

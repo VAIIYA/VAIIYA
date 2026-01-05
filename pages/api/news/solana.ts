@@ -1,6 +1,6 @@
 // pages/api/news/solana.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSolanaNews, NewsArticle } from '../../lib/news';
+import { getSolanaNews, NewsArticle } from '../../../lib/news';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {

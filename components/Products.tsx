@@ -17,6 +17,12 @@ const products = [
     url: 'https://vynder.vercel.app/',
     gradient: 'from-solana-purple to-solana-green',
   },
+  {
+    name: 'NIGHTSTUDIO',
+    description: 'Creative digital studio crafting immersive Web3 experiences on Solana.',
+    url: 'https://nightstudio.vercel.app/',
+    gradient: 'from-indigo-500 to-purple-500',
+  },
 ]
 
 export default function Products() {
@@ -33,7 +39,7 @@ export default function Products() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, index) => (
             <a
               key={product.name}

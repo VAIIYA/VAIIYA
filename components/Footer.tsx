@@ -92,6 +92,16 @@ export default function Footer() {
                   VYNDER
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://nightstudio.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-solana-purple transition-colors"
+                >
+                  NIGHTSTUDIO
+                </a>
+              </li>
             </ul>
           </div>
 

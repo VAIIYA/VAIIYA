@@ -17,6 +17,12 @@ const products = [
     url: 'https://vynder.vercel.app/',
     gradient: 'from-solana-purple to-solana-green',
   },
+  {
+    name: 'NIGHTSTUDIO',
+    description: 'Creative digital studio crafting immersive Web3 experiences on Solana.',
+    url: 'https://nightstudio.vercel.app/',
+    gradient: 'from-indigo-500 to-purple-500',
+  },
 ]
 
 export default function Products() {
@@ -75,4 +81,5 @@ export default function Products() {
     </section>
   )
 }
+
 

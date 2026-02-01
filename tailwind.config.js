@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'metamask-orange': '#ff5c16',
+        'metamask-black': '#0a0a0a',
+        'metamask-purple': '#3d065f',
+        'metamask-gray-50': '#f7f9fc',
+        'metamask-gray-100': '#e9edf6',
         'solana-purple': '#9945FF',
         'solana-green': '#14F195',
       },
@@ -15,7 +20,13 @@ module.exports = {
         'gradient-solana': 'linear-gradient(135deg, #9945FF 0%, #14F195 100%)',
         'gradient-solana-reverse': 'linear-gradient(135deg, #14F195 0%, #9945FF 100%)',
       },
-      fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Liberation Sans', 'sans-serif'] },
+      fontFamily: {
+        serif: ['"Poly"', 'Georgia', 'serif'],
+        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      borderRadius: {
+        '3xl': '32px',
+      },
     },
   },
   plugins: [],

@@ -15,26 +15,26 @@ const products = [
     name: 'VYNDER',
     description: 'Dating on the blockchain. The first Web3 PWA dating app built on Solana.',
     url: 'https://vynder.vercel.app/',
-    gradient: 'from-solana-purple to-solana-green',
+    gradient: 'from-orange-500 to-red-500',
   },
   {
     name: 'NIGHTSTUDIO',
     description: 'Creative digital studio crafting immersive Web3 experiences on Solana.',
     url: 'https://nightstudio.vercel.app/',
-    gradient: 'from-indigo-500 to-purple-500',
+    gradient: 'from-purple-600 to-indigo-600',
   },
 ]
 
 export default function Products() {
   return (
-    <section id="products" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="products" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="text-gradient-solana">Our Products</span>
+          <h2 className="text-4xl sm:text-5xl font-serif mb-6">
+            Our <span className="text-metamask-purple">Products</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Building the future of Web3, one product at a time. 
+            Building the future of Web3, one product at a time.
             Each project showcases our commitment to innovation and clean code.
           </p>
         </div>
@@ -46,28 +46,25 @@ export default function Products() {
               href={product.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-solana-purple transition-all duration-300 hover:shadow-2xl overflow-hidden"
+              className="group relative card-vibe overflow-hidden !p-0"
             >
-              {/* Gradient Background Effect */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-              
-              <div className="relative z-10">
+              <div className="p-8 relative z-10 flex flex-col h-full">
                 <div className="mb-6">
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center mb-4`}>
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${product.gradient} flex items-center justify-center mb-4 shadow-lg shadow-black/5`}>
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900 group-hover:text-solana-purple transition-colors">
+                  <h3 className="text-2xl font-serif mb-2 text-gray-900 group-hover:text-metamask-orange transition-colors">
                     {product.name}
                   </h3>
                 </div>
-                
-                <p className="text-gray-600 mb-6 leading-relaxed">
+
+                <p className="text-gray-600 mb-8 leading-relaxed flex-grow">
                   {product.description}
                 </p>
 
-                <div className="flex items-center text-solana-purple font-semibold group-hover:gap-2 transition-all">
+                <div className="flex items-center text-metamask-orange font-semibold group-hover:gap-2 transition-all mt-auto">
                   Visit Site
                   <svg className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

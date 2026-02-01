@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poly:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
+  --metamask-orange: #ff5c16;
+  --metamask-black: #0a0a0a;
+  --metamask-purple: #3d065f;
+  --metamask-gray-50: #f7f9fc;
+  --metamask-gray-100: #e9edf6;
   --solana-purple: #9945FF;
   --solana-green: #14F195;
 }
@@ -20,26 +25,36 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 body {
-  color: #1a1a1a;
+  color: var(--metamask-black);
   background: #ffffff;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Background Halo Effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(61, 6, 95, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at bottom left, rgba(255, 92, 22, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
- a:hover {
-  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 @layer utilities {
@@ -49,31 +64,28 @@ a {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  .text-gradient-purple {
-    background: linear-gradient(135deg, #9945FF 0%, #9945FF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .text-gradient-green {
-    background: linear-gradient(135deg, #14F195 0%, #14F195 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poly', serif;
+  color: var(--metamask-purple);
 }
 
-h1 { font-weight: 800; letter-spacing: -0.02em; }
-h2 { font-weight: 700; letter-spacing: -0.01em; }
-h3 { font-weight: 700; letter-spacing: -0.01em; }
-h4 { font-weight: 700; letter-spacing: -0.01em; }
-h5 { font-weight: 600; letter-spacing: -0.01em; }
-h6 { font-weight: 600; letter-spacing: -0.01em; }
+h1 { font-weight: 400; letter-spacing: -0.02em; }
+h2 { font-weight: 400; letter-spacing: -0.01em; }
+h3 { font-weight: 400; letter-spacing: -0.01em; }
+h4 { font-weight: 400; letter-spacing: -0.01em; }
+h5 { font-weight: 400; letter-spacing: -0.01em; }
+h6 { font-weight: 400; letter-spacing: -0.01em; }
+
+.btn-primary {
+  @apply bg-metamask-orange text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-0.5;
+}
+
+.btn-secondary {
+  @apply bg-metamask-black text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-black/20 hover:-translate-y-0.5;
+}
+
+.card-vibe {
+  @apply bg-white border border-metamask-gray-100 rounded-3xl p-8 shadow-sm transition-all duration-300 hover:shadow-md;
+}

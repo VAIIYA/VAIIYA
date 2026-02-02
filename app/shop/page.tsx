@@ -53,7 +53,14 @@ export default async function ShopPage() {
                         {products.map((product) => {
                             const defaultImage = product.images.find(img => img.is_default) || product.images[0];
                             const price = product.variants[0]?.price ? (product.variants[0].price / 100).toFixed(2) : '0.00';
-                            const shopUrl = `https://vaiiya.printify.me/product/${product.id}/${product.external?.handle || ''}`;
+
+                            // Fix: Use external handle if it's a full URL, otherwise construct it
+                            let shopUrl = `https://vaiiya.printify.me/product/${product.id}`;
+                            if (product.external?.handle && product.external.handle.startsWith('http')) {
+                                shopUrl = product.external.handle;
+                            } else if (product.external?.id) {
+                                shopUrl = `https://vaiiya.printify.me/product/${product.external.id}`;
+                            }
 
                             return (
                                 <div key={product.id} className="group">

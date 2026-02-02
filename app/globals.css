@@ -79,13 +79,21 @@ h5 { font-weight: 400; letter-spacing: -0.01em; }
 h6 { font-weight: 400; letter-spacing: -0.01em; }
 
 .btn-primary {
-  @apply bg-metamask-orange text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-0.5;
+  @apply bg-metamask-orange text-white rounded-full px-10 py-4 font-bold transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/20 hover:-translate-y-1 active:scale-95;
 }
 
 .btn-secondary {
-  @apply bg-metamask-black text-white rounded-full px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-black/20 hover:-translate-y-0.5;
+  @apply bg-metamask-purple text-white rounded-full px-10 py-4 font-bold transition-all duration-300 hover:shadow-xl hover:shadow-purple-900/20 hover:-translate-y-1 active:scale-95;
+}
+
+.btn-primary-white {
+  @apply bg-white text-metamask-purple rounded-full px-10 py-4 font-bold transition-all duration-300 hover:shadow-xl hover:shadow-white/20 hover:-translate-y-1 active:scale-95;
+}
+
+.btn-secondary-outline {
+  @apply bg-transparent text-metamask-purple border-2 border-metamask-purple rounded-full px-10 py-4 font-bold transition-all duration-300 hover:bg-metamask-purple hover:text-white hover:-translate-y-1 active:scale-95;
 }
 
 .card-vibe {
-  @apply bg-white border border-metamask-gray-100 rounded-3xl p-8 shadow-sm transition-all duration-300 hover:shadow-md;
+  @apply bg-white border border-metamask-gray-100 rounded-[40px] p-10 shadow-sm transition-all duration-500 hover:shadow-xl hover:shadow-metamask-gray-100/50 hover:-translate-y-1;
 }

@@ -17,7 +17,7 @@ export default function AboutPage() {
                         </h1>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                             VAIIYA is a creative studio at the intersection of AI, blockchain, and culture.
-                            We don't just write code; we curate experiences through Vibe Coding.
+                            We don&apos;t just write code; we curate experiences through Vibe Coding.
                         </p>
                     </div>
                 </div>
@@ -36,12 +36,12 @@ export default function AboutPage() {
                             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                                 <p>
                                     Vibe Coding represents a paradigm shift in software development. Coined by Andrej Karpathy,
-                                    it's the practice of using advanced AI to bridge the gap between human intent and machine execution.
+                                    it&apos;s the practice of using advanced AI to bridge the gap between human intent and machine execution.
                                 </p>
                                 <p>
-                                    At VAIIYA, we've embraced this fully. We act as creative directors, guiding powerful AI agents
-                                    to manifest complex decentralized applications at the speed of thought. This isn't just about efficiency;
-                                    it's about maintaining a higher level of creative flow—the "vibe"—throughout the entire building process.
+                                    At VAIIYA, we&apos;ve embraced this fully. We act as creative directors, guiding powerful AI agents
+                                    to manifest complex decentralized applications at the speed of thought. This isn&apos;t just about efficiency;
+                                    it&apos;s about maintaining a higher level of creative flow—the &quot;vibe&quot;—throughout the entire building process.
                                 </p>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ export default function AboutPage() {
                                 </svg>
                             </div>
                             <h3 className="text-xl font-medium mb-4">Ecosystem</h3>
-                            <p className="text-gray-600">A thriving community of builders and innovators pushing the boundaries of what's possible on-chain.</p>
+                            <p className="text-gray-600">A thriving community of builders and innovators pushing the boundaries of what&apos;s possible on-chain.</p>
                         </div>
                     </div>
                 </div>
@@ -125,9 +125,9 @@ export default function AboutPage() {
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl font-serif mb-8 text-white">The VAIIYA Vision</h2>
                     <p className="text-xl text-purple-100 leading-relaxed mb-12">
-                        "We believe the future of software isn't just about functional utility, but about how it makes you feel.
+                        &quot;We believe the future of software isn&apos;t just about functional utility, but about how it makes you feel.
                         By combining AI-augmented development with strong product intuition, we create Web3 tools that feel
-                        like magic."
+                        like magic.&quot;
                     </p>
                     <div className="h-px w-24 bg-metamask-orange mx-auto mb-12"></div>
                     <div className="flex flex-wrap justify-center gap-8 italic text-purple-200">

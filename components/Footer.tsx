@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const socialLinks = [
   {
     name: 'X (Twitter)',
@@ -101,6 +103,14 @@ export default function Footer() {
                 >
                   NIGHTSTUDIO
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/shop"
+                  className="text-gray-600 hover:text-metamask-orange transition-colors"
+                >
+                  VAIIYA Shop
+                </Link>
               </li>
             </ul>
           </div>

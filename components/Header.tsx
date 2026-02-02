@@ -72,6 +72,10 @@ export default function Header() {
               About
             </Link>
 
+            <Link href="/shop" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+              Shop
+            </Link>
+
             {/* Projects Dropdown */}
             <div className="relative group">
               <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">

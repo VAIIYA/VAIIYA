@@ -26,7 +26,7 @@ export default function NightStudioPage() {
                         <a href="https://nightstudio.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary px-10">
                             Explore the Studio
                         </a>
-                        <a href="https://x.com/vaiiya_media" target="_blank" rel="noopener noreferrer" className="btn-secondary px-10">
+                        <a href="https://x.com/VAIIYA_MEDIA" target="_blank" rel="noopener noreferrer" className="btn-secondary px-10">
                             Partner with Us
                         </a>
                     </div>

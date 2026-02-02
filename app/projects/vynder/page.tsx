@@ -23,7 +23,7 @@ export default function VynderPage() {
                             <a href="https://vynder.vercel.app/" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-orange-600 text-white rounded-full font-bold uppercase tracking-widest text-sm hover:bg-orange-500 transition-all shadow-xl shadow-orange-600/20">
                                 Launch PWA
                             </a>
-                            <a href="https://x.com/vaiiya_media" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-white/5 text-white rounded-full font-bold uppercase tracking-widest text-sm border border-white/10 hover:bg-white/10 transition-all">
+                            <a href="https://x.com/VAIIYA_MEDIA" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-white/5 text-white rounded-full font-bold uppercase tracking-widest text-sm border border-white/10 hover:bg-white/10 transition-all">
                                 The Community
                             </a>
                         </div>

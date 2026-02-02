@@ -150,8 +150,8 @@ export default function AboutPage() {
                             <Link href="/" className="btn-primary">
                                 View Projects
                             </Link>
-                            <a href="https://x.com/vaiiya_media" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                                Follow @vaiiya_media
+                            <a href="https://x.com/VAIIYA_MEDIA" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                                Follow @VAIIYA_MEDIA
                             </a>
                         </div>
                     </div>

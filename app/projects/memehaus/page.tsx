@@ -32,7 +32,7 @@ export default function MemeHausPage() {
                                     <span>Start Minting</span>
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                                 </a>
-                                <a href="https://x.com/vaiiya_media" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center justify-center">
+                                <a href="https://x.com/VAIIYA_MEDIA" target="_blank" rel="noopener noreferrer" className="btn-secondary flex items-center justify-center">
                                     Join the Community
                                 </a>
                             </div>

@@ -73,7 +73,7 @@ export default function AboutPage() {
                                         <span>Execute Vibe Check...</span>
                                     </div>
                                     <div className="flex gap-4 text-metamask-orange animate-pulse">
-                                        <span>> Status: High Vibe Detected</span>
+                                        <span>&gt; Status: High Vibe Detected</span>
                                     </div>
                                 </div>
                             </div>

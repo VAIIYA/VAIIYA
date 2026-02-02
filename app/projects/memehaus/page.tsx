@@ -73,7 +73,7 @@ export default function MemeHausPage() {
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl font-serif mb-6 text-metamask-purple">The 10% Kickback</h2>
                     <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-                        We believe in rewarding the creators who build our ecosystem. That's why MemeHaus implements
+                        We believe in rewarding the creators who build our ecosystem. That&apos;s why MemeHaus implements
                         a native kickback mechanism. Every transaction generates a protocol fee, and a significant portion
                         is instantly routed back to the creator and early adopters.
                     </p>
@@ -97,11 +97,11 @@ export default function MemeHausPage() {
             {/* Degen Professional Quote */}
             <section className="py-24 bg-metamask-purple text-white">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-5xl font-serif italic mb-8">"Built forDegens, Engineered for Reality."</h2>
+                    <h2 className="text-5xl font-serif italic mb-8">&quot;Built forDegens, Engineered for Reality.&quot;</h2>
                     <div className="h-px w-24 bg-metamask-orange mx-auto mb-8"></div>
                     <p className="text-xl text-purple-100 max-w-2xl mx-auto">
-                        MemeHaus is a prime example of VAIIYA's "Vibe Coding" in action. We've taken the chaotic energy of the
-                        meme markets and built a robust, high-performance financial tool that doesn't compromise on fun.
+                        MemeHaus is a prime example of VAIIYA&apos;s &quot;Vibe Coding&quot; in action. We&apos;ve taken the chaotic energy of the
+                        meme markets and built a robust, high-performance financial tool that doesn&apos;t compromise on fun.
                     </p>
                 </div>
             </section>

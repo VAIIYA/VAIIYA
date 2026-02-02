@@ -1,11 +1,9 @@
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export default function VynderPage() {
     return (
         <main className="min-h-screen bg-white selection:bg-metamask-orange selection:text-white">
-            <Header />
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-metamask-gray-50/30">

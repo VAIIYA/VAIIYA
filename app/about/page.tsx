@@ -1,11 +1,9 @@
 import Link from 'next/link'
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export default function AboutPage() {
     return (
         <main className="min-h-screen">
-            <Header />
 
             {/* Hero Section */}
             <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">

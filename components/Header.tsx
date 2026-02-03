@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
 const socialLinks = [
@@ -47,6 +50,8 @@ const projects = [
 ]
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -126,16 +131,86 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Menu Button - Placeholder */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button className="text-gray-600 hover:text-solana-purple">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-600 hover:text-metamask-orange transition-colors"
+            >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`md:hidden fixed inset-0 top-16 bg-white z-40 transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="px-4 pt-8 pb-12 h-full overflow-y-auto">
+          <div className="space-y-6">
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              className="block text-2xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              onClick={() => setIsOpen(false)}
+              className="block text-2xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="/shop"
+              onClick={() => setIsOpen(false)}
+              className="block text-2xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+            >
+              Shop
+            </Link>
+
+            <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Projects</h3>
+              <div className="grid grid-cols-1 gap-4">
+                {projects.map((project) => (
+                  <Link
+                    key={project.slug}
+                    href={`/projects/${project.slug}`}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg text-gray-600 hover:text-metamask-orange transition-colors"
+                  >
+                    {project.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-gray-100">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Socials</h3>
+              <div className="flex gap-6">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-metamask-orange transition-colors"
+                    title={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   )
 }

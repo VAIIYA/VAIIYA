@@ -1,11 +1,9 @@
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export default function NightStudioPage() {
     return (
         <main className="min-h-screen bg-white text-gray-900">
-            <Header />
 
             {/* Hero Section */}
             <section className="relative pt-24 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-[#f9f5ff] to-white">
@@ -26,7 +24,7 @@ export default function NightStudioPage() {
                         <a href="https://nightstudio.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary px-10">
                             Explore the Studio
                         </a>
-                        <a href="https://x.com/VaiiyaMedia" target="_blank" rel="noopener noreferrer" className="btn-secondary px-10">
+                        <a href="https://x.com/VAIIYA_MEDIA" target="_blank" rel="noopener noreferrer" className="btn-secondary px-10">
                             Partner with Us
                         </a>
                     </div>

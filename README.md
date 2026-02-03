@@ -49,7 +49,7 @@ Built with:
 
 ## 🔗 Links
 
-- **X (Twitter)**: [@VaiiyaMedia](https://x.com/VaiiyaMedia)
+- **X (Twitter)**: [@VAIIYA_MEDIA](https://x.com/VAIIYA_MEDIA)
 - **YouTube**: [@VAIIYA-MEDIA](https://www.youtube.com/@VAIIYA-MEDIA)
 - **TikTok**: [@vaiiya.media](https://www.tiktok.com/@vaiiya.media)
 - **GitHub**: [@vaiiya](https://github.com/vaiiya)

@@ -1,11 +1,9 @@
 import Link from 'next/link'
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export default function AboutPage() {
     return (
         <main className="min-h-screen">
-            <Header />
 
             {/* Hero Section */}
             <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -73,7 +71,7 @@ export default function AboutPage() {
                                         <span>Execute Vibe Check...</span>
                                     </div>
                                     <div className="flex gap-4 text-metamask-orange animate-pulse">
-                                        <span>{'>'} Status: High Vibe Detected</span>
+                                        <span>&gt; Status: High Vibe Detected</span>
                                     </div>
                                 </div>
                             </div>
@@ -150,8 +148,8 @@ export default function AboutPage() {
                             <Link href="/" className="btn-primary">
                                 View Projects
                             </Link>
-                            <a href="https://x.com/VaiiyaMedia" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                                Follow @VaiiyaMedia
+                            <a href="https://x.com/VAIIYA_MEDIA" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                                Follow @VAIIYA_MEDIA
                             </a>
                         </div>
                     </div>

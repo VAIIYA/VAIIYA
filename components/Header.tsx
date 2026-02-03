@@ -1,4 +1,8 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
+
 
 const socialLinks = [
   {
@@ -47,6 +51,8 @@ const projects = [
 ]
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,16 +128,90 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Menu Button - Placeholder */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button className="text-gray-600 hover:text-solana-purple">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-600 hover:text-metamask-orange transition-colors relative z-[60]"
+            >
+              {isMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 md:hidden overflow-y-auto">
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-white/98 backdrop-blur-xl"></div>
+
+          <div className="relative pt-20 pb-12 px-6">
+            <div className="flex flex-col space-y-8">
+              {/* Main Links */}
+              <div className="space-y-4">
+                <Link
+                  href="/"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+                >
+                  About
+                </Link>
+              </div>
+
+              {/* Projects Section */}
+              <div className="space-y-4 pt-4 border-t border-gray-100">
+                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Projects</h3>
+                <div className="grid grid-cols-1 gap-4">
+                  {projects.map((project) => (
+                    <Link
+                      key={project.slug}
+                      href={`/projects/${project.slug}`}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="text-xl text-gray-600 hover:text-metamask-orange transition-colors"
+                    >
+                      {project.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Socials Section */}
+              <div className="space-y-4 pt-4 border-t border-gray-100">
+                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Connect</h3>
+                <div className="flex flex-wrap gap-6">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-500 hover:text-metamask-orange transition-colors p-2 bg-gray-50 rounded-xl"
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

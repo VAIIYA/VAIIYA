@@ -100,8 +100,8 @@ export default function LuckyHausPage() {
                             <h2 className="text-4xl font-serif mb-8 text-white">Redefining the Gamble.</h2>
                             <div className="space-y-6 text-lg text-gray-400 leading-relaxed">
                                 <p>
-                                    LuckyHaus isn't just a lottery; it's a social experiment in high-stakes transparency.
-                                    By leveraging Solana's sub-second finality, we've created a platform that feels alive.
+                                    LuckyHaus isn&apos;t just a lottery; it&apos;s a social experiment in high-stakes transparency.
+                                    By leveraging Solana&apos;s sub-second finality, we&apos;ve created a platform that feels alive.
                                 </p>
                                 <p>
                                     Built with the core VAIIYA philosophy of Vibe Coding, LuckyHaus strips away the friction of
@@ -120,7 +120,7 @@ export default function LuckyHausPage() {
                     <div className="relative z-10 p-12 md:p-20 text-center">
                         <h2 className="text-4xl font-serif mb-4 text-white">Your Wallet, Your Luck.</h2>
                         <p className="text-xl text-purple-200 mb-10 max-w-xl mx-auto italic">
-                            "The pot is growing. Are you in the Haus?"
+                            &quot;The pot is growing. Are you in the Haus?&quot;
                         </p>
                         <a href="https://luckyhaus.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
                             Join LuckyHaus Now

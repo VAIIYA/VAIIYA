@@ -53,7 +53,7 @@ export default function VynderPage() {
                                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.64.304 1.25.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
                                         </div>
                                     </div>
-                                    <p className="text-gray-400 text-sm">Passionate about Web3 and long hikes. Let's build something cool.</p>
+                                    <p className="text-gray-400 text-sm">Passionate about Web3 and long hikes. Let&apos;s build something cool.</p>
                                     <div className="flex gap-2">
                                         <span className="px-2 py-1 bg-white/10 rounded-md text-[10px] uppercase font-bold tracking-widest text-orange-500">Music</span>
                                         <span className="px-2 py-1 bg-white/10 rounded-md text-[10px] uppercase font-bold tracking-widest text-blue-500">Tech</span>
@@ -99,7 +99,7 @@ export default function VynderPage() {
             <section className="py-24 bg-zinc-950">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <p className="text-3xl sm:text-4xl font-serif leading-relaxed italic text-gray-300">
-                        "In a world of bots and noise, Vynder uses the blockchain to foster genuine, high-vibe human connection."
+                        &quot;In a world of bots and noise, Vynder uses the blockchain to foster genuine, high-vibe human connection.&quot;
                     </p>
                     <div className="mt-12 h-px w-20 bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto"></div>
                 </div>

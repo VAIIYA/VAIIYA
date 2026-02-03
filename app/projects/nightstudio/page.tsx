@@ -97,8 +97,8 @@ export default function NightStudioPage() {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                     <h2 className="text-4xl font-serif mb-10">The Vibe of Excellence.</h2>
                     <p className="text-2xl text-purple-100 leading-relaxed italic mb-12">
-                        "At NIGHTSTUDIO, we believe that premium software shouldn't just function—it should inspire.
-                        By merging elite design with Solana's power, we're setting a new standard for Web3 tools."
+                        &quot;At NIGHTSTUDIO, we believe that premium software shouldn&apos;t just function—it should inspire.
+                        By merging elite design with Solana&apos;s power, we&apos;re setting a new standard for Web3 tools.&quot;
                     </p>
                     <div className="h-px w-24 bg-green-400 mx-auto"></div>
                 </div>
@@ -109,8 +109,8 @@ export default function NightStudioPage() {
                 <div className="max-w-7xl mx-auto bg-gradient-to-br from-metamask-gray-50 to-white border border-purple-50 rounded-[60px] p-12 md:p-24 text-center shadow-lg">
                     <h2 className="text-5xl font-serif mb-8 text-metamask-purple">Your Studio Awaits.</h2>
                     <p className="text-xl text-gray-500 mb-12 max-w-xl mx-auto">
-                        Step into a more refined social ecosystem. Whether you're a creator or a connoisseur,
-                        there's a place for you in the night.
+                        Step into a more refined social ecosystem. Whether you&apos;re a creator or a connoisseur,
+                        there&apos;s a place for you in the night.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <a href="https://nightstudio.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary px-12 py-5 text-lg">

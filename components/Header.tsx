@@ -78,6 +78,10 @@ export default function Header() {
               About
             </Link>
 
+            <Link href="/progress" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+              Progress
+            </Link>
+
             <Link href="/shop" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
               Shop
             </Link>

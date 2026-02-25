@@ -1,48 +1,47 @@
-const products = [
-  {
-    name: 'LuckyHaus',
-    description: 'Your luck, amplified. Experience the future of chance on Solana.',
-    url: 'https://luckyhaus.vercel.app/',
-    gradient: 'from-purple-500 to-pink-500',
-  },
-  {
-    name: 'MemeHaus',
-    description: 'Where jokes print money. Create, mint, and trade memecoins on Solana.',
-    url: 'https://memehaus.vercel.app/',
-    gradient: 'from-green-500 to-teal-500',
-  },
-  {
-    name: 'VYNDER',
-    description: 'Dating on the blockchain. The first Web3 PWA dating app built on Solana.',
-    url: 'https://vynder.vercel.app/',
-    gradient: 'from-orange-500 to-red-500',
-  },
-  {
-    name: 'NIGHTSTUDIO',
-    description: 'Creative digital studio crafting immersive Web3 experiences on Solana.',
-    url: 'https://nightstudio.vercel.app/',
-    gradient: 'from-purple-600 to-indigo-600',
-  },
-]
+import { useTranslations } from 'next-intl';
 
 export default function Products() {
+  const t = useTranslations('Products');
+
+  const products = [
+    {
+      id: 'luckyhaus',
+      url: 'https://luckyhaus.vercel.app/',
+      gradient: 'from-purple-500 to-pink-500',
+    },
+    {
+      id: 'memehaus',
+      url: 'https://memehaus.vercel.app/',
+      gradient: 'from-green-500 to-teal-500',
+    },
+    {
+      id: 'vynder',
+      url: 'https://vynder.vercel.app/',
+      gradient: 'from-orange-500 to-red-500',
+    },
+    {
+      id: 'nightstudio',
+      url: 'https://nightstudio.vercel.app/',
+      gradient: 'from-purple-600 to-indigo-600',
+    },
+  ];
+
   return (
     <section id="products" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-serif mb-6">
-            Our <span className="text-metamask-purple">Products</span>
+            {t('title')} <span className="text-metamask-purple">{t('titleColored')}</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Building the future of Web3, one product at a time.
-            Each project showcases our commitment to innovation and clean code.
+            {t('description')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product, index) => (
+          {products.map((product) => (
             <a
-              key={product.name}
+              key={product.id}
               href={product.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -56,16 +55,16 @@ export default function Products() {
                     </svg>
                   </div>
                   <h3 className="text-2xl font-serif mb-2 text-gray-900 group-hover:text-metamask-orange transition-colors">
-                    {product.name}
+                    {t(`${product.id}.name`)}
                   </h3>
                 </div>
 
                 <p className="text-gray-600 mb-8 leading-relaxed flex-grow">
-                  {product.description}
+                  {t(`${product.id}.description`)}
                 </p>
 
                 <div className="flex items-center text-metamask-orange font-semibold group-hover:gap-2 transition-all mt-auto">
-                  Visit Site
+                  {t('visitSite')}
                   <svg className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

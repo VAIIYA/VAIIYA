@@ -3,15 +3,17 @@ import VideoSection from '@/components/VideoSection'
 import Products from '@/components/Products'
 import About from '@/components/About'
 import Footer from '@/components/Footer'
+import { getTranslations } from 'next-intl/server'
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations('Index')
   return (
     <main className="min-h-screen">
       <Hero />
       <VideoSection
         src="/media/VAIIYA_x2000.mp4"
-        title="Experience the Vibe"
-        description="Crafting the future of Web3 on Solana with unmatched precision and aesthetic excellence."
+        title={t('videoTitle')}
+        description={t('videoDescription')}
       />
       <About />
       <Products />

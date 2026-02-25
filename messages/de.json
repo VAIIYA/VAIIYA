@@ -1,0 +1,197 @@
+{
+    "Index": {
+        "title": "Willkommen bei VAIIYA",
+        "videoTitle": "Erleben Sie den Vibe",
+        "videoDescription": "Gestaltung der Zukunft von Web3 auf Solana mit beispielloser Präzision und ästhetischer Exzellenz."
+    },
+    "Hero": {
+        "poweredBy": "Angetrieben von der Solana Blockchain",
+        "building": "Bauen für",
+        "on": "Auf",
+        "description": "Wir kreieren innovative Web3-Erlebnisse auf der Solana-Blockchain. Agentic Engineering trifft auf Blockchain-Technologie. Keine Kompromisse. Nur pure Innovation und sauberer Code.",
+        "exploreProducts": "Entdecken Sie Unsere Produkte",
+        "viewGithub": "Auf GitHub ansehen"
+    },
+    "About": {
+        "web3Native": "Web3 Nativ.",
+        "agenticEngineering": "Agentic Engineering.",
+        "intro": "Wir bauen innovative Web3-Anwendungen auf Solana. Jede Zeile Code wird mit Leidenschaft, Präzision und tiefem Verständnis der Blockchain-Technologie erstellt.",
+        "features": {
+            "blockchain": {
+                "title": "Blockchain Zuerst",
+                "description": "Gebaut auf Solana. Ihre Wallet ist Ihre Identität. Keine Mittelsmänner. Nur pure Blockchain-Technologie, die jede Interaktion antreibt."
+            },
+            "agentic": {
+                "title": "Agentic Engineering",
+                "description": "Sauberer Code. Moderne Architektur. Entwicklererfahrung zählt. Wir programmieren mit Leidenschaft und bauen zielgerichtet."
+            },
+            "speed": {
+                "title": "Blitzschnell",
+                "description": "Solana-Geschwindigkeit. Finalität in Sekundenbruchteilen. Skalierbare Infrastruktur. Erleben Sie die Zukunft der Blockchain-Leistung."
+            }
+        }
+    },
+    "Header": {
+        "home": "Startseite",
+        "about": "Über uns",
+        "progress": "Fortschritt",
+        "shop": "Shop",
+        "projects": "Projekte",
+        "socials": "Socials",
+        "connect": "Verbinden"
+    },
+    "Products": {
+        "title": "Unsere",
+        "titleColored": "Produkte",
+        "description": "Wir bauen die Zukunft von Web3, Produkt für Produkt. Jedes Projekt zeigt unser Engagement für Innovation und sauberen Code.",
+        "luckyhaus": {
+            "name": "LuckyHaus",
+            "description": "Ihr Glück, verstärkt. Erleben Sie die Zukunft des Zufalls auf Solana."
+        },
+        "memehaus": {
+            "name": "MemeHaus",
+            "description": "Wo Witze Geld drucken. Erstellen, prägen und handeln Sie Memecoins auf Solana."
+        },
+        "vynder": {
+            "name": "VYNDER",
+            "description": "Dating auf der Blockchain. Die erste Web3 PWA Dating-App auf Solana."
+        },
+        "nightstudio": {
+            "name": "NIGHTSTUDIO",
+            "description": "Kreatives digitales Studio, das immersive Web3-Erlebnisse auf Solana erschafft."
+        },
+        "visitSite": "Website besuchen"
+    },
+    "Footer": {
+        "slogan": "We. As One.",
+        "description": "Aufbau der Zukunft von Web3 auf Solana. Agentic Engineering. Blockchain Zuerst.",
+        "products": "Produkte",
+        "connect": "Verbinden",
+        "shop": "VAIIYA Shop",
+        "rights": "Alle Rechte vorbehalten.",
+        "builtOn": "Gebaut auf"
+    },
+    "AboutPage": {
+        "titleStart": "Das Bauen von High-Vibe",
+        "titleEnd": "Web3-Anwendungen.",
+        "description": "VAIIYA ist ein Kreativstudio an der Schnittstelle von KI, Blockchain und Kultur. Wir schreiben nicht nur Code; wir kuratieren Erlebnisse durch Agentic Engineering.",
+        "whatIsTitle": "Was ist Agentic Engineering?",
+        "whatIsP1": "Agentic Engineering stellt einen Paradigmenwechsel in der Softwareentwicklung dar. Geprägt von Andrej Karpathy, ist es die Praxis, fortschrittliche KI einzusetzen, um die Lücke zwischen menschlicher Absicht und maschineller Ausführung zu schließen.",
+        "whatIsP2": "Bei VAIIYA haben wir dies vollständig angenommen. Wir agieren als kreative Direktoren, die leistungsstarke KI-Agenten anleiten, um komplexe dezentrale Anwendungen mit der Geschwindigkeit von Gedanken zu manifestieren. Es geht nicht nur um Effizienz; es geht darum, ein höheres Maß an kreativem Fluss—den 'Vibe'—während des gesamten Bauprozesses aufrechtzuerhalten.",
+        "initVision": "Vision Initialisieren",
+        "setParams": "Neuronale Parameter Setzen",
+        "archModular": "- Architektur: Modular",
+        "networkSolana": "- Netzwerk: Solana Mainnet",
+        "execVibe": "Vibe-Check Ausführen...",
+        "statusVibe": "> Status: Hoher Vibe Erkannt",
+        "whySolanaTitle": "Warum Solana?",
+        "speedTitle": "Unübertroffene Geschwindigkeit",
+        "speedDesc": "400ms Blockzeiten bedeuten, dass Ihre Benutzer nie warten müssen. Echtzeit-Interaktion für echte Auswirkungen.",
+        "costTitle": "Niedrige Kosten",
+        "costDesc": "Gebühren von Bruchteilen eines Cents machen Web3 für jeden zugänglich und ermöglichen Anwendungsfälle für die Massenadaption.",
+        "ecoTitle": "Ökosystem",
+        "ecoDesc": "Eine blühende Gemeinschaft von Entwicklern und Innovatoren, die die Grenzen des auf der Chain Möglichen verschieben.",
+        "visionTitle": "Die VAIIYA Vision",
+        "visionQuote": "\"Wir glauben, dass die Zukunft von Software nicht nur funktionale Nützlichkeit betrifft, sondern auch, wie sie sich anfühlt. Durch die Kombination von KI-gestützter Entwicklung mit starker Produktintuition kreieren wir Web3-Tools, die sich wie Magie anfühlen.\"",
+        "ctaTitle": "Bereit für den Vibe?",
+        "ctaDesc": "Erkunden Sie unsere Produkte oder kontaktieren Sie uns, um zu sehen, wie wir Ihre Web3-Vision verwirklichen können.",
+        "viewProjects": "Projekte Ansehen",
+        "followVaiya": "Auf @VAIIYA_MEDIA folgen"
+    },
+    "LuckyHausPage": {
+        "nextDraw": "Nächste Ziehung in 08:24:12",
+        "titleStart": "Das Glück ist",
+        "titleEnd": "mit den Mutigen.",
+        "description": "Die ultimative tägliche USDC-Lotterie auf Solana. Ein Gewinner. Ein Pot. Keine Komplexität.",
+        "enterDraw": "Teilnehmen",
+        "learn": "Den Vibe Lernen",
+        "stat1": "Gewonnene Gesamtpreise",
+        "stat2": "Glückliche Wallets",
+        "stat3": "Tägliche Ziehungen",
+        "feat1Title": "Gesteuert durch USDC",
+        "feat1Desc": "Stabilisierte Belohnungen. Keine volatilen Token, nur pures USDC direkt auf deine Wallet.",
+        "feat2Title": "Verifizierbar Fair",
+        "feat2Desc": "Jede Ziehung ist permanent und öffentlich auf der Solana Blockchain. Vertrauen durch Transparenz.",
+        "feat3Title": "Solana Geschwindigkeit",
+        "feat3Desc": "Interaktive Benutzeroberfläche in Echtzeit. Spüre den Puls der Lotterie, wenn sie stattfindet.",
+        "redefTitle": "Das Glücksspiel neu definieren.",
+        "redefP1": "LuckyHaus ist nicht nur eine Lotterie; es ist ein soziales Experiment in High-Stakes-Transparenz. Durch die Nutzung der rasanten Leistung von Solana haben wir ein System der Beständigkeit etabliert.",
+        "redefP2": "Entworfen im Geiste von Agentic Engineering vergisst LuckyHaus alle Reibungen vergangener Glücksspielerfahrungen. Es ist einfach.",
+        "ctaTitle": "Deine Wallet, Dein Glück.",
+        "ctaQuote": "\"Der Pot wächst. Bist du in the Haus?\"",
+        "ctaBtn": "Jetzt eintreten"
+    },
+    "MemeHausPage": {
+        "liveOnMainnet": "LIVE AUF SOLANA MAINNET",
+        "titleStart": "Wo Witze",
+        "titleEnd": "Geld Drucken.",
+        "description": "Die ultimative Startrampe für die nächste Generation kulturdefinierender Memecoins. Schnell, fair und nachweislich viral.",
+        "startMinting": "Minting Starten",
+        "joinCommunity": "Der Community Beitreten",
+        "dashboardTitle": "MemeHaus Dashboard",
+        "kickbacksTotal": "DEINE KICKBACKS",
+        "tokensCreated": "ERSTELLTE TOKENS",
+        "volGenerated": "GENERIERTES VOLUMEN",
+        "kickbackTitle": "Der 10% Kickback",
+        "kickbackDesc": "Wir glauben daran, die Gründer zu belohnen, die unser Ökosystem aufbauen. Deshalb implementiert MemeHaus einen nativen Kickback-Mechanismus. Jede Transaktion generiert eine Protokollgebühr, und ein erheblicher Teil wird sofort an den Ersteller zurückgeleitet.",
+        "fairLaunchTitle": "Fairer Start",
+        "fairLaunchDesc": "Keine Team Tokens. Kein Presale. 100% fairer Start für jeden Meme.",
+        "instantMintTitle": "Sofortiges Minten",
+        "instantMintDesc": "Von der Idee zur Live-Handlung in weniger als 60 Sekunden auf Solana.",
+        "autoLpTitle": "Automatischer LP",
+        "autoLpDesc": "Liquidität wird automatisch gesperrt, um eine sichere Handelsumgebung zu garantieren.",
+        "quote": "\"Gebaut für Degen, Entwickelt für die Realität.\"",
+        "quoteDesc": "MemeHaus ist ein erstklassiges Beispiel für VAIIYAs \"Agentic Engineering\". Wir haben die chaotische Energie von Memecoins genommen und sie in ein reibungsloses Finanzwerkzeug übersetzt.",
+        "ctaTitle": "Geschichte Schreiben. Memes Machen.",
+        "ctaDesc": "Schließen Sie sich Tausenden Nutzern an, die bei MemeHaus schon den Markt prägen.",
+        "launchApp": "App Starten",
+        "allProjects": "Alle VAIIYA Projekte"
+    },
+    "VynderPage": {
+        "privateBeta": "NOCH IN DER PRIVATEN BETA",
+        "titleStart": "Dating.",
+        "titleEnd": "On-Chain.",
+        "description": "Das erste Web3-native Dating-Erlebnis. Ihre Wallet ist Ihre Identität. Keine App Stores, keine Grenzen. Nur reine Verbindungen.",
+        "launchPwa": "PWA Starten",
+        "joinCommunity": "Der Community Beitreten",
+        "cardAge": "Sarah, 24",
+        "cardDesc": "Träumt in Web3 und macht lange Wanderungen. Lass uns etwas Cooles bauen.",
+        "cardTag1": "Musik",
+        "cardTag2": "Tech",
+        "beyondTitle": "Über das Wischen Hinaus.",
+        "feat1Title": "Wallet-Zentrierte Identität",
+        "feat1Desc": "Keine Passwörter oder Mails. Verbinden Sie Ihre Wallet für authentische Interaktionen.",
+        "feat2Title": "PWA Freiheit",
+        "feat2Desc": "Überall sofort verfügbar. Vynder umgeht App Stores für Freiheit und Privatsphäre.",
+        "feat3Title": "Sozial orientiert, technisch getrieben",
+        "feat3Desc": "Basierend auf Agentic Engineering - optimiert für Flow, Gesundheit des Systems.",
+        "quote": "\"In einer Welt aus Bots und Lärm nutzt Vynder die Blockchain für echte menschliche High-Vibe-Verbindungen.\"",
+        "ctaTitle": "Bereit für deinen Vibe?",
+        "ctaDesc": "Trete unserer privaten Beta bei und erlebe die Zukunft web3 sozialer Erfahrungen.",
+        "enterVynder": "Vynder Betreten",
+        "moreProjects": "Weitere Projekte"
+    },
+    "NightStudioPage": {
+        "premiumSub": "Premium Creator Infrastruktur",
+        "titleStart": "Heben Sie Ihre",
+        "titleEnd": "Digitale Präsenz an.",
+        "description": "NIGHTSTUDIO ist die elitäre soziale Ebene für Creator. Sichern Sie sich Premium-Erlebnisse, bauen Sie auf und erleben Sie echte Web3-Auswirkungen.",
+        "exploreStudio": "Studio Erkunden",
+        "partnerUs": "Mit uns arbeiten",
+        "sovereignTitle": "Gebaut für wahre Schöpfer.",
+        "gatedTitle": "Geschützter Zugang",
+        "gatedDesc": "Komplexe Werkzeuge helfen Ihnen, Ihre Reichweite zu strukturieren und Ihren Wert zu realisieren.",
+        "directTitle": "Direkter Gewinn",
+        "directDesc": "Zahlungen fließen schnell in 400ms – keine Einmischung durch die Plattform.",
+        "deepTitle": "Tiefe Verbindung",
+        "deepDesc": "Errichten Sie nachhaltige Beziehungen, frei von manipulativen Algorithmen.",
+        "vibeStatus": "Studio Zugang: GEWÄHRT",
+        "vibeTitle": "High Vibe",
+        "philosophyTitle": "Die Philosophie fantastischer Vibes.",
+        "philosophyQuote": "\"Bei NIGHTSTUDIO fordern wir Funktionalität, die inspiriert. Web3-Werkzeuge für ein faires Morgen.\"",
+        "ctaTitle": "Ihr Studio wartet.",
+        "ctaDesc": "Erreichen Sie neue soziale Landschaften - es gibt immer einen Ort voller Vibes.",
+        "enterStudio": "NIGHTSTUDIO Betreten",
+        "viewVynder": "Vynder Ansehen"
+    }
+}

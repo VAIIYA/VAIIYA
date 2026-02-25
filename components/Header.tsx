@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import LanguageSwitcher from './LanguageSwitcher'
 
+import { useTranslations } from 'next-intl'
 
 const socialLinks = [
   {
@@ -52,6 +54,7 @@ const projects = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const t = useTranslations('Header')
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
@@ -71,25 +74,25 @@ export default function Header() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              Home
+              {t('home')}
             </Link>
 
             <Link href="/about" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              About
+              {t('about')}
             </Link>
 
             <Link href="/progress" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              Progress
+              {t('progress')}
             </Link>
 
             <Link href="/shop" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              Shop
+              {t('shop')}
             </Link>
 
             {/* Projects Dropdown */}
             <div className="relative group">
               <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-                Projects
+                {t('projects')}
                 <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -112,7 +115,7 @@ export default function Header() {
             {/* Socials Dropdown */}
             <div className="relative group">
               <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-                Socials
+                {t('socials')}
                 <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -133,6 +136,11 @@ export default function Header() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            {/* Language Switcher */}
+            <div className="flex items-center ml-4">
+              <LanguageSwitcher />
             </div>
           </div>
 
@@ -171,27 +179,27 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
                 >
-                  Home
+                  {t('home')}
                 </Link>
                 <Link
                   href="/about"
                   onClick={() => setIsMenuOpen(false)}
                   className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
                 >
-                  About
+                  {t('about')}
                 </Link>
                 <Link
                   href="/shop"
                   onClick={() => setIsMenuOpen(false)}
                   className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
                 >
-                  Shop
+                  {t('shop')}
                 </Link>
               </div>
 
               {/* Projects Section */}
               <div className="space-y-4 pt-4 border-t border-gray-100">
-                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Projects</h3>
+                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">{t('projects')}</h3>
                 <div className="grid grid-cols-1 gap-4">
                   {projects.map((project) => (
                     <Link
@@ -208,7 +216,7 @@ export default function Header() {
 
               {/* Socials Section */}
               <div className="space-y-4 pt-4 border-t border-gray-100">
-                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Connect</h3>
+                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">{t('connect')}</h3>
                 <div className="flex flex-wrap gap-6">
                   {socialLinks.map((social) => (
                     <a

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslations } from 'next-intl';
 
 const socialLinks = [
   {
@@ -40,6 +41,8 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const t = useTranslations('Footer');
+
   return (
     <footer className="bg-metamask-gray-50 border-t border-metamask-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -51,17 +54,17 @@ export default function Footer() {
               <span className="text-2xl font-serif text-metamask-purple">VAIIYA</span>
             </div>
             <p className="text-gray-600 mb-4">
-              We. As One.
+              {t('slogan')}
             </p>
             <p className="text-sm text-gray-500">
-              Building the future of Web3 on Solana. Agentic Engineering. Blockchain First.
+              {t('description')}
             </p>
           </div>
 
           {/* Products */}
           <div>
             <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
-              Products
+              {t('products')}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -109,7 +112,7 @@ export default function Footer() {
                   href="/shop"
                   className="text-gray-600 hover:text-metamask-orange transition-colors"
                 >
-                  VAIIYA Shop
+                  {t('shop')}
                 </Link>
               </li>
             </ul>
@@ -118,7 +121,7 @@ export default function Footer() {
           {/* Connect */}
           <div>
             <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
-              Connect
+              {t('connect')}
             </h3>
             <ul className="space-y-3">
               {socialLinks.map((social) => (
@@ -140,10 +143,10 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} VAIIYA. All rights reserved.
+            © {new Date().getFullYear()} VAIIYA. {t('rights')}
           </p>
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <span>Built on</span>
+            <span>{t('builtOn')}</span>
             <span className="font-semibold text-metamask-purple">Solana</span>
             <svg className="w-4 h-4 text-metamask-orange" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />

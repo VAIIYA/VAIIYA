@@ -1,4 +1,8 @@
+import { useTranslations } from 'next-intl';
+
 export default function Hero() {
+  const t = useTranslations('Hero');
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto w-full">
@@ -9,19 +13,17 @@ export default function Hero() {
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
               </svg>
-              Powered by Solana Blockchain
+              {t('poweredBy')}
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif leading-tight">
-              Building <span className="text-metamask-orange">Web3</span>
+              {t('building')} <span className="text-metamask-orange">Web3</span>
               <br />
-              On <span>Solana.</span>
+              {t('on')} <span>Solana.</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-600 max-w-xl leading-relaxed">
-              We craft innovative Web3 experiences on the Solana blockchain.
-              Agentic Engineering meets blockchain technology. No compromises.
-              Just pure innovation and clean code.
+              {t('description')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -29,7 +31,7 @@ export default function Hero() {
                 href="#products"
                 className="btn-primary inline-flex items-center justify-center"
               >
-                Explore Our Products
+                {t('exploreProducts')}
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -40,7 +42,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="btn-secondary inline-flex items-center justify-center"
               >
-                View on GitHub
+                {t('viewGithub')}
               </a>
             </div>
           </div>

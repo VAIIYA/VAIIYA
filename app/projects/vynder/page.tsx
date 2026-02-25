@@ -84,7 +84,7 @@ export default function VynderPage() {
                                     <div className="w-12 h-12 shrink-0 bg-blue-600/10 rounded-2xl flex items-center justify-center font-mono text-blue-600 font-bold">03</div>
                                     <div>
                                         <h3 className="text-xl font-medium mb-2 text-metamask-purple">Social-First, Tech-Driven</h3>
-                                        <p className="text-gray-600">Built using the core principles of Vibe Coding—optimized for flow, connection, and long-term ecosystem health.</p>
+                                        <p className="text-gray-600">Built using the core principles of Agentic Engineering—optimized for flow, connection, and long-term ecosystem health.</p>
                                     </div>
                                 </div>
                             </div>

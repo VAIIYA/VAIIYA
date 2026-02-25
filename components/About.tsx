@@ -6,7 +6,7 @@ export default function About() {
           <h2 className="text-4xl sm:text-5xl font-serif mb-6">
             Web3 Native.
             <br />
-            <span className="text-metamask-orange">Vibe Coding.</span>
+            <span className="text-metamask-orange">Agentic Engineering.</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We build innovative Web3 applications on Solana. Every line of code
@@ -29,14 +29,14 @@ export default function About() {
             </p>
           </div>
 
-          {/* Vibe Coding */}
+          {/* Agentic Engineering */}
           <div className="card-vibe">
             <div className="w-16 h-16 rounded-2xl bg-metamask-orange/5 border border-metamask-orange/10 flex items-center justify-center mb-6">
               <svg className="w-8 h-8 text-metamask-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
-            <h3 className="text-2xl font-serif mb-4 text-metamask-orange">Vibe Coding</h3>
+            <h3 className="text-2xl font-serif mb-4 text-metamask-orange">Agentic Engineering</h3>
             <p className="text-gray-600 leading-relaxed">
               Clean code. Modern architecture. Developer experience matters.
               We code with passion and build with purpose.

@@ -98,7 +98,7 @@ export default function MemeHausPage() {
                     <h2 className="text-5xl font-serif italic mb-8">&quot;Built for Degens, Engineered for Reality.&quot;</h2>
                     <div className="h-px w-24 bg-metamask-orange mx-auto mb-8"></div>
                     <p className="text-xl text-purple-100 max-w-2xl mx-auto">
-                        MemeHaus is a prime example of VAIIYA&apos;s &quot;Vibe Coding&quot; in action. We&apos;ve taken the chaotic energy of the
+                        MemeHaus is a prime example of VAIIYA&apos;s &quot;Agentic Engineering&quot; in action. We&apos;ve taken the chaotic energy of the
                         meme markets and built a robust, high-performance financial tool that doesn&apos;t compromise on fun.
                     </p>
                 </div>

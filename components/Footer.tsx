@@ -54,7 +54,7 @@ export default function Footer() {
               We. As One.
             </p>
             <p className="text-sm text-gray-500">
-              Building the future of Web3 on Solana. Vibe Coding. Blockchain First.
+              Building the future of Web3 on Solana. Agentic Engineering. Blockchain First.
             </p>
           </div>
 

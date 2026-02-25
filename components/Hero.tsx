@@ -20,7 +20,7 @@ export default function Hero() {
 
             <p className="text-lg sm:text-xl text-gray-600 max-w-xl leading-relaxed">
               We craft innovative Web3 experiences on the Solana blockchain.
-              Vibe Coding meets blockchain technology. No compromises.
+              Agentic Engineering meets blockchain technology. No compromises.
               Just pure innovation and clean code.
             </p>
 

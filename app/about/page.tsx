@@ -15,7 +15,7 @@ export default function AboutPage() {
                         </h1>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                             VAIIYA is a creative studio at the intersection of AI, blockchain, and culture.
-                            We don&apos;t just write code; we curate experiences through Vibe Coding.
+                            We don&apos;t just write code; we curate experiences through Agentic Engineering.
                         </p>
                     </div>
                 </div>
@@ -25,15 +25,15 @@ export default function AboutPage() {
                 <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-metamask-purple/5 rounded-full blur-3xl opacity-50"></div>
             </section>
 
-            {/* What is Vibe Coding? */}
+            {/* What is Agentic Engineering? */}
             <section className="py-24 bg-metamask-gray-50/50 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="text-4xl font-serif mb-6">What is Vibe Coding?</h2>
+                            <h2 className="text-4xl font-serif mb-6">What is Agentic Engineering?</h2>
                             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                                 <p>
-                                    Vibe Coding represents a paradigm shift in software development. Coined by Andrej Karpathy,
+                                    Agentic Engineering represents a paradigm shift in software development. Coined by Andrej Karpathy,
                                     it&apos;s the practice of using advanced AI to bridge the gap between human intent and machine execution.
                                 </p>
                                 <p>
@@ -129,7 +129,7 @@ export default function AboutPage() {
                     </p>
                     <div className="h-px w-24 bg-metamask-orange mx-auto mb-12"></div>
                     <div className="flex flex-wrap justify-center gap-8 italic text-purple-200">
-                        <span>#VibeCoding</span>
+                        <span>#AgenticEngineering</span>
                         <span>#Solana</span>
                         <span>#Web3Native</span>
                     </div>

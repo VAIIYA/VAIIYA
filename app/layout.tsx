@@ -4,8 +4,8 @@ import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'VAIIYA - We. As One.',
-  description: 'Building the future of Web3 on Solana. Vibe Coding. Blockchain First.',
-  keywords: ['Web3', 'Solana', 'Blockchain', 'Vibe Coding', 'VAIIYA'],
+  description: 'Building the future of Web3 on Solana. Agentic Engineering. Blockchain First.',
+  keywords: ['Web3', 'Solana', 'Blockchain', 'Agentic Engineering', 'VAIIYA'],
 }
 
 export default function RootLayout({

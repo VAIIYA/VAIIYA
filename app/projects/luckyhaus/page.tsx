@@ -102,7 +102,7 @@ export default function LuckyHausPage() {
                                     By leveraging Solana&apos;s sub-second finality, we&apos;ve created a platform that feels alive.
                                 </p>
                                 <p>
-                                    Built with the core VAIIYA philosophy of Vibe Coding, LuckyHaus strips away the friction of
+                                    Built with the core VAIIYA philosophy of Agentic Engineering, LuckyHaus strips away the friction of
                                     legacy gaming platforms. Connect, enter, and win.
                                 </p>
                             </div>

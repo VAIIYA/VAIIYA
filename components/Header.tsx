@@ -59,62 +59,25 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center relative">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex-shrink-0 z-10 hidden sm:block">
             <div className="w-8 h-8 rounded-full bg-metamask-orange shadow-lg shadow-orange-500/20"></div>
           </Link>
 
           {/* Brand Name Center */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 text-center pointer-events-none">
-            <span className="text-2xl font-serif text-metamask-purple">VAIIYA</span>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">We. As One.</p>
+          <div className="absolute left-1/2 transform -translate-x-1/2 text-center z-0">
+            <Link href="/">
+              <span className="text-3xl font-serif text-metamask-purple">VAIIYA</span>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">We. As One.</p>
+            </Link>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              {t('home')}
-            </Link>
-
-            <Link href="/about" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              {t('about')}
-            </Link>
-
-            <Link href="/progress" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              {t('progress')}
-            </Link>
-
-            <Link href="/shop" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              {t('shop')}
-            </Link>
-
-            {/* Projects Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-                {t('projects')}
-                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-metamask-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="py-2">
-                  {projects.map((project) => (
-                    <Link
-                      key={project.slug}
-                      href={`/projects/${project.slug}`}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:bg-metamask-gray-50 hover:text-metamask-orange transition-colors"
-                    >
-                      {project.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
+          {/* Right Utilities (Socials & Language Suite) */}
+          <div className="hidden md:flex items-center gap-6 z-10 w-full justify-end sm:w-auto">
             {/* Socials Dropdown */}
             <div className="relative group">
-              <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+              <button className="flex items-center text-sm text-gray-600 hover:text-metamask-orange transition-colors font-medium">
                 {t('socials')}
                 <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -139,13 +102,11 @@ export default function Header() {
             </div>
 
             {/* Language Switcher */}
-            <div className="flex items-center ml-4">
-              <LanguageSwitcher />
-            </div>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden ml-auto z-10">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-600 hover:text-metamask-orange transition-colors relative z-[60]"
@@ -160,6 +121,48 @@ export default function Header() {
                 </svg>
               )}
             </button>
+          </div>
+        </div>
+
+        {/* Bottom Row: Navigation Menu */}
+        <div className="hidden md:flex justify-center items-center space-x-10 mt-6 pb-2">
+          <Link href="/" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+            {t('home')}
+          </Link>
+
+          <Link href="/about" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+            {t('about')}
+          </Link>
+
+          <Link href="/progress" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+            {t('progress')}
+          </Link>
+
+          <Link href="/shop" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+            {t('shop')}
+          </Link>
+
+          {/* Projects Dropdown */}
+          <div className="relative group">
+            <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+              {t('projects')}
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div className="absolute top-full text-left left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-metamask-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="py-2">
+                {projects.map((project) => (
+                  <Link
+                    key={project.slug}
+                    href={`/projects/${project.slug}`}
+                    className="block px-4 py-2 text-sm text-gray-600 hover:bg-metamask-gray-50 hover:text-metamask-orange transition-colors"
+                  >
+                    {project.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </nav>

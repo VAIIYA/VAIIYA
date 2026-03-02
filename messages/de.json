@@ -60,6 +60,14 @@
             "name": "NIGHTSTUDIO",
             "description": "Kreatives digitales Studio, das immersive Web3-Erlebnisse auf Solana erschafft."
         },
+        "blobio": {
+            "name": "BLOBIO",
+            "description": "Nimm an spannenden Blob-Kämpfen teil und erobere die Arena."
+        },
+        "hunter84": {
+            "name": "HUNTER84",
+            "description": "Ein actiongeladenes Retro-Arcade-Jagderlebnis."
+        },
         "visitSite": "Website besuchen"
     },
     "Footer": {
@@ -192,6 +200,52 @@
         "ctaTitle": "Ihr Studio wartet.",
         "ctaDesc": "Erreichen Sie neue soziale Landschaften - es gibt immer einen Ort voller Vibes.",
         "enterStudio": "NIGHTSTUDIO Betreten",
+        "viewVynder": "Vynder Ansehen"
+    },
+    "BlobioPage": {
+        "premiumSub": "Premium Gaming Infrastruktur",
+        "titleStart": "Heben Sie Ihre",
+        "titleEnd": "Blob Arena an.",
+        "description": "BLOBIO ist das ultimative Blob-Battle-Erlebnis. Wachse, dominiere die Arena und erhalte direkte Solana-Auszahlungen.",
+        "exploreStudio": "BLOBIO Erkunden",
+        "partnerUs": "Mit uns arbeiten",
+        "sovereignTitle": "Gebaut für wahre Gamer.",
+        "gatedTitle": "Geschützter Zugang",
+        "gatedDesc": "Komplexe Gaming-Werkzeuge helfen Ihnen, Ihre Reichweite zu strukturieren.",
+        "directTitle": "Direkter Gewinn",
+        "directDesc": "Zahlungen fließen schnell in 400ms – keine Einmischung durch die Plattform.",
+        "deepTitle": "Tiefe Verbindung",
+        "deepDesc": "Errichten Sie nachhaltige Beziehungen, frei von manipulativen Algorithmen.",
+        "vibeStatus": "Arena Zugang: GEWÄHRT",
+        "vibeTitle": "High Vibe",
+        "philosophyTitle": "Die Philosophie fantastischer Vibes.",
+        "philosophyQuote": "\"Bei BLOBIO fordern wir Funktionalität, die inspiriert.\"",
+        "ctaTitle": "Ihre Arena wartet.",
+        "ctaDesc": "Erreichen Sie neue soziale Landschaften - es gibt immer einen Ort voller Vibes.",
+        "enterStudio": "BLOBIO Betreten",
+        "viewVynder": "Vynder Ansehen"
+    },
+    "Hunter84Page": {
+        "premiumSub": "Premium Arcade Infrastruktur",
+        "titleStart": "Heben Sie Ihr",
+        "titleEnd": "Jagdspiel an.",
+        "description": "HUNTER84 ist ein elitäres Arcade-Erlebnis für Gamer, die Eigentum schätzen.",
+        "exploreStudio": "HUNTER84 Erkunden",
+        "partnerUs": "Mit uns arbeiten",
+        "sovereignTitle": "Gebaut für wahre Jäger.",
+        "gatedTitle": "Geschützter Zugang",
+        "gatedDesc": "Komplexe Werkzeuge helfen Ihnen, Ihre Reichweite zu strukturieren und Ihren Wert zu realisieren.",
+        "directTitle": "Direkter Gewinn",
+        "directDesc": "Zahlungen fließen schnell in 400ms – keine Einmischung durch die Plattform.",
+        "deepTitle": "Tiefe Verbindung",
+        "deepDesc": "Errichten Sie nachhaltige Beziehungen, frei von manipulativen Algorithmen.",
+        "vibeStatus": "Arcade Zugang: GEWÄHRT",
+        "vibeTitle": "High Vibe",
+        "philosophyTitle": "Die Philosophie fantastischer Vibes.",
+        "philosophyQuote": "\"Bei HUNTER84 fordern wir Funktionalität, die inspiriert.\"",
+        "ctaTitle": "Ihre Arcade wartet.",
+        "ctaDesc": "Erreichen Sie neue soziale Landschaften - es gibt immer einen Ort voller Vibes.",
+        "enterStudio": "HUNTER84 Betreten",
         "viewVynder": "Vynder Ansehen"
     }
 }

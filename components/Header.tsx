@@ -50,6 +50,8 @@ const projects = [
   { name: 'MemeHaus', slug: 'memehaus' },
   { name: 'VYNDER', slug: 'vynder' },
   { name: 'NIGHTSTUDIO', slug: 'nightstudio' },
+  { name: 'BLOBIO', slug: 'blobio' },
+  { name: 'HUNTER84', slug: 'hunter84' },
 ]
 
 export default function Header() {

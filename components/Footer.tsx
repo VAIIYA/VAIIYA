@@ -108,6 +108,26 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href="https://blobio.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-metamask-orange transition-colors"
+                >
+                  BLOBIO
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://hunter84.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-metamask-orange transition-colors"
+                >
+                  HUNTER84
+                </a>
+              </li>
+              <li>
                 <Link
                   href="/shop"
                   className="text-gray-600 hover:text-metamask-orange transition-colors"

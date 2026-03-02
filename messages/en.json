@@ -60,6 +60,14 @@
             "name": "NIGHTSTUDIO",
             "description": "Creative digital studio crafting immersive Web3 experiences on Solana."
         },
+        "blobio": {
+            "name": "BLOBIO",
+            "description": "Engage in thrilling blob battles and conquer the arena."
+        },
+        "hunter84": {
+            "name": "HUNTER84",
+            "description": "Retro action-packed arcade hunting experience."
+        },
         "visitSite": "Visit Site"
     },
     "Footer": {
@@ -192,6 +200,52 @@
         "ctaTitle": "Your Studio Awaits.",
         "ctaDesc": "Step into a more refined social ecosystem. Whether you're a creator or a connoisseur, there's a place for you in the night.",
         "enterStudio": "Enter NIGHTSTUDIO",
+        "viewVynder": "View Vynder"
+    },
+    "BlobioPage": {
+        "premiumSub": "Premium Gaming Infrastructure",
+        "titleStart": "Elevate Your",
+        "titleEnd": "Blob Arena.",
+        "description": "BLOBIO is the ultimate blob battle experience. Grow your blob, dominate the arena, and receive direct Solana payouts.",
+        "exploreStudio": "Explore BLOBIO",
+        "partnerUs": "Partner with Us",
+        "sovereignTitle": "Built for the Sovereign Gamer.",
+        "gatedTitle": "Gated Excellence",
+        "gatedDesc": "Sophisticated gaming tools allow you to monetize your influence on your own terms.",
+        "directTitle": "Direct Revenue",
+        "directDesc": "Payments are processed instantly on Solana, ensuring 400ms finality.",
+        "deepTitle": "Deep Connection",
+        "deepDesc": "Build meaningful relationships through a platform that prioritizes human interaction over algorithms.",
+        "vibeStatus": "Arena Access: GRANTED",
+        "vibeTitle": "High Vibe",
+        "philosophyTitle": "The Vibe of Excellence.",
+        "philosophyQuote": "\"At BLOBIO, we believe that premium software shouldn't just function—it should inspire.\"",
+        "ctaTitle": "Your Arena Awaits.",
+        "ctaDesc": "Step into a more refined gaming ecosystem.",
+        "enterStudio": "Enter BLOBIO",
+        "viewVynder": "View Vynder"
+    },
+    "Hunter84Page": {
+        "premiumSub": "Premium Arcade Infrastructure",
+        "titleStart": "Elevate Your",
+        "titleEnd": "Hunting Game.",
+        "description": "HUNTER84 is an elite arcade experience for gamers who value ownership.",
+        "exploreStudio": "Explore HUNTER84",
+        "partnerUs": "Partner with Us",
+        "sovereignTitle": "Built for the Sovereign Hunter.",
+        "gatedTitle": "Gated Excellence",
+        "gatedDesc": "Sophisticated content-gating tools allow you to monetize your influence on your own terms.",
+        "directTitle": "Direct Revenue",
+        "directDesc": "Payments are processed instantly on Solana, ensuring 400ms finality.",
+        "deepTitle": "Deep Connection",
+        "deepDesc": "Build meaningful relationships through a platform that prioritizes human interaction over algorithms.",
+        "vibeStatus": "Arcade Access: GRANTED",
+        "vibeTitle": "High Vibe",
+        "philosophyTitle": "The Vibe of Excellence.",
+        "philosophyQuote": "\"At HUNTER84, we believe that premium software shouldn't just function—it should inspire.\"",
+        "ctaTitle": "Your Arcade Awaits.",
+        "ctaDesc": "Step into a more refined gaming ecosystem.",
+        "enterStudio": "Enter HUNTER84",
         "viewVynder": "View Vynder"
     }
 }

@@ -24,6 +24,16 @@ export default function Products() {
       url: 'https://nightstudio.vercel.app/',
       gradient: 'from-purple-600 to-indigo-600',
     },
+    {
+      id: 'blobio',
+      url: 'https://blobio.vercel.app/',
+      gradient: 'from-blue-500 to-cyan-500',
+    },
+    {
+      id: 'hunter84',
+      url: 'https://hunter84.vercel.app/',
+      gradient: 'from-yellow-500 to-red-500',
+    },
   ];
 
   return (

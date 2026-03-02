@@ -60,6 +60,14 @@
             "name": "NIGHTSTUDIO",
             "description": "Creatieve digitale studio die meeslepende Web3-ervaringen op Solana maakt."
         },
+        "blobio": {
+            "name": "BLOBIO",
+            "description": "Ga spannende blob-gevechten aan en verover de arena."
+        },
+        "hunter84": {
+            "name": "HUNTER84",
+            "description": "Retro arcade jachtervaring vol actie."
+        },
         "visitSite": "Bezoek Website"
     },
     "Footer": {
@@ -192,6 +200,52 @@
         "ctaTitle": "Je Studio Wacht op Je.",
         "ctaDesc": "Stap binnen in een verfijnder sociaal ecosysteem. Of je nu een creator bent of een kenner, er is een plek voor jou in the night.",
         "enterStudio": "Betreed NIGHTSTUDIO",
+        "viewVynder": "Bekijk Vynder"
+    },
+    "BlobioPage": {
+        "premiumSub": "Premium Gaming Infrastructuur",
+        "titleStart": "Verhoog je",
+        "titleEnd": "Blob Arena.",
+        "description": "BLOBIO is de ultieme blob-battle ervaring. Laat je blob groeien, domineer de arena en ontvang directe betalingen in Solana.",
+        "exploreStudio": "Verken BLOBIO",
+        "partnerUs": "Samenwerken met Ons",
+        "sovereignTitle": "Gebouwd voor de Onafhankelijke Gamer.",
+        "gatedTitle": "Exclusieve Afscherming",
+        "gatedDesc": "Geavanceerde gaming tools stellen je in staat je invloed op je eigen voorwaarden te gelde te maken.",
+        "directTitle": "Directe Inkomsten",
+        "directDesc": "Betalingen worden direct verwerkt op Solana, met een finaliteit van 400ms.",
+        "deepTitle": "Diepe Connectie",
+        "deepDesc": "Bouw betekenisvolle relaties op via een platform dat menselijke interactie verkiest.",
+        "vibeStatus": "Arena Toegang: VERLEEND",
+        "vibeTitle": "Hoge Vibe",
+        "philosophyTitle": "De Vibe van Uitmuntendheid.",
+        "philosophyQuote": "\"Bij BLOBIO geloven we dat premium software niet alleen zou moeten werken, het zou moeten inspireren.\"",
+        "ctaTitle": "Je Arena Wacht op Je.",
+        "ctaDesc": "Stap binnen in een verfijnder ecosysteem.",
+        "enterStudio": "Betreed BLOBIO",
+        "viewVynder": "Bekijk Vynder"
+    },
+    "Hunter84Page": {
+        "premiumSub": "Premium Arcade Infrastructuur",
+        "titleStart": "Verhoog je",
+        "titleEnd": "Jachtspel.",
+        "description": "HUNTER84 is een elitaire arcade-ervaring voor gamers die waarde hechten aan eigenaarschap.",
+        "exploreStudio": "Verken HUNTER84",
+        "partnerUs": "Samenwerken met Ons",
+        "sovereignTitle": "Gebouwd voor de Onafhankelijke Jager.",
+        "gatedTitle": "Exclusieve Afscherming",
+        "gatedDesc": "Geavanceerde tools stellen je in staat je invloed op je eigen voorwaarden te gelde te maken.",
+        "directTitle": "Directe Inkomsten",
+        "directDesc": "Betalingen worden direct verwerkt op Solana, met een finaliteit van 400ms.",
+        "deepTitle": "Diepe Connectie",
+        "deepDesc": "Bouw betekenisvolle relaties op via een platform dat menselijke interactie verkiest.",
+        "vibeStatus": "Arcade Toegang: VERLEEND",
+        "vibeTitle": "Hoge Vibe",
+        "philosophyTitle": "De Vibe van Uitmuntendheid.",
+        "philosophyQuote": "\"Bij HUNTER84 geloven we dat premium software niet alleen zou moeten werken, het zou moeten inspireren.\"",
+        "ctaTitle": "Je Arcade Wacht op Je.",
+        "ctaDesc": "Stap binnen in een verfijnder ecosysteem.",
+        "enterStudio": "Betreed HUNTER84",
         "viewVynder": "Bekijk Vynder"
     }
 }

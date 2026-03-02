@@ -13,6 +13,8 @@ export const pathnames = {
     '/projects/memehaus': '/projects/memehaus',
     '/projects/vynder': '/projects/vynder',
     '/projects/nightstudio': '/projects/nightstudio',
+    '/projects/blobio': '/projects/blobio',
+    '/projects/hunter84': '/projects/hunter84',
     '/shop': {
         en: '/shop',
         nl: '/winkel',

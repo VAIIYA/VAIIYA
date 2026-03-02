@@ -61,17 +61,21 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center relative">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 z-10 hidden sm:block">
-            <div className="w-8 h-8 rounded-full bg-metamask-orange shadow-lg shadow-orange-500/20"></div>
+        <div className="flex justify-between items-center relative py-2">
+          {/* Logo Main */}
+          <Link href="/" className="flex-shrink-0 z-10 hidden sm:flex items-center gap-3">
+            <img src="/v-logo.jpg" alt="VAIIYA Logo" className="w-10 h-10 rounded-xl" />
+            <div className="flex flex-col">
+              <span className="text-2xl font-serif text-metamask-purple leading-none">VAIIYA</span>
+              <span className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-medium">We. As One.</span>
+            </div>
           </Link>
 
-          {/* Brand Name Center */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 text-center z-0">
-            <Link href="/">
-              <span className="text-3xl font-serif text-metamask-purple">VAIIYA</span>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">We. As One.</p>
+          {/* Mobile Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 text-center z-0 sm:hidden">
+            <Link href="/" className="flex flex-col items-center">
+              <img src="/v-logo.jpg" alt="VAIIYA Logo" className="w-8 h-8 rounded-lg mb-1" />
+              <span className="text-xl font-serif text-metamask-purple leading-none">VAIIYA</span>
             </Link>
           </div>
 

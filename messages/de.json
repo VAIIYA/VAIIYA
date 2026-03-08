@@ -86,7 +86,8 @@
         "connect": "Verbinden",
         "shop": "VAIIYA Shop",
         "rights": "Alle Rechte vorbehalten.",
-        "builtOn": "Gebaut auf"
+        "builtOn": "Gebaut mit",
+        "love": "Liebe"
     },
     "AboutPage": {
         "titleStart": "Das Bauen von High-Vibe",

@@ -86,7 +86,8 @@
         "connect": "Connect",
         "shop": "VAIIYA Shop",
         "rights": "All rights reserved.",
-        "builtOn": "Built on"
+        "builtOn": "Built with",
+        "love": "Love"
     },
     "AboutPage": {
         "titleStart": "Crafting High-Vibe",

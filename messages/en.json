@@ -91,7 +91,8 @@
         "legal": "Legal",
         "privacy": "Privacy Policy",
         "terms": "Terms of Service",
-        "cookies": "Cookie Policy"
+        "cookies": "Cookie Policy",
+        "deleteAccount": "Delete Account"
     },
     "AboutPage": {
         "titleStart": "Crafting High-Vibe",

@@ -90,8 +90,9 @@
         "love": "Liefde",
         "legal": "Juridisch",
         "privacy": "Privacybeleid",
-        "terms": "Algemene Voorwaarden",
-        "cookies": "Cookiebeleid"
+        "terms": "Servicevoorwaarden",
+        "cookies": "Cookiebeleid",
+        "deleteAccount": "Account verwijderen"
     },
     "AboutPage": {
         "titleStart": "Het Bouwen van High-Vibe",

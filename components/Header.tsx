@@ -52,6 +52,8 @@ const projects = [
   { name: 'NIGHTSTUDIO', slug: 'nightstudio' },
   { name: 'BLOBIO', slug: 'blobio' },
   { name: 'HUNTER84', slug: 'hunter84' },
+  { name: 'Dollar Milkshake', slug: 'dollarmilkshake' },
+  { name: 'FYNDER', slug: 'fynder' },
 ]
 
 export default function Header() {

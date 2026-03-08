@@ -34,6 +34,16 @@ export default function Products() {
       url: 'https://hunter84.vercel.app/',
       gradient: 'from-yellow-500 to-red-500',
     },
+    {
+      id: 'dollarmilkshake',
+      url: 'https://dollarmilkshake.vercel.app/',
+      gradient: 'from-yellow-400 to-orange-500',
+    },
+    {
+      id: 'fynder',
+      url: '/projects/fynder',
+      gradient: 'from-blue-500 to-cyan-400',
+    },
   ];
 
   return (

@@ -1,11 +1,9 @@
-import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import VideoSection from '@/components/VideoSection'
 
 export default function ProgressPage() {
     return (
         <main className="min-h-screen bg-white">
-            <Header />
 
             <div className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className="space-y-6">

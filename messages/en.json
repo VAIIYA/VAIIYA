@@ -6,9 +6,10 @@
     },
     "Hero": {
         "poweredBy": "Powered by Solana Blockchain",
-        "building": "Building",
-        "on": "On",
-        "description": "We craft innovative Web3 experiences on the Solana blockchain. Agentic Engineering meets blockchain technology. No compromises. Just pure innovation and clean code.",
+        "titleStart": "Crafting",
+        "titleColored": "Digital Excellence",
+        "titleEnd": "Across Every Platform.",
+        "description": "Websites. Web3. Android Apps. We leverage Agentic Engineering to build high-performance products on Solana and beyond. No compromises. Just pure innovation.",
         "exploreProducts": "Explore Our Products",
         "viewGithub": "View on GitHub"
     },
@@ -67,6 +68,14 @@
         "hunter84": {
             "name": "HUNTER84",
             "description": "Retro action-packed arcade hunting experience."
+        },
+        "dollarmilkshake": {
+            "name": "Dollar Milkshake",
+            "description": "The ultimate Solana DCA tool. Set it, forget it, and watch your memecoin bags grow."
+        },
+        "fynder": {
+            "name": "FYNDER",
+            "description": "Premium Android dating experience. Connection, simplified. Your next chapter starts with a swipe."
         },
         "visitSite": "Visit Site"
     },
@@ -247,5 +256,50 @@
         "ctaDesc": "Step into a more refined gaming ecosystem.",
         "enterStudio": "Enter HUNTER84",
         "viewVynder": "View Vynder"
+    },
+    "DollarMilkshakePage": {
+        "titleStart": "SIP IT.",
+        "titleEnd": "DCA IT.",
+        "description": "The most streamlined DCA experience on Solana. Automate your daily buys and accumulate gems without the stress of volatility.",
+        "startDca": "Start Your DCA",
+        "howItWorks": "How it Works",
+        "stat1": "Daily Buys Executed",
+        "stat2": "Happy Shakers",
+        "stat3": "Total DCA Orders",
+        "feat1Title": "Non-Custodial",
+        "feat1Desc": "Your tokens, your control. Every daily purchase is sent directly to your main wallet instantly.",
+        "feat2Title": "Jupiter Powered",
+        "feat2Desc": "Leveraging Jupiter's best-in-class aggregation to ensure you get the absolute best price on every trade.",
+        "feat3Title": "Set and Forget",
+        "feat3Desc": "One deposit, infinite peace of mind. Our automation handles the rest while you sleep.",
+        "philosophyTitle": "Micro-Investing, Macro Results.",
+        "philosophyP1": "Dollar Milkshake was born from a simple observation: the memecoin market is chaotic. By automating small, consistent buys, we strip away the emotional friction of trading and focus on long-term accumulation.",
+        "philosophyP2": "Built with the VAIIYA principle of Agentic Engineering, we've created a tool that is invisible yet powerful. No complex dashboards, no unnecessary steps. Just pure, automated growth.",
+        "ctaTitle": "Ready to start shaking?",
+        "ctaDesc": "Join the automated revolution and start building your Solana legacy today, one dollar at a time.",
+        "launchDca": "Launch Dollar Milkshake",
+        "viewOther": "View Other Projects"
+    },
+    "FynderProjectPage": {
+        "titleStart": "Find Your",
+        "titleEnd": "Vibe.",
+        "description": "FYNDER is the next generation of social connection on Android. Built for speed, privacy, and genuine high-vibe interactions. No noise, just meaningful matches.",
+        "downloadApp": "Download for Android",
+        "comingSoon": "Coming soon to Google Play",
+        "stat1": "Active Seekers",
+        "stat2": "Matches Made",
+        "stat3": "Daily Swipes",
+        "feat1Title": "Native Performance",
+        "feat1Desc": "Butter-smooth Android experience. Optimized for performance so you can focus on finding the right connection.",
+        "feat2Title": "Privacy First",
+        "feat2Desc": "Secure, encrypted, and respectful. Your data stays yours while you explore new possibilities.",
+        "feat3Title": "Smart Matching",
+        "feat3Desc": "Our agentic algorithms learn your preferences to surface the highest-vibe matches for you.",
+        "philosophyTitle": "Dating, Reimagined for the Modern Era.",
+        "philosophyP1": "FYNDER was built to solve the frustration of modern dating apps. We've stripped away the predatory mechanics and focused on what matters: real people making real connections.",
+        "philosophyP2": "Leveraging VAIIYA's Agentic Engineering, FYNDER provides a seamless experience that feels less like a tool and more like a bridge to your next great story.",
+        "ctaTitle": "Ready to find the one?",
+        "ctaDesc": "Join thousands of others who are already discovering a better way to connect on Android.",
+        "viewProjects": "Explore All Projects"
     }
 }

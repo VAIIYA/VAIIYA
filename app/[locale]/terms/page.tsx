@@ -1,21 +1,10 @@
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function TermsOfService() {
+    const t = useTranslations('Footer');
+
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-indigo-500/30">
-            {/* Navigation Header */}
-            <header className="border-b border-white/10 px-6 py-6 sticky top-0 bg-[#0a0a0a]/80 backdrop-blur-md z-50">
-                <div className="max-w-4xl mx-auto flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-lg">V</div>
-                        <span className="text-2xl font-serif tracking-tight">VAIIYA</span>
-                    </div>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-semibold border border-indigo-500/30 px-3 py-1 rounded-full">
-                        Terms of Service
-                    </span>
-                </div>
-            </header>
-
             <main className="max-w-4xl mx-auto px-6 py-20">
                 <header className="mb-16">
                     <h1 className="text-5xl md:text-6xl font-serif mb-6 leading-tight">Terms of Service</h1>
@@ -118,21 +107,7 @@ export default function TermsOfService() {
                         </p>
                     </section>
                 </div>
-
-                <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <Link href="/" className="group text-indigo-400 hover:text-white transition-colors flex items-center gap-2">
-                        <span className="group-hover:-translate-x-1 transition-transform">←</span>
-                        Back to VAIIYA Home
-                    </Link>
-                    <a href="mailto:privacy@vaiiya.com" className="text-xs text-gray-400 hover:text-white transition-colors uppercase tracking-widest">
-                        Support: privacy@vaiiya.com
-                    </a>
-                </div>
             </main>
-
-            <footer className="max-w-4xl mx-auto px-6 pb-20 text-[10px] text-gray-700 text-center uppercase tracking-tighter">
-                © 2026 VAIIYA. Built on Integrity. Legal Presence: The Netherlands.
-            </footer>
         </div>
     );
 }

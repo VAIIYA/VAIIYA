@@ -2,7 +2,6 @@ import Hero from '@/components/Hero'
 import VideoSection from '@/components/VideoSection'
 import Products from '@/components/Products'
 import About from '@/components/About'
-import Footer from '@/components/Footer'
 import { getTranslations } from 'next-intl/server'
 
 export default async function Home() {
@@ -17,7 +16,6 @@ export default async function Home() {
       />
       <About />
       <Products />
-      <Footer />
     </main>
   )
 }

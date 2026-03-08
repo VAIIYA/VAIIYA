@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import '../globals.css'
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

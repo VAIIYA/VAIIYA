@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl';
 
 const socialLinks = [
@@ -50,7 +51,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/v-logo.jpg" alt="VAIIYA Logo" className="w-8 h-8 rounded-lg" />
+              <Image src="/v-logo.jpg" alt="VAIIYA Logo" width={32} height={32} className="rounded-lg" />
               <div className="flex flex-col">
                 <span className="text-2xl font-serif text-metamask-purple leading-none">VAIIYA</span>
                 <span className="text-[9px] uppercase tracking-[0.2em] text-gray-500 font-medium">We. As One.</span>

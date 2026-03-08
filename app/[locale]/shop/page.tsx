@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Footer from '@/components/Footer'
+import Image from 'next/image'
 import { getPrintifyProducts } from '@/lib/printify'
 
 export const metadata = {
@@ -66,9 +66,11 @@ export default async function ShopPage() {
                                 <div key={product.id} className="group">
                                     <div className="relative aspect-square mb-6 overflow-hidden bg-metamask-gray-50 rounded-[40px] border border-metamask-gray-100 transition-all duration-500 group-hover:shadow-xl group-hover:shadow-metamask-gray-100/50 group-hover:-translate-y-2">
                                         {defaultImage && (
-                                            <img
+                                            <Image
                                                 src={defaultImage.src}
                                                 alt={product.title}
+                                                width={400}
+                                                height={400}
                                                 className="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
                                             />
                                         )}
@@ -105,7 +107,6 @@ export default async function ShopPage() {
                 )}
             </section>
 
-            {/* Quote / Philosophy Section */}
             <section className="py-24 bg-metamask-purple text-white relative overflow-hidden">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                     <p className="text-3xl sm:text-4xl font-serif leading-relaxed italic text-purple-100">
@@ -114,8 +115,6 @@ export default async function ShopPage() {
                     <div className="mt-12 h-px w-24 bg-metamask-orange mx-auto"></div>
                 </div>
             </section>
-
-            <Footer />
         </main>
     )
 }

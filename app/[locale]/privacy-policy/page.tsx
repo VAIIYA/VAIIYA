@@ -99,9 +99,9 @@ export default function PrivacyPolicy() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-serif text-white mb-6 border-l-4 border-indigo-600 pl-4">7. Children's Privacy</h2>
+                        <h2 className="text-2xl font-serif text-white mb-6 border-l-4 border-indigo-600 pl-4">7. Children&apos;s Privacy</h2>
                         <p className="text-gray-400">
-                            In accordance with the Children's Online Privacy Protection Act (COPPA), VAIIYA does not
+                            In accordance with the Children&apos;s Online Privacy Protection Act (COPPA), VAIIYA does not
                             knowingly collect any personal information from children under the age of 13. If you believe
                             a child has provided us with personal data, please contact us immediately.
                         </p>

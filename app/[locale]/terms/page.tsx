@@ -19,7 +19,7 @@ export default function TermsOfService() {
                     <section>
                         <h2 className="text-2xl font-serif text-white mb-6 border-l-4 border-indigo-600 pl-4">1. Acceptance of Terms</h2>
                         <p className="text-gray-400 leading-relaxed">
-                            By accessing or using the services provided by VAIIYA ("we," "our," or "us"), you agree to be bound by these
+                            By accessing or using the services provided by VAIIYA (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), you agree to be bound by these
                             Terms of Service. If you do not agree to these terms, you must not access or use our applications,
                             websites, or any other digital products.
                         </p>
@@ -86,8 +86,8 @@ export default function TermsOfService() {
                     <section>
                         <h2 className="text-2xl font-serif text-white mb-6 border-l-4 border-indigo-600 pl-4">6. Limitation of Liability</h2>
                         <p className="text-gray-400 italic">
-                            "VAIIYA shall not be liable for any indirect, incidental, or consequential damages arising from the use
-                            of our services, including but not limited to loss of digital assets or service interruptions."
+                            &quot;VAIIYA shall not be liable for any indirect, incidental, or consequential damages arising from the use
+                            of our services, including but not limited to loss of digital assets or service interruptions.&quot;
                         </p>
                     </section>
 

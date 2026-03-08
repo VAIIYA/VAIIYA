@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import LanguageSwitcher from './LanguageSwitcher'
 
 import { useTranslations } from 'next-intl'
@@ -9,7 +10,7 @@ import { useTranslations } from 'next-intl'
 const socialLinks = [
   {
     name: 'X (Twitter)',
-    url: 'https://x.com/VAIIYA_MEDIA',
+    url: 'https://x.com/V4IIYA',
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -66,7 +67,7 @@ export default function Header() {
         <div className="flex justify-between items-center relative py-2">
           {/* Logo Main */}
           <Link href="/" className="flex-shrink-0 z-10 hidden sm:flex items-center gap-3">
-            <img src="/v-logo.jpg" alt="VAIIYA Logo" className="w-10 h-10 rounded-xl" />
+            <Image src="/v-logo.jpg" alt="VAIIYA Logo" width={40} height={40} className="rounded-xl" />
             <div className="flex flex-col">
               <span className="text-2xl font-serif text-metamask-purple leading-none">VAIIYA</span>
               <span className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-medium">We. As One.</span>
@@ -76,7 +77,7 @@ export default function Header() {
           {/* Mobile Logo */}
           <div className="absolute left-1/2 transform -translate-x-1/2 text-center z-0 sm:hidden">
             <Link href="/" className="flex flex-col items-center">
-              <img src="/v-logo.jpg" alt="VAIIYA Logo" className="w-8 h-8 rounded-lg mb-1" />
+              <Image src="/v-logo.jpg" alt="VAIIYA Logo" width={32} height={32} className="rounded-lg mb-1" />
               <span className="text-xl font-serif text-metamask-purple leading-none">VAIIYA</span>
             </Link>
           </div>

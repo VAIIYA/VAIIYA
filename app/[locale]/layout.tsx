@@ -25,7 +25,6 @@ export default async function RootLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {/* Header is commented out in original actually it's import Header from @/components/Header, let's keep it */}
           <Header />
           {children}
         </NextIntlClientProvider>

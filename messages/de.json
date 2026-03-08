@@ -87,7 +87,11 @@
         "shop": "VAIIYA Shop",
         "rights": "Alle Rechte vorbehalten.",
         "builtOn": "Gebaut mit",
-        "love": "Liebe"
+        "love": "Liebe",
+        "legal": "Rechtliches",
+        "privacy": "Datenschutz",
+        "terms": "Nutzungsbedingungen",
+        "cookies": "Cookie-Richtlinie"
     },
     "AboutPage": {
         "titleStart": "Das Bauen von High-Vibe",

@@ -87,7 +87,11 @@
         "shop": "VAIIYA Shop",
         "rights": "All rights reserved.",
         "builtOn": "Built with",
-        "love": "Love"
+        "love": "Love",
+        "legal": "Legal",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "cookies": "Cookie Policy"
     },
     "AboutPage": {
         "titleStart": "Crafting High-Vibe",

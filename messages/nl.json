@@ -87,7 +87,11 @@
         "shop": "VAIIYA Winkel",
         "rights": "Alle rechten voorbehouden.",
         "builtOn": "Gebouwd met",
-        "love": "Liefde"
+        "love": "Liefde",
+        "legal": "Juridisch",
+        "privacy": "Privacybeleid",
+        "terms": "Algemene Voorwaarden",
+        "cookies": "Cookiebeleid"
     },
     "AboutPage": {
         "titleStart": "Het Bouwen van High-Vibe",

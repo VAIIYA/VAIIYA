@@ -209,10 +209,15 @@
         "description": "Duik in onze collectie van high-vibe games. Van arcadeklassiekers tot innovatieve Web3-ervaringen, we bouwen voor plezier en betrokkenheid.",
         "klappyName": "KLAPPY",
         "klappyDesc": "Een uitdagend vogelvluchtavontuur. Hoe ver kun jij komen?",
+        "ketrisName": "KETRIS",
+        "ketrisDesc": "De schattigste Tetris-ervaring. Stapel de vibes en maak de lijnen vrij.",
         "playGame": "Speel in Browser"
     },
     "AppsPage": {
         "title": "Apps",
-        "description": "Ontdek onze suite van krachtige applicaties ontworpen voor het moderne Web3-tijdperk en daarna."
+        "description": "Ontdek onze suite van krachtige applicaties ontworpen voor het moderne Web3-tijdperk en daarna.",
+        "wynderWatchName": "WYNDER WATCH",
+        "wynderWatchDesc": "Blijf verbonden met de vibe om je pols. De premium Web3 watch ervaring op Solana.",
+        "launchApp": "Start App"
     }
 }

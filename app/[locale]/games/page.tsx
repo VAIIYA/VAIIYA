@@ -57,6 +57,37 @@ export default async function GamesPage() {
             </div>
           </div>
           
+          {/* KETRIS Game Card */}
+          <div className="group relative bg-white rounded-3xl border border-metamask-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
+            <div className="relative aspect-video overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 group-hover:scale-105 transition-transform duration-500"></div>
+              <div className="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-60 transition-opacity">
+                <span className="text-8xl">🧱</span>
+              </div>
+            </div>
+            <div className="p-8 flex-grow flex flex-col">
+              <h3 className="text-2xl font-serif text-metamask-purple mb-3">
+                {t('ketrisName')}
+              </h3>
+              <p className="text-gray-600 mb-6 flex-grow">
+                {t('ketrisDesc')}
+              </p>
+              <div className="mt-auto">
+                <a
+                  href="https://kawaiitetris.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-metamask-purple text-white font-medium hover:bg-metamask-purple-dark transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-metamask-purple/20"
+                >
+                  {t('playGame')}
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* Placeholder for future games */}
           <div className="relative rounded-3xl border border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center p-8 text-center opacity-60">
             <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">

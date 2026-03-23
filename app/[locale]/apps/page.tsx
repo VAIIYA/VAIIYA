@@ -26,8 +26,39 @@ export default async function AppsPage() {
       {/* Apps Section */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* WYNDER WATCH App Card */}
+          <div className="group relative bg-white rounded-3xl border border-metamask-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
+            <div className="relative aspect-video overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-indigo-600/10 group-hover:scale-105 transition-transform duration-500"></div>
+              <div className="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-60 transition-opacity">
+                <span className="text-8xl">⌚</span>
+              </div>
+            </div>
+            <div className="p-8 flex-grow flex flex-col">
+              <h3 className="text-2xl font-serif text-metamask-purple mb-3">
+                {t('wynderWatchName')}
+              </h3>
+              <p className="text-gray-600 mb-6 flex-grow">
+                {t('wynderWatchDesc')}
+              </p>
+              <div className="mt-auto">
+                <a
+                  href="https://wynder.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-metamask-purple text-white font-medium hover:bg-metamask-purple-dark transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-metamask-purple/20"
+                >
+                  {t('launchApp')}
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* Placeholder for future apps */}
-          <div className="md:col-span-3 h-64 relative rounded-3xl border border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center p-8 text-center">
+          <div className="relative rounded-3xl border border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center p-8 text-center opacity-60">
             <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m0-6H6" />

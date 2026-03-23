@@ -5,16 +5,6 @@ export default function Products() {
 
   const products = [
     {
-      id: 'luckyhaus',
-      url: 'https://luckyhaus.vercel.app/',
-      gradient: 'from-purple-500 to-pink-500',
-    },
-    {
-      id: 'memehaus',
-      url: 'https://memehaus.vercel.app/',
-      gradient: 'from-green-500 to-teal-500',
-    },
-    {
       id: 'vynder',
       url: 'https://vynder.vercel.app/',
       gradient: 'from-orange-500 to-red-500',
@@ -28,16 +18,6 @@ export default function Products() {
       id: 'blobio',
       url: 'https://blobio.vercel.app/',
       gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-      id: 'hunter84',
-      url: 'https://hunter84.vercel.app/',
-      gradient: 'from-yellow-500 to-red-500',
-    },
-    {
-      id: 'dollarmilkshake',
-      url: 'https://dollarmilkshake.vercel.app/',
-      gradient: 'from-yellow-400 to-orange-500',
     },
     {
       id: 'fynder',

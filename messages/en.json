@@ -37,7 +37,8 @@
         "about": "About",
         "progress": "Progress",
         "shop": "Shop",
-        "projects": "Projects",
+        "games": "Games",
+        "apps": "Apps",
         "socials": "Socials",
         "connect": "Connect"
     },
@@ -45,14 +46,7 @@
         "title": "Our",
         "titleColored": "Products",
         "description": "Building the future of Web3, one product at a time. Each project showcases our commitment to innovation and clean code.",
-        "luckyhaus": {
-            "name": "LuckyHaus",
-            "description": "Your luck, amplified. Experience the future of chance on Solana."
-        },
-        "memehaus": {
-            "name": "MemeHaus",
-            "description": "Where jokes print money. Create, mint, and trade memecoins on Solana."
-        },
+
         "vynder": {
             "name": "VYNDER",
             "description": "Dating on the blockchain. The first Web3 PWA dating app built on Solana."
@@ -65,14 +59,7 @@
             "name": "BLOBIO",
             "description": "Engage in thrilling blob battles and conquer the arena."
         },
-        "hunter84": {
-            "name": "HUNTER84",
-            "description": "Retro action-packed arcade hunting experience."
-        },
-        "dollarmilkshake": {
-            "name": "Dollar Milkshake",
-            "description": "The ultimate Solana DCA tool. Set it, forget it, and watch your memecoin bags grow."
-        },
+
         "fynder": {
             "name": "FYNDER",
             "description": "Premium Android dating experience. Connection, simplified. Your next chapter starts with a swipe."
@@ -83,6 +70,8 @@
         "slogan": "We. As One.",
         "description": "Building the future of Web3 on Solana. Agentic Engineering. Blockchain First.",
         "products": "Products",
+        "games": "Games",
+        "apps": "Apps",
         "connect": "Connect",
         "shop": "VAIIYA Shop",
         "rights": "All rights reserved.",
@@ -121,55 +110,7 @@
         "viewProjects": "View Projects",
         "followVaiya": "Follow @V4IIYA"
     },
-    "LuckyHausPage": {
-        "nextDraw": "Next Draw in 08:24:12",
-        "titleStart": "Fortune Favors",
-        "titleEnd": "The Bold.",
-        "description": "The ultimate daily USDC lottery on Solana. One winner. One pot. Zero complexity.",
-        "enterDraw": "Enter Next Draw",
-        "learn": "Learn the Vibe",
-        "stat1": "Total Prizes Won",
-        "stat2": "Lucky Wallets",
-        "stat3": "Daily Draws",
-        "feat1Title": "USDC Driven",
-        "feat1Desc": "Stabilized rewards. No volatile tokens, just pure USDC straight to your wallet.",
-        "feat2Title": "Verifiably Fair",
-        "feat2Desc": "Every draw is permanent and public on the Solana blockchain. Trust through transparency.",
-        "feat3Title": "Solana Speed",
-        "feat3Desc": "Interactive UI that updates in real-time. Feel the pulse of the lottery as it happens.",
-        "redefTitle": "Redefining the Gamble.",
-        "redefP1": "LuckyHaus isn't just a lottery; it's a social experiment in high-stakes transparency. By leveraging Solana's sub-second finality, we've created a platform that feels alive.",
-        "redefP2": "Built with the core VAIIYA philosophy of Agentic Engineering, LuckyHaus strips away the friction of legacy gaming platforms. Connect, enter, and win.",
-        "ctaTitle": "Your Wallet, Your Luck.",
-        "ctaQuote": "\"The pot is growing. Are you in the Haus?\"",
-        "ctaBtn": "Join LuckyHaus Now"
-    },
-    "MemeHausPage": {
-        "liveOnMainnet": "LIVE ON SOLANA MAINNET",
-        "titleStart": "Where Jokes",
-        "titleEnd": "Print Money.",
-        "description": "The ultimate launchpad for the next generation of culture-defining memecoins. Fast, fair, and verifiably viral.",
-        "startMinting": "Start Minting",
-        "joinCommunity": "Join the Community",
-        "dashboardTitle": "MemeHaus Dashboard",
-        "kickbacksTotal": "YOUR KICKBACKS",
-        "tokensCreated": "TOKENS CREATED",
-        "volGenerated": "VOL. GENERATED",
-        "kickbackTitle": "The 10% Kickback",
-        "kickbackDesc": "We believe in rewarding the creators who build our ecosystem. That's why MemeHaus implements a native kickback mechanism. Every transaction generates a protocol fee, and a significant portion is instantly routed back to the creator and early adopters.",
-        "fairLaunchTitle": "Fair Launch",
-        "fairLaunchDesc": "No team tokens. No presale. 100% fair launch for every meme created.",
-        "instantMintTitle": "Instant Mint",
-        "instantMintDesc": "Go from idea to live trading in under 60 seconds on Solana.",
-        "autoLpTitle": "Auto-LP",
-        "autoLpDesc": "Liquidity is automatically locked to ensure a safe environment for traders.",
-        "quote": "\"Built for Degens, Engineered for Reality.\"",
-        "quoteDesc": "MemeHaus is a prime example of VAIIYA's \"Agentic Engineering\" in action. We've taken the chaotic energy of the meme markets and built a robust, high-performance financial tool that doesn't compromise on fun.",
-        "ctaTitle": "Make History. Make Memes.",
-        "ctaDesc": "Join the hundreds of creators who are already printing their legacy on MemeHaus.",
-        "launchApp": "Launch App",
-        "allProjects": "All VAIIYA Projects"
-    },
+
     "VynderPage": {
         "privateBeta": "STILL IN PRIVATE BETA",
         "titleStart": "Dating.",
@@ -240,52 +181,8 @@
         "enterStudio": "Enter BLOBIO",
         "viewVynder": "View Vynder"
     },
-    "Hunter84Page": {
-        "premiumSub": "Premium Arcade Infrastructure",
-        "titleStart": "Elevate Your",
-        "titleEnd": "Hunting Game.",
-        "description": "HUNTER84 is an elite arcade experience for gamers who value ownership.",
-        "exploreStudio": "Explore HUNTER84",
-        "partnerUs": "Partner with Us",
-        "sovereignTitle": "Built for the Sovereign Hunter.",
-        "gatedTitle": "Gated Excellence",
-        "gatedDesc": "Sophisticated content-gating tools allow you to monetize your influence on your own terms.",
-        "directTitle": "Direct Revenue",
-        "directDesc": "Payments are processed instantly on Solana, ensuring 400ms finality.",
-        "deepTitle": "Deep Connection",
-        "deepDesc": "Build meaningful relationships through a platform that prioritizes human interaction over algorithms.",
-        "vibeStatus": "Arcade Access: GRANTED",
-        "vibeTitle": "High Vibe",
-        "philosophyTitle": "The Vibe of Excellence.",
-        "philosophyQuote": "\"At HUNTER84, we believe that premium software shouldn't just function—it should inspire.\"",
-        "ctaTitle": "Your Arcade Awaits.",
-        "ctaDesc": "Step into a more refined gaming ecosystem.",
-        "enterStudio": "Enter HUNTER84",
-        "viewVynder": "View Vynder"
-    },
-    "DollarMilkshakePage": {
-        "titleStart": "SIP IT.",
-        "titleEnd": "DCA IT.",
-        "description": "The most streamlined DCA experience on Solana. Automate your daily buys and accumulate gems without the stress of volatility.",
-        "startDca": "Start Your DCA",
-        "howItWorks": "How it Works",
-        "stat1": "Daily Buys Executed",
-        "stat2": "Happy Shakers",
-        "stat3": "Total DCA Orders",
-        "feat1Title": "Non-Custodial",
-        "feat1Desc": "Your tokens, your control. Every daily purchase is sent directly to your main wallet instantly.",
-        "feat2Title": "Jupiter Powered",
-        "feat2Desc": "Leveraging Jupiter's best-in-class aggregation to ensure you get the absolute best price on every trade.",
-        "feat3Title": "Set and Forget",
-        "feat3Desc": "One deposit, infinite peace of mind. Our automation handles the rest while you sleep.",
-        "philosophyTitle": "Micro-Investing, Macro Results.",
-        "philosophyP1": "Dollar Milkshake was born from a simple observation: the memecoin market is chaotic. By automating small, consistent buys, we strip away the emotional friction of trading and focus on long-term accumulation.",
-        "philosophyP2": "Built with the VAIIYA principle of Agentic Engineering, we've created a tool that is invisible yet powerful. No complex dashboards, no unnecessary steps. Just pure, automated growth.",
-        "ctaTitle": "Ready to start shaking?",
-        "ctaDesc": "Join the automated revolution and start building your Solana legacy today, one dollar at a time.",
-        "launchDca": "Launch Dollar Milkshake",
-        "viewOther": "View Other Projects"
-    },
+
+
     "FynderProjectPage": {
         "titleStart": "Find Your",
         "titleEnd": "Vibe.",
@@ -307,5 +204,16 @@
         "ctaTitle": "Ready to find the one?",
         "ctaDesc": "Join thousands of others who are already discovering a better way to connect on Android.",
         "viewProjects": "Explore All Projects"
+    },
+    "GamesPage": {
+        "title": "Games",
+        "description": "Dive into our collection of high-vibe games. From arcade classics to innovative Web3 experiences, we build for fun and engagement.",
+        "klappyName": "KLAPPY",
+        "klappyDesc": "A challenging bird-flight adventure. How far can you go?",
+        "playGame": "Play in Browser"
+    },
+    "AppsPage": {
+        "title": "Apps",
+        "description": "Discover our suite of powerful applications designed for the modern Web3 era and beyond."
     }
 }

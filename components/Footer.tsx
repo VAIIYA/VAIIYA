@@ -71,26 +71,8 @@ export default function Footer() {
               {t('products')}
             </h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="https://luckyhaus.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-metamask-orange transition-colors"
-                >
-                  LuckyHaus
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://memehaus.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-metamask-orange transition-colors"
-                >
-                  MemeHaus
-                </a>
-              </li>
+
+
               <li>
                 <a
                   href="https://vynder.vercel.app/"
@@ -121,22 +103,29 @@ export default function Footer() {
                   BLOBIO
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://hunter84.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-metamask-orange transition-colors"
-                >
-                  HUNTER84
-                </a>
-              </li>
+
               <li>
                 <Link
                   href="/shop"
                   className="text-gray-600 hover:text-metamask-orange transition-colors"
                 >
                   {t('shop')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/games"
+                  className="text-gray-600 hover:text-metamask-orange transition-colors"
+                >
+                  {t('games')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/apps"
+                  className="text-gray-600 hover:text-metamask-orange transition-colors"
+                >
+                  {t('apps')}
                 </Link>
               </li>
             </ul>

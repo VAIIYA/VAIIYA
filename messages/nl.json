@@ -37,7 +37,8 @@
         "about": "Over ons",
         "progress": "Voortgang",
         "shop": "Winkel",
-        "projects": "Projecten",
+        "games": "Games",
+        "apps": "Apps",
         "socials": "Socials",
         "connect": "Connect"
     },
@@ -45,14 +46,7 @@
         "title": "Onze",
         "titleColored": "Producten",
         "description": "We bouwen aan de toekomst van Web3, één product tegelijk. Elk project toont onze inzet voor innovatie en schone code.",
-        "luckyhaus": {
-            "name": "LuckyHaus",
-            "description": "Jouw geluk, versterkt. Ervaar de toekomst van kansspelen op Solana."
-        },
-        "memehaus": {
-            "name": "MemeHaus",
-            "description": "Waar grappen geld opleveren. Creëer, mint, en handel memecoins op Solana."
-        },
+
         "vynder": {
             "name": "VYNDER",
             "description": "Dating op de blockchain. De eerste Web3 PWA dating-app gebouwd op Solana."
@@ -65,14 +59,7 @@
             "name": "BLOBIO",
             "description": "Ga spannende blob-gevechten aan en verover de arena."
         },
-        "hunter84": {
-            "name": "HUNTER84",
-            "description": "Retro arcade jachtervaring vol actie."
-        },
-        "dollarmilkshake": {
-            "name": "Dollar Milkshake",
-            "description": "De ultieme Solana DCA-tool. Instellen, vergeten en toekijken hoe je memecoin-bags groeien."
-        },
+
         "fynder": {
             "name": "FYNDER",
             "description": "Premium Android dating-ervaring. Verbinding, vereenvoudigd. Je volgende hoofdstuk begint met een swipe."
@@ -83,6 +70,8 @@
         "slogan": "We. Als Eén.",
         "description": "De toekomst van Web3 bouwen op Solana. Agentic Engineering. Blockchain Eerst.",
         "products": "Producten",
+        "games": "Games",
+        "apps": "Apps",
         "connect": "Verbinden",
         "shop": "VAIIYA Winkel",
         "rights": "Alle rechten voorbehouden.",
@@ -109,7 +98,7 @@
         "statusVibe": "> Status: Hoge Vibe Gedetecteerd",
         "whySolanaTitle": "Waarom Solana?",
         "speedTitle": "Ongekende Snelheid",
-        "speedDesc": "400ms bloktijden betekenen dat uw gebruikers nooit hoeven wachten. Real-time interactie voor echte impact.",
+        "speedDesc": "400ms bloktijden betekenen dat uw gebruikers nooit hoeven te wachten. Real-time interactie voor echte impact.",
         "costTitle": "Lage Kosten",
         "costDesc": "Fracties van een cent aan kosten maken Web3 toegankelijk voor iedereen, wat massale adoptie usecases mogelijk maakt.",
         "ecoTitle": "Ecosysteem",
@@ -120,55 +109,6 @@
         "ctaDesc": "Verken onze producten of neem contact op om te zien hoe we uw Web3 visie tot leven kunnen brengen.",
         "viewProjects": "Bekijk Projecten",
         "followVaiya": "Volg @V4IIYA"
-    },
-    "LuckyHausPage": {
-        "nextDraw": "Volgende Trekking in 08:24:12",
-        "titleStart": "Het Geluk is",
-        "titleEnd": "met de Dapperen.",
-        "description": "De ultieme dagelijkse USDC loterij op Solana. Eén winnaar. Eén pot. Nul complexiteit.",
-        "enterDraw": "Doe Mee",
-        "learn": "Leer de Vibe",
-        "stat1": "Totaal aan Prijzen Gewonnen",
-        "stat2": "Gelukkige Wallets",
-        "stat3": "Dagelijkse Trekkingen",
-        "feat1Title": "USDC Gedreven",
-        "feat1Desc": "Gestabiliseerde beloningen. Geen volatiele tokens, gewoon pure USDC direct in je wallet.",
-        "feat2Title": "Verifieerbaar Eerlijk",
-        "feat2Desc": "Elke trekking is permanent en openbaar op de Solana blockchain. Vertrouwen door transparantie.",
-        "feat3Title": "Solana Snelheid",
-        "feat3Desc": "Interactieve UI die in realtime wordt bijgewerkt. Voel de hartslag van de loterij terwijl het gebeurt.",
-        "redefTitle": "Gokken, Heruitgevonden.",
-        "redefP1": "LuckyHaus is niet zomaar een loterij; het is een sociaal experiment in transparantie met hoge inzetten. Door de sub-seconde finaliteit van Solana te benutten, hebben we een platform gecreëerd dat levend aanvoelt.",
-        "redefP2": "Gebouwd met de VAIIYA-kernfilosofie van Agentic Engineering, neemt LuckyHaus de frictie van oude spelplatforms weg. Verbind, doe mee en win.",
-        "ctaTitle": "Jouw Wallet, Jouw Geluk.",
-        "ctaQuote": "\"De pot groeit. Ben je in the Haus?\"",
-        "ctaBtn": "Doe Nu Mee aan LuckyHaus"
-    },
-    "MemeHausPage": {
-        "liveOnMainnet": "LIVE OP SOLANA MAINNET",
-        "titleStart": "Waar Grappen",
-        "titleEnd": "Geld Drukken.",
-        "description": "De ultieme lanceerplek voor de volgende generatie cultuurdefiniërende memecoins. Snel, eerlijk, en verifieerbaar viraal.",
-        "startMinting": "Begin met Minten",
-        "joinCommunity": "Word Lid van de Community",
-        "dashboardTitle": "MemeHaus Dashboard",
-        "kickbacksTotal": "JOUW KICKBACKS",
-        "tokensCreated": "TOKENS GEGREËERD",
-        "volGenerated": "VOL. GEGENEREERD",
-        "kickbackTitle": "De 10% Kickback",
-        "kickbackDesc": "We beloven in het belonen van de makers die ons ecosysteem bouwen. Daarom heeft MemeHaus een ingebouwd kickback-mechanisme. Elke transactie genereert een protocol-fee, en een aanzienlijk deel daarvan vloeit direct terug naar de maker en vroege gebruikers.",
-        "fairLaunchTitle": "Eerlijke Lancering",
-        "fairLaunchDesc": "Geen team tokens. Geen presale. 100% eerlijke lancering voor elke meme die wordt gemaakt.",
-        "instantMintTitle": "Direct Minten",
-        "instantMintDesc": "Van idee tot live handel in minder dan 60 seconden op Solana.",
-        "autoLpTitle": "Auto-LP",
-        "autoLpDesc": "Liquiditeit wordt automatisch vastgezet om een veilige omgeving te garanderen voor handelaren.",
-        "quote": "\"Gebouwd voor Degens, Ontworpen voor Realiteit.\"",
-        "quoteDesc": "MemeHaus is een perfect voorbeeld van VAIIYA's \"Agentic Engineering\" in actie. We hebben de chaotische energie van de meme-markten genomen en een robuust, krachtig financieel hulpmiddel gebouwd dat geen afbreuk doet aan het plezier.",
-        "ctaTitle": "Schrijf Geschiedenis. Maak Memes.",
-        "ctaDesc": "Sluit je aan bij honderden makers die al hun nalatenschap aan het bouwen zijn op MemeHaus.",
-        "launchApp": "Start App",
-        "allProjects": "Alle VAIIYA Projecten"
     },
     "VynderPage": {
         "privateBeta": "NOG STEEDS IN PRIVATE BÈTA",
@@ -240,52 +180,8 @@
         "enterStudio": "Betreed BLOBIO",
         "viewVynder": "Bekijk Vynder"
     },
-    "Hunter84Page": {
-        "premiumSub": "Premium Arcade Infrastructuur",
-        "titleStart": "Verhoog je",
-        "titleEnd": "Jachtspel.",
-        "description": "HUNTER84 is een elitaire arcade-ervaring voor gamers die waarde hechten aan eigenaarschap.",
-        "exploreStudio": "Verken HUNTER84",
-        "partnerUs": "Samenwerken met Ons",
-        "sovereignTitle": "Gebouwd voor de Onafhankelijke Jager.",
-        "gatedTitle": "Exclusieve Afscherming",
-        "gatedDesc": "Geavanceerde tools stellen je in staat je invloed op je eigen voorwaarden te gelde te maken.",
-        "directTitle": "Direct Profit",
-        "directDesc": "Betalingen worden direct verwerkt op Solana, met een finaliteit van 400ms.",
-        "deepTitle": "Diepe Connectie",
-        "deepDesc": "Bouw betekenisvolle relaties op via een platform dat menselijke interactie verkiest.",
-        "vibeStatus": "Arcade Toegang: VERLEEND",
-        "vibeTitle": "Hoge Vibe",
-        "philosophyTitle": "De Vibe van Uitmuntendheid.",
-        "philosophyQuote": "\"Bij HUNTER84 geloven we dat premium software niet alleen zou moeten werken, het zou moeten inspireren.\"",
-        "ctaTitle": "Je Arcade Wacht op Je.",
-        "ctaDesc": "Stap binnen in een verfijnder ecosysteem.",
-        "enterStudio": "Betreed HUNTER84",
-        "viewVynder": "Bekijk Vynder"
-    },
-    "DollarMilkshakePage": {
-        "titleStart": "SLOKJE.",
-        "titleEnd": "DCA.",
-        "description": "De meest gestroomlijnde DCA-ervaring op Solana. Automatiseer je dagelijkse aankopen en verzamel gems zonder de stress van volatiliteit.",
-        "startDca": "Start je DCA",
-        "howItWorks": "Hoe het werkt",
-        "stat1": "Dagelijkse Aankopen",
-        "stat2": "Tevreden Shakers",
-        "stat3": "Totaal DCA Orders",
-        "feat1Title": "Non-Custodial",
-        "feat1Desc": "Jouw tokens, jouw controle. Elke dagelijkse aankoop wordt direct naar je hoofdportemonnee gestuurd.",
-        "feat2Title": "Jupiter Powered",
-        "feat2Desc": "Maakt gebruik van Jupiter's beste aggregatie om ervoor te zorgen dat je de allerbeste prijs krijgt voor elke transactie.",
-        "feat3Title": "Instellen en Vergeten",
-        "feat3Desc": "Eén storting, oneindige gemoedsrust. Onze automatisering regelt de rest terwijl jij slaapt.",
-        "philosophyTitle": "Micro-Investeren, Macro-Resultaten.",
-        "philosophyP1": "Dollar Milkshake is ontstaan uit een eenvoudige observatie: de memecoin-markt is chaotisch. Door kleine, consistente aankopen te automatiseren, halen we de emotionele frictie uit de handel.",
-        "philosophyP2": "Gebouwd met het VAIIYA-principe van Agentic Engineering, hebben we een tool gecreëerd die onzichtbaar maar krachtig is. Geen complexe dashboards, alleen pure, geautomatiseerde groei.",
-        "ctaTitle": "Klaar om te shaken?",
-        "ctaDesc": "Doe mee aan de geautomatiseerde revolutie en begin vandaag nog met het bouwen van je Solana-erfenis, dollar voor dollar.",
-        "launchDca": "Start Dollar Milkshake",
-        "viewOther": "Bekijk Andere Projecten"
-    },
+
+
     "FynderProjectPage": {
         "titleStart": "Vind Je",
         "titleEnd": "Vibe.",
@@ -306,6 +202,17 @@
         "philosophyP2": "Gebruikmakend van VAIIYA's Agentic Engineering, biedt FYNDER een naadloze ervaring die voelt als een brug naar je volgende grote verhaal.",
         "ctaTitle": "Klaar om de ware te vinden?",
         "ctaDesc": "Sluit je aan bij duizenden anderen die al een betere manier ontdekken om contact te maken op Android.",
-        "viewProjects": "Bekijk Alle Projecten"
+        "viewProjects": "Ontdek Alle Projecten"
+    },
+    "GamesPage": {
+        "title": "Games",
+        "description": "Duik in onze collectie van high-vibe games. Van arcadeklassiekers tot innovatieve Web3-ervaringen, we bouwen voor plezier en betrokkenheid.",
+        "klappyName": "KLAPPY",
+        "klappyDesc": "Een uitdagend vogelvluchtavontuur. Hoe ver kun jij komen?",
+        "playGame": "Speel in Browser"
+    },
+    "AppsPage": {
+        "title": "Apps",
+        "description": "Ontdek onze suite van krachtige applicaties ontworpen voor het moderne Web3-tijdperk en daarna."
     }
 }

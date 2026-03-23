@@ -9,12 +9,6 @@ export const pathnames = {
         nl: '/over-ons',
         de: '/ueber-uns'
     },
-    '/projects/luckyhaus': '/projects/luckyhaus',
-    '/projects/memehaus': '/projects/memehaus',
-    '/projects/vynder': '/projects/vynder',
-    '/projects/nightstudio': '/projects/nightstudio',
-    '/projects/blobio': '/projects/blobio',
-    '/projects/hunter84': '/projects/hunter84',
     '/shop': {
         en: '/shop',
         nl: '/winkel',
@@ -24,6 +18,16 @@ export const pathnames = {
         en: '/progress',
         nl: '/voortgang',
         de: '/fortschritt'
+    },
+    '/games': {
+        en: '/games',
+        nl: '/games',
+        de: '/spiele'
+    },
+    '/apps': {
+        en: '/apps',
+        nl: '/apps',
+        de: '/apps'
     }
 };
 

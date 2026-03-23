@@ -46,16 +46,7 @@ const socialLinks = [
   },
 ]
 
-const projects = [
-  { name: 'LuckyHaus', slug: 'luckyhaus' },
-  { name: 'MemeHaus', slug: 'memehaus' },
-  { name: 'VYNDER', slug: 'vynder' },
-  { name: 'NIGHTSTUDIO', slug: 'nightstudio' },
-  { name: 'BLOBIO', slug: 'blobio' },
-  { name: 'HUNTER84', slug: 'hunter84' },
-  { name: 'Dollar Milkshake', slug: 'dollarmilkshake' },
-  { name: 'FYNDER', slug: 'fynder' },
-]
+
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -142,6 +133,14 @@ export default function Header() {
           <Link href="/about" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
             {t('about')}
           </Link>
+          
+          <Link href="/games" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+            {t('games')}
+          </Link>
+          
+          <Link href="/apps" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
+            {t('apps')}
+          </Link>
 
           <Link href="/progress" className="text-gray-600 hover:text-metamask-orange transition-colors font-medium">
             {t('progress')}
@@ -151,28 +150,7 @@ export default function Header() {
             {t('shop')}
           </Link>
 
-          {/* Projects Dropdown */}
-          <div className="relative group">
-            <button className="flex items-center text-gray-600 hover:text-metamask-orange transition-colors font-medium">
-              {t('projects')}
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div className="absolute top-full text-left left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-metamask-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <div className="py-2">
-                {projects.map((project) => (
-                  <Link
-                    key={project.slug}
-                    href={`/projects/${project.slug}`}
-                    className="block px-4 py-2 text-sm text-gray-600 hover:bg-metamask-gray-50 hover:text-metamask-orange transition-colors"
-                  >
-                    {project.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+
         </div>
       </nav>
 
@@ -201,6 +179,20 @@ export default function Header() {
                   {t('about')}
                 </Link>
                 <Link
+                  href="/games"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+                >
+                  {t('games')}
+                </Link>
+                <Link
+                  href="/apps"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
+                >
+                  {t('apps')}
+                </Link>
+                <Link
                   href="/shop"
                   onClick={() => setIsMenuOpen(false)}
                   className="block text-3xl font-serif text-metamask-purple hover:text-metamask-orange transition-colors"
@@ -209,22 +201,7 @@ export default function Header() {
                 </Link>
               </div>
 
-              {/* Projects Section */}
-              <div className="space-y-4 pt-4 border-t border-gray-100">
-                <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold">{t('projects')}</h3>
-                <div className="grid grid-cols-1 gap-4">
-                  {projects.map((project) => (
-                    <Link
-                      key={project.slug}
-                      href={`/projects/${project.slug}`}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-xl text-gray-600 hover:text-metamask-orange transition-colors"
-                    >
-                      {project.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+
 
               {/* Socials Section */}
               <div className="space-y-4 pt-4 border-t border-gray-100">
